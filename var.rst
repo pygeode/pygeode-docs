@@ -20,8 +20,7 @@ In PyGeode, all gridded data is represented by Var objects.  They can be thought
   * The array values are not immediately loaded into memory.  Instead, the Var object knows where to find its values if it needs them, and will only bother to retrieve the values if something else is explicitly requesting them.
   * Similarly, operations on the data are not performed immediately.  Instead, a *new* Var object is constructed, encapsulating the input Vars and the operation.  If any of that data is ever requested, then the corresponding input data is retrieved, and *only then* is the operation performed.
 
-Useful attributes
------------------
+.. rubric:: Useful attributes
 
 .. attribute:: Var.name
 
@@ -40,22 +39,22 @@ Useful attributes
     The type of numeric data that the Var represents.
 
 
-Retrieving values
------------------
+.. rubric:: Retrieving values
+
 :func:`Var.get`
 
 Main article: :doc:`var.get`
 
 
-Variable querying routines
---------------------------
+.. rubric:: Variable querying routines
+
 :func:`Var.hasaxis`, :func:`Var.whichaxis`, :func:`Var.getaxis`, etc.
 
 Main article: :doc:`varquery`
 
 
-Array manipulation routines
----------------------------
+.. rubric:: Array manipulation routines
+
 :func:`Var.__call__`, :func:`Var.squeeze`, :func:`Var.extend`, :func:`Var.transpose`,
 :func:`Var.sorted`, :func:`Var.replace_axes`,
 :func:`Var.rename`, :func:`Var.rename_axes`, :func:`Var.fill`, :func:`Var.unfill`,
@@ -64,22 +63,22 @@ Array manipulation routines
 Main article: :doc:`varops`
 
 
-Axis reduction routines
------------------------
+.. rubric:: Axis reduction routines
+
 :func:`Var.mean`, :func:`Var.nanmean`, :func:`Var.sum`, :func:`Var.nansum`
 
 Main article: :doc:`reduce`
 
 
-Arithmetic (and boolean) operations
------------------------------------
+.. rubric:: Arithmetic (and boolean) operations
+
 ``+``, ``-``, ``*``, ``/``, ``**``, ``%``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``
 
 Main Article: :doc:`var.arith`
 
 
-Unary functions
----------------
+.. rubric:: Unary functions
+
 :func:`~Var.sign`, :func:`~Var.exp`, :func:`~Var.log`, :func:`~Var.log10`, :func:`~Var.cos`, 
 :func:`~Var.sin`, :func:`~Var.tan`, :func:`~Var.cosd`, :func:`~Var.sind`, :func:`~Var.tand`,
 :func:`~Var.cosh`, :func:`~Var.sinh`, :func:`~Var.tanh`, :func:`~Var.arccos`,
@@ -93,10 +92,7 @@ These are simple wrappers which apply the unary function to the current PyGeode 
 
 See Also: :doc:`ufunc` for the static version of these methods.
 
-
-..
-  (commented out)
-  .. toctree::
+.. toctree::
   :maxdepth: 2
   :hidden:
 
