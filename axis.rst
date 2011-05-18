@@ -52,6 +52,7 @@ A more customized version:
   >>> print sza
   sza <SZA_Axis> :  20.1 degrees to 20.5 degrees (5 values)
 
+If you think your axis will be useful to others, please let us know, and we may include it in future versions.
 
 Useful attributes
 -----------------

@@ -27,6 +27,7 @@ is still a work in progress, but if you're new to PyGeode, the tutorial is a goo
 
 .. toctree::
 
+  install
   tutorial
   reference
 
