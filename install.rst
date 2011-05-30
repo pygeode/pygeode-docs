@@ -5,8 +5,18 @@ Installing PyGeode
 Option 1 - Windows installer
 ============================
 
-*Sorry, not available at this time*
+You'll need to install the following packages (make sure to download the 32-bit versions):
 
+1) `Python 2.7 <http://python.org/download/>`_
+2) `Numpy <http://sourceforge.net/projects/numpy/files/NumPy/>`_ (handles the number crunching)
+3) `Matplotlib <http://sourceforge.net/projects/matplotlib/files/matplotlib/>`_ (handles the plotting)
+4) `PyGeode <http://code.google.com/p/pygeode/downloads/list?q=.exe>`_ *(that's us!)*
+
+Optional Packages:
+
+5) `ipython <http://ipython.scipy.org/moin/Download>`_ (a better interactive Python shell)
+6) `PyReadline <http://ipython.scipy.org/moin/PyReadline/Intro>`_ (endows ipython with tab completion and history)
+7) `basemap <http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/>`_ (handles maps and projections for plotting)
 
 Option 2 - From Launchpad PPA (*Ubuntu*)
 =============================================
