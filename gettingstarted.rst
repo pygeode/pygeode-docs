@@ -1,3 +1,5 @@
+.. currentmodule:: pygeode
+
 ==================
 Getting started
 ==================
@@ -6,7 +8,7 @@ If the tutorial plugin has been installed, a variety of synthetic datasets will
 be available in the data module. We can begin by looking at the first such
 dataset, which can be imported as follows:
 
-  >>> from pygeode.data.tutorial import t1
+  >>> from pygeode.tutorial import t1
   >>> print t1
   <Dataset>:
   Vars:
@@ -47,10 +49,10 @@ Finally, we can look as well at one of our axes:
 which we could also access as a member of the variable ``Temp``. 
 
 These three types of objects, variables, axes, and datasets, are the core of
-Pygeode. Variables (`:class:Var`) encapsulate a scalar field such as temperature
-or one component of the wind field. Axes (`:class:Axis`), which are in fact
+Pygeode. Variables (:class:`Var`) encapsulate a scalar field such as temperature
+or one component of the wind field. Axes (:class:`Axis`), which are in fact
 special cases of variables, define the geophysical grid on which the scalar
-field exists. Finally, datasets (`:class:Dataset`) are containers for variables.
+field exists. Finally, datasets (:class:`Dataset`) are containers for variables.
 These concepts match reasonably closely to their counterparts in NetCDF files
 (and indeed PyGeode works very naturally with NetCDF files). We'll learn more
 about all three soon, but to get a quick feel of what PyGeode can do, let's try
@@ -71,7 +73,7 @@ using the matplotlib library itself which gives you full control.
 
 Now let's take a look at a second dataset:
 
-  >>> from pygeode.data.tutorial import t2
+  >>> from pygeode.tutorial import t2
   >>> print t2
   <Dataset>:
   Vars:
