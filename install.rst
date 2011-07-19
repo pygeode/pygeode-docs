@@ -36,16 +36,7 @@ This is the recommended approach for Ubuntu systems, since it will automatically
    ``sudo apt-get install python-pygeode``
 
 
-Option 3 - From binary package (*Debian-based systems*)
-=======================================================
-
-1) Download the latest Debian package (.deb) for your architecture `here <http://code.google.com/p/pygeode/downloads/list?q=.deb>`_
-
-2) Open and install it from your favourite package manager.
-
-
-
-Option 4 - From the source code (*Linux*)
+Option 3 - From the source code (*Linux*)
 =====================================================
 
 This approach should only be used if you are unable to install from a binary package.  You may have to do some fiddling to get it to compile on your system.
