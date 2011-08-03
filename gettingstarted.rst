@@ -28,10 +28,8 @@ We can take a closer look at our variable ``Temp``:
 
   >>> print t1.Temp
   <Var 'Temp'>:
-
     axes: (lat, lon)
     shape: (32, 64)
-
     lat <Lat>      :  85 S to 85 N (32 values)
     lon <Lon>      :  0 E to 354 E (64 values)
   Attributes:
