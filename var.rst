@@ -20,7 +20,8 @@ In PyGeode, all gridded data is represented by Var objects.  They can be thought
   * The array values are not immediately loaded into memory.  Instead, the Var object knows where to find its values if it needs them, and will only bother to retrieve the values if something else is explicitly requesting them.
   * Similarly, operations on the data are not performed immediately.  Instead, a *new* Var object is constructed, encapsulating the input Vars and the operation.  If any of that data is ever requested, then the corresponding input data is retrieved, and *only then* is the operation performed.
 
-.. rubric:: Useful attributes
+Useful attributes
+-----------------
 
 .. attribute:: Var.name
 
@@ -98,6 +99,7 @@ See Also: :doc:`ufunc` for the static version of these methods.
 
   varquery
   var.get
+  var.arith
   ufunc
   reduce
   varops

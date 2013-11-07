@@ -1,5 +1,5 @@
-Plot module
+Climat module
 ===================================
 
-.. automodule:: pygeode.plot
+.. automodule:: pygeode.climat
   :members:

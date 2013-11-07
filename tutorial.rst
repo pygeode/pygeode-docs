@@ -22,7 +22,8 @@ plotting.
 
 While there is no strict need to use the ipython_ interpreter, the plotting
 features in combination with matplotlib are quite convenient and this tutorial
-has been written assuming you are working with this combination.
+has been written assuming you are working with this combination. All the
+commands given should still work in any other interpreter.
 
 .. _ipython: http://ipython.scipy.org/
 
@@ -30,11 +31,12 @@ This tutorial is written in four parts. The first part gives a broad overview
 and introduction to the library, including a brief description of some of the
 most common tasks. The second part is a tutorial on how to perform
 many typical operations on your data. The third part goes in to more detail on
-how to read in and write out data. Finally, the fourth part introduces the
-plotting features of the library. 
+how to read in and write out data, and on creating variables from scratch; this
+includes an introduction to many of the types of axes recognized by PyGeode.
+Finally, the fourth part introduces the plotting features of the library. 
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
 
   gettingstarted
   basic_ops

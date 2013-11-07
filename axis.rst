@@ -2,7 +2,7 @@
 Axis class overview
 *******************
 
-.. module:: pygeode
+.. currentmodule:: pygeode
 
 .. class:: Axis
 
@@ -22,6 +22,8 @@ The following is a (non-exhaustive) list of axes that are built into PyGeode:
   ``ZAxis``            Generic vertical coordinate
   ``StandardTime``     Time axis, using a standard (Gregorian) calendar
   ``ModelTime365``     Time axis, using a 365-day calendar
+  ``ModelTime360``     Time axis, using a 360-day calendar
+  ``Yearless``         Time axis, without a calendar
   ================     ================================================
 
   If PyGeode doesn't have a built-in representation of an axis that your input data uses, it will default to a generic ``Axis`` object, with no additional context on what that axis represents.  To get around this, you can always define your own :ref:`custom<axis.custom>` axis, and force your Var to use it through :meth:`Var.replace_axes`.
@@ -46,7 +48,7 @@ You can now use it like any other axis:
 A more customized version:
   >>> class SZA_Axis (Axis):
   ...   name = "sza"
-  ...   formatstr = "%g degrees"
+  ...   units = "degrees"
   ...
   >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
   >>> print sza
@@ -109,6 +111,20 @@ Useful methods
 --------------
 
 .. automethod:: Axis.sorted
+
 .. automethod:: Axis.argsort
 
-TODO
+Axis Classes
+------------
+
+.. autoclass:: Lon
+
+.. autoclass:: Lat
+
+.. autoclass:: StandardTime
+
+.. autoclass:: ModelTime365
+
+.. autoclass:: ModelTime360
+
+.. autoclass:: Yearless
