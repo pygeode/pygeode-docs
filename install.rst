@@ -53,9 +53,9 @@ This approach should only be used if you are unable to install from a binary pac
 
 4) Compile the source, and install:
 
-   ``make``
+   ``python setup.py build``
 
-   ``sudo make install``
+   ``sudo python setup.py install``
 
 
 
