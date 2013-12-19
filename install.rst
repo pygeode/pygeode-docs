@@ -2,7 +2,7 @@
 Installing PyGeode
 **********************
 
-Option 1 - Windows installer
+Windows installer
 ============================
 
 You'll need to install the following packages (make sure to download the 32-bit versions):
@@ -18,7 +18,7 @@ Optional Packages:
 6) `PyReadline <http://ipython.scipy.org/moin/PyReadline/Intro>`_ (endows ipython with tab completion and history)
 7) `basemap <http://sourceforge.net/projects/matplotlib/files/matplotlib-toolkits/>`_ (handles maps and projections for plotting)
 
-Option 2 - From Launchpad PPA (*Ubuntu*)
+Ubuntu (*via Launchpad PPA*)
 =============================================
 
 This is the recommended approach for Ubuntu systems, since it will automatically keep you updated with the latest stable version.
@@ -36,7 +36,13 @@ This is the recommended approach for Ubuntu systems, since it will automatically
    ``sudo apt-get install python-pygeode``
 
 
-Option 3 - From the source code (*Linux*)
+RPM-based Linux distributions (Fedora, CentOS, openSUSE, etc.)
+=============================================
+
+Pre-built RPM packages are available via the `openSUSE Build Service <https://build.opensuse.org/package/show/home:neishm/python-pygeode>`_
+
+
+From the source code
 =====================================================
 
 This approach should only be used if you are unable to install from a binary package.  You may have to do some fiddling to get it to compile on your system.
