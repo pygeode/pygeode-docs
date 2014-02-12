@@ -47,7 +47,7 @@ the reference date (``startdate``), offsets, and the native unit:
 
 .. ipython::
 
-  In [2]: time = pyg.ModelTime365(values=np.arange(3650), units='days', startdate=dict(year='2000', month=1))
+  In [2]: time = pyg.ModelTime365(values=np.arange(3650), units='days', startdate=dict(year=2000, month=1))
 
 Usually the easiest approach to creating variables in memory is to apply the
 relevant mathematical operations to the axes themselves:
