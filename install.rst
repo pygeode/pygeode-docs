@@ -10,7 +10,7 @@ You'll need to install the following packages (make sure to download the 32-bit 
 1) `Python 2.7 <http://python.org/download/>`_
 2) `Numpy <http://sourceforge.net/projects/numpy/files/NumPy/>`_ (handles the number crunching)
 3) `Matplotlib <http://sourceforge.net/projects/matplotlib/files/matplotlib/>`_ (handles the plotting)
-4) `PyGeode <http://code.google.com/p/pygeode/downloads/list?q=.exe>`_ *(that's us!)*
+4) `PyGeode <https://bitbucket.org/pygeode/pygeode/downloads>`_ *(that's us!)*
 
 Optional Packages:
 
@@ -47,7 +47,7 @@ From the source code
 
 This approach should only be used if you are unable to install from a binary package.  You may have to do some fiddling to get it to compile on your system.
 
-1) Download the latest stable release `here <http://code.google.com/p/pygeode/downloads/list?q=.tar.gz>`_.
+1) Download the latest stable release `here <https://bitbucket.org/pygeode/pygeode/downloads>`_.
 
 2) Unpack the tarball:
 
