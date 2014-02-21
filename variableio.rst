@@ -33,14 +33,20 @@ constructors to create them directly.
   In [1]: print pyg.NamedAxis(np.arange(15), 'myaxis')
 
   # Some simple examples
-  In [1]: print pyg.Lon(180)
+  In [1]: lon = pyg.Lon(180)
+  
+  In [1]: print lon
 
-  In [2]: print pyg.Lat(92)
+  In [2]: lat = pyg.Lat(92)
+
+  In [2]: print lat
 
   In [3]: pres = pyg.Pres([1000, 900, 800, 700, 500, 300, 200, 100, 50, 30, 10])
 
   # Gaussian latitudes (with appropriate weights)
-  In [2]: lat2 = pyg.gausslat(63)
+  In [2]: lat2 = pyg.gausslat(64)
+
+  In [2]: print lat2
 
 Time axes are somewhat more complicated, as you need to specify the calendar,
 the reference date (``startdate``), offsets, and the native unit:
@@ -54,16 +60,16 @@ relevant mathematical operations to the axes themselves:
 
 .. ipython::
 
-  In [2]: pyg.sin(2*np.pi*time / 365) * pyg.exp(-(lat / 20.)**2 
+  In [2]: pyg.sin(2*np.pi*time / 365) * pyg.exp(-(lat2 / 20.)**2) 
 
-  In [2]: pyg.sin(2*np.pi*time / 365) * pyg.exp(-(lat / 20.)**2 
+  In [2]: pyg.sin(2*np.pi*time / 365) * pyg.exp(-(lat2 / 20.)**2)
 
 However, if you have a numpy array that you want to turn in to a PyGeode
 variable, this can also be done.
 
 .. ipython::
 
-  In [2]: x = np.ones((64, 180), 'd'
+  In [2]: x = np.ones((64, 180), 'd')
 
-  In [3]: print pyg.Var((lat, lon), name = 'myvar', values=x)
+  In [3]: print pyg.Var((lat2, lon), name = 'myvar', values=x)
 
