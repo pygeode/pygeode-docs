@@ -27,7 +27,7 @@ Top-level analysis
 -------------------------------------
 
 :doc:`toplevel`
-  Routines in the top level pygeode namespace.
+  File input and output routines. 
 
 :doc:`timeutils`
   A module of routines for working with time axes
