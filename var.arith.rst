@@ -29,18 +29,41 @@ Method:              Example of use:
 
 **Axis rules for arithmetic:**
 
-  When you use one of the 2-argument operations above, PyGeode tries to match the two sets of input axes, independant of their respective orders. The output axes are determined from the inputs using following algorithm:
-    1. If one of the Vars contains all the input axes, then the output axes are exactly those axes, in that order.  No further checking is done.
-    2. Otherwise, the axes from the first Var are prepended to the list of output axes.
-    3. The axes of the second Var are checked, in order.  If the output from step 2 does not already contain an identical axis, then it is appended to the end of the output axes.
+  When you use one of the 2-argument operations above, PyGeode tries to match
+  the two sets of input axes, independant of their respective orders. The
+  output axes are determined from the inputs using following algorithm:
 
-  In the above algorithm, two axes are considered to be identical if 1) they are the same type of axis (e.g. ``Lat``), and 2) they contain the same values.  If either of these criteria fail, then the axes will be considered distinct, and the output variable will contain both axes.
+  1. If one of the Vars contains all the input axes, then the output axes are
+     exactly those axes, in that order.  No further checking is done.
 
-  A special case is the ``Time`` axis.  The criteria for matching are loosened to allow for time axes with the same range, but different internal paritioning.  For example, a standard time axis with daily values from *January 1, 2000* to *December 31, 2005* can be matched with a monthly time axis from *January 2000* to *December 2005*.  Similarly, both can be matched to a monthly climatological time axis from *January* to *December*.  For this case, the axis with the most values (i.e., the finer level of partitioning) will be used in the output.
+  2. Otherwise, the axes from the first Var are prepended to the list of
+     output axes.
 
-Arithmetic operations between Vars and scalar values are allowed.  The scalar would be treated as an array of repeated values, with the same shape and axes as the Var argument.
+  3. The axes of the second Var are checked, in order.  If the output from
+     step 2 does not already contain an identical axis, then it is
+     appended to the end of the output axes.
 
-However, operations between Vars and numpy arrays are not well defined, since numpy arrays are missing crucial information about their axes (e.g. coordinate values).
+  In the above algorithm, two axes are considered to be identical if 1) they
+  are the same type of axis (e.g. ``Lat``), and 2) they contain the same
+  values.  If either of these criteria fail, then the axes will be considered
+  distinct, and the output variable will contain both axes.
+
+  A special case is the ``Time`` axis.  The criteria for matching are loosened
+  to allow for time axes with the same range, but different internal
+  paritioning.  For example, a standard time axis with daily values from
+  *January 1, 2000* to *December 31, 2005* can be matched with a monthly time
+  axis from *January 2000* to *December 2005*.  Similarly, both can be matched
+  to a monthly climatological time axis from *January* to *December*.  For this
+  case, the axis with the most values (i.e., the finer level of partitioning)
+  will be used in the output.
+
+Arithmetic operations between Vars and scalar values are allowed.  The scalar
+would be treated as an array of repeated values, with the same shape and axes
+as the Var argument.
+
+However, operations between Vars and numpy arrays are not well defined, since
+numpy arrays are missing crucial information about their axes (e.g. coordinate
+values).
 
 **See Also:**
 

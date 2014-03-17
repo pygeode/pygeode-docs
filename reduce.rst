@@ -6,15 +6,23 @@ These functions compute summary statistics over subdomains of a variable. Many o
 numpy functions, though they are also capable of performing these operations on datasets too large
 to fit in memory.
 
-See Also:
-  :ref:`arrays.ndarray.calculation`  (external Numpy documentation)
-
 .. currentmodule:: pygeode
 
 .. automethod:: Var.mean
-.. automethod:: Var.nanmean
 .. automethod:: Var.sum
+.. automethod:: Var.stdev
+.. automethod:: Var.variance
+.. automethod:: Var.nanmean
 .. automethod:: Var.nansum
+.. automethod:: Var.nanstdev
+.. automethod:: Var.nanvariance
+.. automethod:: Var.min
+.. automethod:: Var.max
+.. automethod:: Var.argmin
+.. automethod:: Var.argmax
+
 
 **See Also:**
   :doc:`var`
+
+  :ref:`arrays.ndarray.calculation`  (external Numpy documentation)

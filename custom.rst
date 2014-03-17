@@ -9,7 +9,7 @@ operation directly; often this is the fastest and most straightforward approach.
 
 Alternatively one can defined a new pygeode variable type in order to perform
 the operation within the pygeode context. This can involve more work, certainly
-if you are not familiar with the inner workings of Pygeode. This has several
+if you are not familiar with the inner workings of PyGeode. This has several
 advantages; metadata consistency, tools for manipulating and interpreting the
 grids defined by an arbitrary pygeode variable, and often robustness. Once you
 get the hang of it, pygeode implementations can often be nearly as simple as a

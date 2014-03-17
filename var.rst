@@ -4,7 +4,6 @@ Var class overview
 
 .. currentmodule:: pygeode
 
-.. class:: Var
 
 .. commented out
   The Var class is at the centre of the PyGeode library. The Var module itself
@@ -14,22 +13,28 @@ Var class overview
   avoid circular references when importing. A list of such hooks are included
   below, detailed references can be found by following the links.
 
-In PyGeode, all gridded data is represented by Var objects.  They can be thought of as :ref:`numpy <arrays.ndarray>` arrays, which have been further abstracted in the following ways:
+In PyGeode, all gridded data is represented by Var objects.  They can be
+thought of as :ref:`numpy <arrays.ndarray>` arrays, which have been further
+abstracted in the following ways:
+
   * They can have a :attr:`name <Var.name>`, and :attr:`other <Var.atts>` useful metadata associated with them
   * Each array dimension has an associated :class:`~Axis` object (a special type of Var), containing the coordinate values.
   * The array values are not immediately loaded into memory.  Instead, the Var object knows where to find its values if it needs them, and will only bother to retrieve the values if something else is explicitly requesting them.
   * Similarly, operations on the data are not performed immediately.  Instead, a *new* Var object is constructed, encapsulating the input Vars and the operation.  If any of that data is ever requested, then the corresponding input data is retrieved, and *only then* is the operation performed.
 
-Useful attributes
------------------
+.. class:: Var
+
+.. rubric:: Useful attributes
 
 .. attribute:: Var.name
 
-  A description of the variable (may not be set).  Usually determined at the data source (e.g. input file), and may be used to identify the variable when saving to an output file.
+    A description of the variable (may not be set).  Usually determined at the
+    data source (e.g. input file), and may be used to identify the variable
+    when saving to an output file.
 
 .. attribute:: Var.axes
 
-  The axes of the variable, as a ``tuple``. See :doc:`axis`
+    The axes of the variable, as a ``tuple``. See :doc:`axis`
 
 .. attribute:: Var.atts
 
@@ -39,59 +44,127 @@ Useful attributes
 
     The type of numeric data that the Var represents.
 
+:doc:`var.get`
 
-.. rubric:: Retrieving values
+.. autosummary::
 
-:func:`Var.get`
+  Var.get
+  Var.__getitem__
 
-Main article: :doc:`var.get`
+:doc:`varquery`
 
+.. autosummary::
 
-.. rubric:: Variable querying routines
+  Var.hasaxis
+  Var.whichaxis
+  Var.getaxis
 
-:func:`Var.hasaxis`, :func:`Var.whichaxis`, :func:`Var.getaxis`, etc.
+:doc:`varops`
 
-Main article: :doc:`varquery`
+.. autosummary::
 
+  Var.__call__
+  Var.squeeze
+  Var.extend
+  Var.transpose
+  Var.sorted
+  Var.replace_axes
+  Var.rename
+  Var.rename_axes
+  Var.fill
+  Var.unfill
+  Var.as_type
 
-.. rubric:: Array manipulation routines
+:doc:`reduce`
 
-:func:`Var.__call__`, :func:`Var.squeeze`, :func:`Var.extend`, :func:`Var.transpose`,
-:func:`Var.sorted`, :func:`Var.replace_axes`,
-:func:`Var.rename`, :func:`Var.rename_axes`, :func:`Var.fill`, :func:`Var.unfill`,
-:func:`Var.as_type`
+.. autosummary::
 
-Main article: :doc:`varops`
+  Var.mean
+  Var.sum
+  Var.stdev
+  Var.variance
+  Var.nanmean
+  Var.nansum
+  Var.nanstdev
+  Var.nanvariance
+  Var.min
+  Var.max
+  Var.argmin
+  Var.argmax
 
+:doc:`var.arith`
 
-.. rubric:: Axis reduction routines
+  ==========  ===================      ======================
+  Operation   Method                   Description
+  ==========  ===================      ======================
+  ``x + y``   :func:`Var.__add__`      Binary addition      
+  ``x - y``   :func:`Var.__sub__`      Binary subtraction
+  ``x * y``   :func:`Var.__mul__`      Binary multiplication
+  ``x / y``   :func:`Var.__div__`      Binary division
+  ``x ** y``  :func:`Var.__pow__`      Exponentiation
+  ``abs(x)``  :func:`Var.__abs__`      Absolute value
+  ``-x``      :func:`Var.__neg__`      Negation 
+  ``+x``      :func:`Var.__pos__`      Null operation
+  ``x % t``   :func:`Var.__mod__`      Modulo
+  ``x < y``   :func:`Var.__lt__`
+  ``x <= y``  :func:`Var.__le__`
+  ``x > y``   :func:`Var.__gt__`
+  ``x >= y``  :func:`Var.__ge__`
+  ``x == y``  :func:`Var.__eq__`
+  ``x != y``  :func:`Var.__ne__`
+  ==========  ===================      ======================
 
-:func:`Var.mean`, :func:`Var.nanmean`, :func:`Var.sum`, :func:`Var.nansum`
+:doc:`ufunc`
 
-Main article: :doc:`reduce`
+.. autosummary::
 
+  Var.sign
+  Var.exp
+  Var.log
+  Var.log10
+  Var.cos
+  Var.sin
+  Var.tan
+  Var.cosd
+  Var.sind
+  Var.tand
+  Var.sinh
+  Var.cosh
+  Var.tanh
+  Var.arcsin
+  Var.arccos
+  Var.arctan
+  Var.arcsind
+  Var.arccosd
+  Var.arctand
+  Var.arcsinh
+  Var.arccosh
+  Var.arctanh
+  Var.sqrt
+  Var.absolute
+  Var.nan_to_num
+  Var.real
+  Var.imag
+  Var.angle
 
-.. rubric:: Arithmetic (and boolean) operations
+.. rubric:: Other operations
 
-``+``, ``-``, ``*``, ``/``, ``**``, ``%``, ``<``, ``<=``, ``>``, ``>=``, ``==``, ``!=``
+.. autosummary::
 
-Main Article: :doc:`var.arith`
+  Var.deriv
+  Var.integrate
+  Var.interpolate 
+  Var.smooth
 
+.. rubric:: Formatting and plotting operations
 
-.. rubric:: Unary functions
+.. autosummary::
 
-:func:`~Var.sign`, :func:`~Var.exp`, :func:`~Var.log`, :func:`~Var.log10`, :func:`~Var.cos`, 
-:func:`~Var.sin`, :func:`~Var.tan`, :func:`~Var.cosd`, :func:`~Var.sind`, :func:`~Var.tand`,
-:func:`~Var.cosh`, :func:`~Var.sinh`, :func:`~Var.tanh`, :func:`~Var.arccos`,
-:func:`~Var.arcsin`, :func:`~Var.arctan`,
-:func:`~Var.arccosd`, :func:`~Var.arcsind`, :func:`~Var.arctand`, :func:`~Var.arccosh`,
-:func:`~Var.arcsinh`, :func:`~Var.arctanh`,
-:func:`~Var.sqrt`, :func:`~Var.abs`, :func:`~Var.nan_to_num`, :func:`~Var.real`,
-:func:`~Var.imag`, :func:`~Var.angle`
+  Var.formatstr
+  Var.formatvalue
+  Var.formatter
+  Var.locator
 
-These are simple wrappers which apply the unary function to the current PyGeode variable.
-
-See Also: :doc:`ufunc` for the static version of these methods.
 
 .. toctree::
   :maxdepth: 2
@@ -103,6 +176,9 @@ See Also: :doc:`ufunc` for the static version of these methods.
   ufunc
   reduce
   varops
+  var.other
+
+..
   intgr
   deriv
   smooth

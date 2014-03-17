@@ -16,7 +16,7 @@ html,
 .related,
 .related ul,
 .related ul li a  {
-    background-color: #c0c0cf !important;
+    background-color: #90c0cf !important;
     color:#808080 !important;
 }
  
@@ -71,3 +71,12 @@ table.field-list th.field-name {
   white-space: nowrap;
   background-color: rgb(238, 238, 238);
 }
+
+table.docutils {
+  font-size: 0.95em; 
+}
+
+dt {
+  background-color: #eeeeee;
+}
+

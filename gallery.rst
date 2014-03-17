@@ -2,5 +2,7 @@
 Plot Gallery
 ==================
 
-Nothing to see here yet :(.
+Line plot:
+
+.. plot:: gallery/line.py 
 

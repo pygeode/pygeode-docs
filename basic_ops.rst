@@ -238,7 +238,7 @@ This computes an average over the pressure and longitude axes. You can specify a
   * or by (zero-based) index, e.g. ``t2.Temp.mean(3)``
 
 These will all return the same average. These three ways of identifying axes are pretty general
-across Pygeode routines. 
+across PyGeode routines. 
 
 Often it's useful to compute an average over a subset of the domain. You could first select the
 subdomain, then compute the mean (``t2.Temp(lat=(70, 90)).mean('lat')``), but it's such a common
@@ -265,7 +265,7 @@ You can turn this off, if desired, by specifying ``weights=False`` as a keyword 
 
   In [6]: print t2.Temp.mean('lat', weights=False)
 
-Alternatively, you can specify your own weights to use, in the form of a Pygeode
+Alternatively, you can specify your own weights to use, in the form of a PyGeode
 variable with the same axes as those you would like to weight:
 
 .. ipython::

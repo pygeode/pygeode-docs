@@ -1,65 +1,11 @@
-*******************
-Axis class overview
-*******************
+*********************
+Axis class reference
+*********************
 
 .. currentmodule:: pygeode
 
 .. class:: Axis
-
-An Axis is a one-dimensional array of values, representing some kind of coordinate.  For example, a ``Lat`` axis represents a set of latitudes over the globe.  Axes are a subclass of :class:`Var`, and can be used in the same contexts (such as arithmetic operations).  See :doc:`var` for the functionality inherited from the Var class.
-
-Types of axes
--------------
-
-The following is a (non-exhaustive) list of axes that are built into PyGeode:
-
-  ================     ================================================
-  Axis subclass        Description
-  ================     ================================================
-  ``Lat``              Latitude (degrees)
-  ``Lon``              Longitude (degrees)
-  ``Pres``             Pressure level (mbar)
-  ``ZAxis``            Generic vertical coordinate
-  ``StandardTime``     Time axis, using a standard (Gregorian) calendar
-  ``ModelTime365``     Time axis, using a 365-day calendar
-  ``ModelTime360``     Time axis, using a 360-day calendar
-  ``Yearless``         Time axis, without a calendar
-  ================     ================================================
-
-  If PyGeode doesn't have a built-in representation of an axis that your input data uses, it will default to a generic ``Axis`` object, with no additional context on what that axis represents.  To get around this, you can always define your own :ref:`custom<axis.custom>` axis, and force your Var to use it through :meth:`Var.replace_axes`.
-
-.. _axis.custom:
-
-Defining a new type of axis
----------------------------
-
-It's impossible (or at least improbable) for the standard PyGeode package to include every possible type of axis that people may want.  However, it's fairly straight-forward to define your own custom axis.  Simply define a new class, as a subclass of :class:`Axis`.
-
-For example, suppose one of the dimensions of your data is solar zenith angle (SZA).  You can make a simple Axis representation as follows:
-  >>> from pygeode import Axis
-  >>> class SZA_Axis (Axis): pass
-  ...
-
-You can now use it like any other axis:
-  >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
-  >>> print sza
-  sza_axis <SZA_Axis>:  20.1 to 20.5 (5 values)
-
-A more customized version:
-  >>> class SZA_Axis (Axis):
-  ...   name = "sza"
-  ...   units = "degrees"
-  ...
-  >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
-  >>> print sza
-  sza <SZA_Axis> :  20.1 degrees to 20.5 degrees (5 values)
-
-If you think your axis will be useful to others, please let us know, and we may include it in future versions.
-
-Useful attributes
------------------
-
-In addition to the :attr:`~Var.atts` inherited from the :class:`Var` class, axes have a few extra attributes listed below:
+  :noindex:
 
 .. attribute:: Axis.formatstr
 
@@ -107,24 +53,87 @@ To get around this, make your changes to the class itself.  As an added benefit,
   >>> print y
   lat <Lat>      :  40 deg N to 60 deg N (3 values)
 
-Useful methods
---------------
-
 .. automethod:: Axis.sorted
 
 .. automethod:: Axis.argsort
 
-Axis Classes
-------------
+.. class:: NamedAxis
+  :noindex:
 
-.. autoclass:: Lon
+.. automethod:: NamedAxis.__init__
+  
+.. class:: Lon
+  :noindex:
 
-.. autoclass:: Lat
+.. automethod:: Lon.__init__
 
-.. autoclass:: StandardTime
+.. automethod:: Lon.formatvalue
 
-.. autoclass:: ModelTime365
+.. automethod:: Lon.locator
 
-.. autoclass:: ModelTime360
+.. autofunction:: regularlon
 
-.. autoclass:: Yearless
+.. class:: Lat
+  :noindex:
+
+.. automethod:: Lat.__init__
+
+.. automethod:: Lat.formatvalue
+
+.. automethod:: Lat.locator
+
+.. autofunction:: regularlat
+
+.. autofunction:: gausslat
+
+.. class:: Pres
+  :noindex:
+
+.. automethod:: Pres.logPAxis
+
+.. automethod:: Pres.formatvalue
+
+.. automethod:: Pres.locator
+
+.. class:: Hybrid
+  :noindex:
+
+.. automethod:: Hybrid.__init__
+
+.. automethod:: Hybrid.locator
+
+.. currentmodule:: pygeode.timeaxis
+
+.. class:: Time
+  :noindex:
+
+.. automethod:: Time.__init__
+
+.. automethod:: Time.formatter
+
+.. automethod:: Time.locator
+
+.. class:: CalendarTime
+  :noindex:
+
+.. automethod:: CalendarTime.__init__
+
+.. automethod:: CalendarTime.days_in_month
+
+.. automethod:: CalendarTime.formatvalue
+
+.. automethod:: CalendarTime.str_as_val
+
+.. automethod:: CalendarTime.val_as_date
+
+.. automethod:: CalendarTime.date_as_val
+
+.. currentmodule:: pygeode
+
+.. class:: Yearless
+  :noindex:
+
+.. automethod:: Yearless.__init__
+
+.. automethod:: Yearless.days_in_month
+

@@ -2,9 +2,39 @@
 Dataset overview
 =====================
 
-.. module:: pygeode
+.. module:: pygeode.dataset
 
 .. class:: Dataset
+
+.. autosummary::
+
+  Dataset.__init__
+  Dataset.add
+  Dataset.copy
+  Dataset.map
+  Dataset.remove
+  Dataset.rename_vars
+  Dataset.replace_vars
+  asdataset
+  concat
+
+.. automethod:: Dataset.__init__
+
+.. automethod:: Dataset.add
+
+.. automethod:: Dataset.copy
+
+.. automethod:: Dataset.map
+
+.. automethod:: Dataset.remove
+
+.. automethod:: Dataset.rename_vars
+
+.. automethod:: Dataset.replace_vars
+
+.. autofunction:: asdataset
+
+.. autofunction:: concat
 
 Essentially, a Dataset is a collection of variables which are related to each other in some way.  For example, when you load a file into PyGeode, a single Dataset is created, containing all variables from that file.  In most cases, you won't be using Datasets directly in your work.  Instead, you'll probably be picking out the variables you need, and discarding the Dataset structure.
 
