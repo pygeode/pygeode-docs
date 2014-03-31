@@ -1,23 +1,16 @@
 Climat module
 ===================================
 
+These functions compute averages / trends over the time axis in various ways.
+
 .. currentmodule:: pygeode.climat
 
-.. class:: climatology
+.. autosummary::
 
-  Computes climatology...
+  climatology
+  dailymean
+  monthlymean
+  diurnalmean
+  seasonalmean
+  climtrend
 
-.. class:: monthlymean
-
-.. class:: diurnalmean
-
-.. class:: seasonalmean
-
-.. class:: climtrend
-
-.. class:: from_trend
-
-.. autofunction:: detrend
-..
-  .. autoclass:: monthlymean
-  .. autoclass:: diurnalmean
