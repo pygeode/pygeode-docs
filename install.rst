@@ -47,13 +47,13 @@ From the source code
 
 This approach should only be used if you are unable to install from a binary package.  You may have to do some fiddling to get it to compile on your system.
 
-1) Download the latest stable release `here <https://bitbucket.org/pygeode/pygeode/downloads>`_.
+1) Download the latest stable release `here <https://github.com/pygeode/pygeode/releases>`_.
 
 2) Unpack the tarball:
 
-   ``tar -xzvf python-pygeode-<version>.tar.gz``
+   ``tar -xzvf pygeode-<version>.tar.gz``
 
-   ``cd python-pygeode-<version>``
+   ``cd pygeode-<version>``
 
 3) Ensure you have the prerequisite packages listed in the ``INSTALL`` file.
 
