@@ -98,7 +98,7 @@ add_module_names = True
 pygments_style = 'sphinx'
 
 # A list of ignored prefixes for module index sorting.
-#modindex_common_prefix = []
+modindex_common_prefix = ['pygeode']
 
 # -- Options for doctest -------------------------------------------------------
 
@@ -113,7 +113,9 @@ html_theme = 'pygtheme'
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#html_theme_options = {}
+html_theme_options = {
+  "rightsidebar": "true",
+}
 
 # Add any paths that contain custom themes here, relative to this directory.
 html_theme_path = ['.']
@@ -155,7 +157,7 @@ html_last_updated_fmt = '%b %d, %Y'
 #html_additional_pages = {}
 
 # If false, no module index is generated.
-#html_domain_indices = True
+html_domain_indices = False
 
 # If false, no index is generated.
 #html_use_index = True
@@ -183,6 +185,9 @@ html_last_updated_fmt = '%b %d, %Y'
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'PyGeodedoc'
 
+# -- Options for autodoc -------------------------------------------------------
+
+autodoc_member_order = 'bysource'
 
 # -- Options for LaTeX output --------------------------------------------------
 
@@ -232,6 +237,16 @@ man_pages = [
      [u'Mike Neish, Peter Hitchcock'], 1)
 ]
 
+attribdict = {'pygeode.Axis.rtol': 'Floating point tolerance for axis values', \
+              'pygeode.Axis.formatstr': 'Formatting specification for printing values'}
+
+def proc_docstring(app, what, name, obj, options, lines):
+  if what == 'attribute':
+    str = attribdict.get(name, None)
+    if str is not None: lines[0] = str
+
+def setup(app):
+  app.connect('autodoc-process-docstring', proc_docstring);
 
 # Example configuration for intersphinx: refer to the Python standard library.
 intersphinx_mapping = {'http://docs.python.org/': None,
