@@ -4,14 +4,34 @@ Axis class reference
 
 .. currentmodule:: pygeode
 
-.. class:: Axis
-  :noindex:
+.. attribute:: Axis.rtol 
+
+  Relative tolerance for identifying two values for this axis as the same point. Set automatically
+  in Axis::__init__ but if this is too large for a given application this can be the source
+  of unexpected errors. Setting this parameter to a new value on the Axis objects in question may 
+  resolve these issues.
 
 .. attribute:: Axis.formatstr
 
   The format to apply to the axis values when displaying on the screen.  See the Python documentation on `String Formatting <http://docs.python.org/library/stdtypes.html#string-formatting>`_ for the options available.
 
   If the axis needs a more complicated format (that changes depending on the value), it may also define a :meth:`~Axis.formatvalue` method to explicitly convert each value to a string.  For example, the ``Lat`` axis uses a *formatvalue* method to append an 'N' or 'S' to the latitudes, depending on the sign of the value.
+
+.. attribute:: Axis.auxatts
+
+.. attribute:: Axis.auxarrays
+
+  A dictionary of 1D numpy arrays with the same length as the axis that carry auxiliary
+  data associated with each element of the axis. These data need not be unique; for instance, 
+  the values of time axes (e.g. :class:`StandardTime`) are given as offsets from a reference
+  date, while they have auxarrays for the year, month, day, etc. Many elements of the time axis
+  might have same value in the corresponding `month` auxiliary array. These can be used
+  to select by keyword. 
+
+  See Also
+  ========
+  auxasvar
+  Var.__call__
 
 .. attribute:: Axis.plottitle
 
@@ -26,6 +46,7 @@ Axis class reference
   The order of the values when plotting.  ``1`` = increasing from left to right, ``-1`` = decreasing.
 
 **Note:** Due to current limitations in PyGeode, modifications to these attributes may be lost if you do further work on the axis (e.g. slicing, concatenation, etc.).  It will revert back to the default class values.  For example:
+
   >>> from pygeode import Lat
   >>> x = Lat([10,20,30])
   >>> print x
@@ -39,6 +60,7 @@ Axis class reference
   >>> #               ^^^ wtf?!
 
 To get around this, make your changes to the class itself.  As an added benefit, *all* axes of this class will have your changes applied consistently:
+
   >>> from pygeode import Lat
   >>> x = Lat([10,20,30])
   >>> print x
@@ -53,87 +75,28 @@ To get around this, make your changes to the class itself.  As an added benefit,
   >>> print y
   lat <Lat>      :  40 deg N to 60 deg N (3 values)
 
-.. automethod:: Axis.sorted
+.. automethod:: Axis.__init__
 
 .. automethod:: Axis.argsort
 
-.. class:: NamedAxis
-  :noindex:
+.. automethod:: Axis.auxasvar
 
-.. automethod:: NamedAxis.__init__
-  
-.. class:: Lon
-  :noindex:
+.. automethod:: Axis.formatter
 
-.. automethod:: Lon.__init__
+.. automethod:: Axis.locator
 
-.. automethod:: Lon.formatvalue
+.. automethod:: Axis.rename
 
-.. automethod:: Lon.locator
+.. automethod:: Axis.sorted
 
-.. autofunction:: regularlon
+.. automethod:: Axis.str_as_val
 
-.. class:: Lat
-  :noindex:
+.. automethod:: Axis.__call__
 
-.. automethod:: Lat.__init__
+.. automethod:: Axis._getitem_asvar
 
-.. automethod:: Lat.formatvalue
+.. automethod:: Axis.class_has_alias
 
-.. automethod:: Lat.locator
+.. automethod:: Axis.isparentof
 
-.. autofunction:: regularlat
-
-.. autofunction:: gausslat
-
-.. class:: Pres
-  :noindex:
-
-.. automethod:: Pres.logPAxis
-
-.. automethod:: Pres.formatvalue
-
-.. automethod:: Pres.locator
-
-.. class:: Hybrid
-  :noindex:
-
-.. automethod:: Hybrid.__init__
-
-.. automethod:: Hybrid.locator
-
-.. currentmodule:: pygeode.timeaxis
-
-.. class:: Time
-  :noindex:
-
-.. automethod:: Time.__init__
-
-.. automethod:: Time.formatter
-
-.. automethod:: Time.locator
-
-.. class:: CalendarTime
-  :noindex:
-
-.. automethod:: CalendarTime.__init__
-
-.. automethod:: CalendarTime.days_in_month
-
-.. automethod:: CalendarTime.formatvalue
-
-.. automethod:: CalendarTime.str_as_val
-
-.. automethod:: CalendarTime.val_as_date
-
-.. automethod:: CalendarTime.date_as_val
-
-.. currentmodule:: pygeode
-
-.. class:: Yearless
-  :noindex:
-
-.. automethod:: Yearless.__init__
-
-.. automethod:: Yearless.days_in_month
-
+.. automethod:: Axis.map_to

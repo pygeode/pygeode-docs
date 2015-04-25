@@ -6,215 +6,77 @@ Axis class overview
 
 An Axis is a one-dimensional array of values, representing some kind of
 coordinate.  For example, a ``Lat`` axis represents a set of latitudes over the
-globe.  Axes are a subclass of :class:`Var`, and can be used in the same
-contexts (such as arithmetic operations).  See :doc:`var` for the functionality
-inherited from the :class:`Var` class.
+globe.  Axes are a subclass of :class:`Var`, and can be treated as such for many purposes
+(such as arithmetic operations), though they have some specific behaviour, including
+the fact that their values are always explicitly loaded into memory. 
 
-.. class:: Axis
-
-  Inherits from :class:`Var`
-
-.. rubric:: Generic Axis Methods
-
-.. autosummary::
-
-  Axis.__init__
-  Axis.__call__
-  Axis.sorted
-  Axis.argsort
-
-.. rubric:: Useful attributes
-
-.. autosummary::
-
-  Axis.rtol
-  Axis.auxarrays
-  Axis.auxatts
+In practice the :class:`Axis` class is rarely instantiated directly; one of its subclasses 
+are typically used to represent a dimension of a particular type. 
 
 Types of axes
 -------------
 
 The following is a (non-exhaustive) list of more commonly used axes built into PyGeode:
 
-  =====================     ================================================
-  Axis subclass             Description
-  =====================     ================================================
-  :class:`NamedAxis`        A named (but otherwise arbitrary) dimension
-  :class:`Lon`              Longitude
-  :class:`Lat`              Latitude
-  :class:`ZAxis`            A parent class for vertical axes
-  :class:`Height`           Geometric height
-  :class:`Pres`             Pressure height
-  :class:`Hybrid`           Hybrid pressure height
-  :class:`StandardTime`     Time axis, using a standard (Gregorian) calendar
-  :class:`ModelTime365`     Time axis, using a 365-day calendar
-  :class:`ModelTime360`     Time axis, using a 360-day calendar
-  :class:`Yearless`         Time axis, without a calendar
-  =====================     ================================================
+.. autosummary::
+  :nosignatures:
+
+  NamedAxis
+  Lon
+  Lat
+  Height
+  Pres
+  Hybrid
+  StandardTime
+  ModelTime365
+  ModelTime360
+  Yearless
 
 If PyGeode doesn't have a built-in representation of an axis that your input
-data uses, it will default to a generic ``Axis`` object, with no additional
+data uses, it will default to a generic  :class:`NamedAxis` object, with no additional
 context on what that axis represents.  To get around this, you can always
 define your own :ref:`custom<axis.custom>` axis, and force your Var to use it
-through :meth:`Var.replace_axes`.
+through :meth:`Var.replace_axes` or when importing from a data file.
 
-.. class:: NamedAxis
+In addition to the members listed below, :class:`Axis` objects inherit methods from
+the :class:`Var` class; see :doc:`var` for this functionality.
 
-  Inherits from :class:`Axis`
+.. class:: Axis
 
-.. autosummary:: 
+  Inherits from :class:`Var`
 
-  NamedAxis.__init__
-  
-.. class:: XAxis
+  .. rubric:: Useful attributes
 
-  Inherits from :class:`Axis`
+  .. autosummary::
 
-  Generic parent class for axes representing horizontal coordinates, plotted by default on
-  the horizontal axis in contour plots and line plots. No custom methods.
+    Axis.rtol
+    Axis.formatstr
+    Axis.auxatts
+    Axis.auxarrays
+    Axis.plotatts
 
-.. class:: YAxis
+  .. rubric:: Generic Axis Methods
 
-  Inherits from :class:`Axis`
+  .. autosummary::
 
-  Generic parent class for axes representing horizontal coordinates, plotted by
-  default on the horizontal axis in line plots, but on the vertical in contour
-  plots. No custom methods.
+    Axis.__init__
+    Axis.argsort
+    Axis.auxasvar
+    Axis.formatter
+    Axis.locator
+    Axis.rename
+    Axis.sorted
+    Axis.str_as_val
 
-.. class:: ZAxis
+  .. rubric:: Internal calls
 
-  Inherits from :class:`Axis`
+  .. autosummary::
 
-  Generic parent class for axes representing vertical coordinates, plotted by default on
-  the vertical axis in line plots and in contour plots. No custom methods.
-
-.. class:: TAxis
-
-  Inherits from :class:`Axis`
-
-  Generic parent class for axes representing time coordinates. No custom methods.
-
-.. rubric:: Horizontal coordinate axes
-
-.. class:: Lon
-
-  Inherits from :class:`YAxis`
-
-  Represents longitude (in degrees)
-
-.. autosummary:: 
-
-  Lon.__init__
-  Lon.formatvalue
-  Lon.locator
-  regularlon
-
-.. class:: Lat
-
-  Inherits from :class:`YAxis`
-
-  Represents latitude (in degrees)
-
-.. autosummary:: 
-
-  Lat.__init__
-  Lat.formatvalue
-  Lat.locator
-  regularlat
-  gausslat
-
-.. rubric:: Vertical coordinate axes
-
-.. class:: Height
-
-  Inherits from :class:`ZAxis`
-
-  Represents a geometric height
-
-.. class:: Pres
-
-  Inherits from :class:`ZAxis`
-
-  Represents a pressure vertical coordinate.
-
-.. autosummary:: 
-
-  Pres.logPAxis
-  Pres.locator
-  Pres.formatvalue
-
-.. class:: Hybrid
-
-  Inherits from :class:`ZAxis`
-
-  Represents a hybridized pressure coordinate, of the form :math:`p(\eta) = A(\eta) p_0 + B(\eta) p_s`.
-
-  Auxilliary arrays: ``A`` and ``B``
-
-.. autosummary:: 
-
-  Hybrid.__init__
-  Hybrid.locator
-
-.. currentmodule:: pygeode.timeaxis
-
-.. class:: Time
-
-  Inherits from :class:`~pygeode.TAxis`
-
-  Parent class for axes representing times.
-
-.. autosummary:: 
-
-  Time.__init__
-  Time.formatter
-  Time.locator
-
-.. class:: CalendarTime
-
-  Inherits from :class:`Time`
-
-  Parent class for time axes with an associated calendar.
-
-.. autosummary:: 
-
-  CalendarTime.__init__
-  CalendarTime.days_in_month
-  CalendarTime.formatvalue
-  CalendarTime.str_as_val
-  CalendarTime.val_as_date
-  CalendarTime.date_as_val
-
-.. currentmodule:: pygeode
-
-.. class:: StandardTime
-
-  Inherits from :class:`~timeaxis.CalendarTime`
-
-  Time axis representing the standard calendar.
-
-.. class:: ModelTime365
-
-  Inherits from :class:`~timeaxis.CalendarTime`
-
-  Time axis representing a calendar with a 365 day year.
-
-.. class:: ModelTime360
-
-  Inherits from :class:`~timeaxis.CalendarTime`
-
-  Time axis representing a calendar with a 360 day year.
-
-.. class:: Yearless
-
-  Inherits from :class:`~timeaxis.CalendarTime`
-
-  Time axis representing a calendar that marks days independent of years and months.
-
-.. autosummary:: 
-
-  Yearless.__init__
-  Yearless.days_in_month
+    Axis.__call__
+    Axis._getitem_asvar
+    Axis.class_has_alias
+    Axis.isparentof
+    Axis.map_to
 
 .. _axis.custom:
 
@@ -224,16 +86,19 @@ Defining a new type of axis
 It's impossible (or at least improbable) for the standard PyGeode package to include every possible type of axis that people may want.  However, it's fairly straight-forward to define your own custom axis.  Simply define a new class, as a subclass of :class:`Axis`.
 
 For example, suppose one of the dimensions of your data is solar zenith angle (SZA).  You can make a simple Axis representation as follows:
+
   >>> from pygeode import Axis
   >>> class SZA_Axis (Axis): pass
   ...
 
 You can now use it like any other axis:
+
   >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
   >>> print sza
   sza_axis <SZA_Axis>:  20.1 to 20.5 (5 values)
 
 A more customized version:
+
   >>> class SZA_Axis (Axis):
   ...   name = "sza"
   ...   units = "degrees"
@@ -248,3 +113,8 @@ If you think your axis will be useful to others, please let us know, and we may 
   :hidden:
 
   axis
+  namedaxis
+  horizontalaxes
+  verticalaxes
+  timeaxes
+
