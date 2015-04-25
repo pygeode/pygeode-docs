@@ -46,29 +46,36 @@ variable we just saw:
 
 .. ipython::
 
-  In [4]: print t1.Temp(lat=(30, 50), lon=(100, 180))
+  In [4]: t1.Temp.lat.values
+
+  In [5]: print t1.Temp(lat=(30, 50), lon=(100, 180))
 
 PyGeode makes use of the calling syntax of Python to do slicing. While this is
-arguably an abuse of the syntax, this operation is so common that it's a default
-behaviour for PyGeode variables. The axes are specified as keyword arguments,
-and ranges are given as a tuple in coordinate space (as opposed to the indices).
-Note that the subset includes elements lying on the boundary of the range
-requested.
+arguably an abuse of the syntax, this operation is so common that it's a
+default behaviour for PyGeode variables. The axes are specified as keyword
+arguments, and ranges are given as a tuple in coordinate space (as opposed to
+the indices). Not all axes need be specified: any axes not mentioned are left
+alone. Note that the subset includes elements lying on the boundary of the
+range requested, so that in this case, the call returns a subset from latitude
+30 N (on the boundary of the range requested) to 48 N, since the next grid
+point is at 54 N. 
 
-If the index is more convenient, you can specify this by prefixing the axis
-name with ``i_``:
+You can also request a single element. The returned variable will always have
+the same number of dimensions as the source variable (in the same order, though
+not necessarily the same length), even if some of them are of length 1. 
 
 .. ipython::
 
-  In [6]: t1.Temp.lat.values
+  In [6]: print t1.Temp(lat=12)
+
+If the (zero-based) index is more convenient, you can specify this by prefixing
+the axis name with ``i_``:
+
+.. ipython::
 
   In [5]: print t1.Temp(i_lat=5).lat
 
-Not all axes need be specified: any axes not mentioned are left alone.  Also,
-the returned variable will always have the same number of dimensions as the
-source variable (in the same order, though not necessarily the same length),
-even if some of them are of length 1. Negative values index the axes in reverse,
-as in Python:
+Negative values index the axes in reverse, as in Python:
 
 .. ipython::
 
@@ -128,7 +135,7 @@ possibilities exist:
   # Select a range of dates, from 12 December 2013 to 18 January 2014
   In [5]: print t2.Temp(time=('12 Dec 2013', '18 Jan 2014')).time  
 
-PyGeode also recognizes the format ``06:00:00 13 May 1982`` if a more precise
+PyGeode also recognizes the format ``16:00:00 13 May 1982`` if a more precise
 specification is required.
 
 .. ipython::
@@ -140,12 +147,13 @@ specification is required.
   In [5]: print t2.Temp(l_month = (1, 2, 12)).time
 
 These last two are particularly useful constructs; you will have noticed that
-axes need not be regularly spaced. Note that ``year`` and ``month`` here are not
-axes of ``t2.Temp`` -- they are technically auxilliary arrays of the time axis;
-this detail doesn't much matter for users, except that while in most cases they
-behave exactly as in the examples above, not all prefixes work. In particular
-the prefix ``i_`` is not recognized. ``day``, ``hour``, ``minute``, and
-``second`` work in the same way. 
+axes need not be regularly spaced. Note that ``year`` and ``month`` here are
+not axes of ``t2.Temp`` -- they are technically 'auxilliary arrays' of the time
+axis; this detail doesn't much matter for users, except that while in most
+cases they behave exactly as if they were an axis for the purpose of subsetting
+variables, not all prefixes work. In particular the prefix ``i_`` is not
+recognized.  ``day``, ``hour``, ``minute``, and ``second`` work in the same
+way. More details about time axes can be found here :ref:`timeaxisops`.
 
 These examples all return a new PyGeode variable, as explained at the beginning
 of the section. If you ever do just need the raw numerical data (in the form of
@@ -183,14 +191,22 @@ have a version which takes arguments in degrees rather than radians:
 In most cases the underlying operation is performed by the numpy equivalent,
 though there are a few additional operations as well. A full list can be found
 in :doc:`ufunc`. The PyGeode wrappers are designed to properly handle PyGeode
-variables.
+variables, so one should get accustomed to including the ``pyg`` prefix. This
+is also a good reason to import pygeode into its own namespace, rather than
+into the top-level namespace itself.
 
-Standard Python arithmetic operations (``+``, ``-``, ``*``, ``/``, ``**``, etc.)
-are also supported and work as one would expect if all the variables are defined
-on the same axes.  If the variables do not share the same axes, PyGeode follows
-a set of rules for automatically broadcasting them so that the operations behave
-as one might typically desire - it's important to be aware of these rules as you
-can sometimes end up with some unexpected results.
+Standard Python arithmetic operations (``+``, ``-``, ``*``, ``/``, ``**``,
+etc.) are also supported and work as one would expect if all the variables are
+defined on the same axes.  If the variables do not share the same axes, PyGeode
+follows a set of rules for automatically broadcasting them so that the
+operations behave as one might typically desire - it's important to be aware of
+these rules as you can sometimes end up with some unexpected results, so they
+are described here in some detail.
+
+.. _broadcasting:
+
+Broadcasting
+............
 
 When performing a binary operation, PyGeode will broadcast each variable along
 the dimensions of the other which it does not itself possess. The order of the
@@ -214,35 +230,58 @@ of the other's axes, the order of the latter is maintained:
 
   In [12]: print (t2.lon + t2.Temp).axes  # Broadcast to (time, pres, lat, lon)
 
-You may be wondering how PyGeode decides whether two axes are the same. There
-are ******
+You may be wondering how PyGeode decides whether two axes are the same for the
+purposes of this broadcasting. If two axes have the same elements (to within a
+tolerance - see :func:`numpy.allclose`), and are of the same type, they are
+considered equal (see also :func:`Axis:__eq__`) and are matched. If PyGeode finds 
+two axes of the same type but with different elements, it attempts to find a complete
+mapping from one to the other. In most cases this means that the elements of one
+axis must be a subset of the other, and the broadcasted variable acquires the
+smaller of the two axes; e.g. in the following case, PyGeode uses the smaller
+of the two longitude axes, since it is a subset of the longitude axis of
+``t2.Temp``.
+
+.. ipython::
+
+  # Broadcasting restricts longitude axis to subset 
+  In [12]: print (t2.Temp(lon=(0, 180)) - t2.Temp).lon  
+
+However, if pygeode finds two axes that could be compatible, but whose elements can
+not be simply mapped to one another, PyGeode will raise an exception:
+
+.. ipython::
+
+  # Subsetted longitude axes are not compatible:
+  In [12]: try: print (t2.Temp(lon=(0, 180)) + t2.Temp(lon=(120, 240))).lon
+     ....:except ValueError as e: print e.message
 
 
 Reductions (Averages, Standard deviations)
 ------------------------------------------
 
-Documentation: :doc:`reduce`
-
-As we saw at the beginning of this section, you can compute averages over a variable with
-:meth:`~Var.mean`. By default this computes an average over the whole domain, but you can specify
-particular axes you want to average over. For example,
+As we saw at the beginning of this section, you can compute averages over a
+variable with :meth:`~Var.mean`. By default this computes an average over the
+whole domain, but you can specify particular axes you want to average over. For
+example,
 
 .. ipython::
 
   In [4]: print t2.Temp.mean('pres', pyg.Lon)
   
-This computes an average over the pressure and longitude axes. You can specify axes in three ways:
+This computes an average over the both the pressure and longitude axes. You can
+specify axes in three ways:
 
   * by name, e.g. ``t2.Temp.mean('lon')``
   * by class, e.g. ``t2.Temp.mean(pyg.Lon)``
   * or by (zero-based) index, e.g. ``t2.Temp.mean(3)``
 
-These will all return the same average. These three ways of identifying axes are pretty general
-across PyGeode routines. 
+These will all (in this case) return the same average. These three ways of
+identifying axes are pretty general across PyGeode routines. 
 
-Often it's useful to compute an average over a subset of the domain. You could first select the
-subdomain, then compute the mean (``t2.Temp(lat=(70, 90)).mean('lat')``), but it's such a common
-operation that there is a short cut in the form of another selection prefix, ``m_``:
+Often it's useful to compute an average over a subset of the domain. You could
+first select the subdomain, then compute the mean (``t2.Temp(lat=(70,
+90)).mean('lat')``), but this is such a common operation that there is a short
+cut in the form of another selection prefix, ``m_``:
 
 .. ipython::
 
@@ -274,9 +313,10 @@ variable with the same axes as those you would like to weight:
 
 The weights do not need to be normalized; PyGeode will do that automatically. 
 
-There are several other axes reductions that behave similarly: :func:`Var.stdev()`,
-:func:`Var.var()`, :func:`Var.sum()`, :func:`Var.min()`, :func:`Var.max()`. Some differences exist
-though:
+There are several other axes reductions that behave similarly, including
+:func:`Var.stdev()`, :func:`Var.variance()`, :func:`Var.sum()`,
+:func:`Var.min()`, :func:`Var.max()`; see :ref:`Axis Reductions <reduce-list>`
+for the full list.  Some differences exist though:
 
   * :func:`Var.sum()` by default does *not* use the axes weights; you can use the
     default weights by specifying ``weights=True`` as a keyword argument. 
@@ -290,27 +330,46 @@ Reshaping variables
 -------------------
 Finally, there are a whole set of basic manipulations you can perform on variables if you need to
 rework their structure. Some of the most common are introduced here; for a complete list see
-:doc:`varops`. Keep in mind that variables are thought of as immutable objects - that is, once
+:ref:`Array manipulation routines <varops-list>`. Keep in mind that variables are thought of as immutable objects - that is, once
 they're created, they don't change - as before, what the following operations actually do is return
 a new variable with the desired changes that wraps the old one.
 
-:func:`Var.transpose()` reorders the axes of a variable:
+:func:`Var.transpose()` reorders the axes of a variable. Not all axes need to
+be specified; those that are not will be appended in their present order.
 
 .. ipython::
 
-  In[8]: print t2.Temp.transpose('lon', 'lat', 'pres', 'time')
+  In[8]: t2.Temp.axes
 
-:func:`Var.replace_axes()` replaces any or all axes of a variable. The new axes must have the
-same length as those they are replacing:
+  In[9]: print t2.Temp.transpose('lon', 'lat', 'pres', 'time').axes
+
+:func:`Var.replace_axes()` replaces any or all axes of a variable. The new
+axes must have the same length as those they are replacing.
 
 .. ipython::
 
-  In[8]: print t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000))
+  # The logPAxis method returns a log-pressure axis with a given scale height
+  In[8]: print t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000)).axes
 
-:func:`Var.concat()` concatenates:
- 
-:func:`Var.rename()` : renames variables - add note on naming constraints
-:func:`Var.squeeze()` :
-:func:`Var.extend()` :
 
+:func:`Var.squeeze()` removes degenerate axes (those with one or fewer elements).
+As mentioned above, the default selection behaviour is to always return a
+variable with the same number of axes as you've started with, even if those
+axes have only a single element. If you want to remove these degenerate axes,
+you can use this command, which, when called with no arguments, will simply remove
+all degenerate axes. Several other methods of calling are also available:
+
+.. ipython::
+
+  In[8]: print t2.Temp(time = 4, lon = 20).squeeze().axes
+
+  In[8]: print t2.Temp(time = 4, lon = 20).squeeze('time').axes
+
+  In[8]: print t2.Temp.squeeze(i_time = 3, lon = (20, 40))
+
+There are also commands to rename variables and their axes
+(:func:`Var.rename()`, :func:`Var.rename_axes()`), for adding axes to a
+variable (:func:`Var.extend()`), reordering axes elements
+(:func:`Var.sorted()`) and dealing with NaNs (:func:`Var.fill()`,
+:func:`Var.unfill()`).
 
