@@ -18,8 +18,9 @@ This documentation will describe version 1.0, it is still a work in progress.
 
 Download and Install
 ----------------------
-See the :doc:`install` page for all the details. The project's Mercurial
-repository_ is hosted on GitHub. It is licensed under the GNU GPL v3.
+See the :doc:`install` page for all the details. The project's Git repository_
+has migrated to GitHub as of March 2015 in light of Google Code closing down.
+It is licensed under the GNU GPL v3.
 
 .. _repository: https://github.com/pygeode/pygeode
 
