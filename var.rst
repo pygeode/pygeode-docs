@@ -24,7 +24,135 @@ abstracted in the following ways:
 
 .. class:: Var
 
-.. rubric:: Useful attributes
+  .. rubric:: Useful attributes
+
+  .. autosummary::
+
+    Var.name
+    Var.axes
+    Var.atts
+    Var.dtype
+
+  :doc:`var.get`
+
+  .. autosummary::
+
+    Var.get
+    Var.__getitem__
+
+  :doc:`varquery`
+
+  .. autosummary::
+
+    Var.hasaxis
+    Var.whichaxis
+    Var.getaxis
+
+  :doc:`varops`
+
+  .. autosummary::
+
+    Var.__call__
+    Var.squeeze
+    Var.extend
+    Var.transpose
+    Var.sorted
+    Var.replace_axes
+    Var.rename
+    Var.rename_axes
+    Var.fill
+    Var.unfill
+    Var.as_type
+
+  :doc:`reduce`
+
+  .. autosummary::
+
+    Var.mean
+    Var.sum
+    Var.stdev
+    Var.variance
+    Var.nanmean
+    Var.nansum
+    Var.nanstdev
+    Var.nanvariance
+    Var.min
+    Var.max
+    Var.argmin
+    Var.argmax
+
+  :doc:`var.arith`
+
+    ==========  ===================      ======================
+    Operation   Method                   Description
+    ==========  ===================      ======================
+    ``x + y``   :func:`Var.__add__`      Binary addition      
+    ``x - y``   :func:`Var.__sub__`      Binary subtraction
+    ``x * y``   :func:`Var.__mul__`      Binary multiplication
+    ``x / y``   :func:`Var.__div__`      Binary division
+    ``x ** y``  :func:`Var.__pow__`      Exponentiation
+    ``abs(x)``  :func:`Var.__abs__`      Absolute value
+    ``-x``      :func:`Var.__neg__`      Negation 
+    ``+x``      :func:`Var.__pos__`      Null operation
+    ``x % t``   :func:`Var.__mod__`      Modulo
+    ``x < y``   :func:`Var.__lt__`
+    ``x <= y``  :func:`Var.__le__`
+    ``x > y``   :func:`Var.__gt__`
+    ``x >= y``  :func:`Var.__ge__`
+    ``x == y``  :func:`Var.__eq__`
+    ``x != y``  :func:`Var.__ne__`
+    ==========  ===================      ======================
+
+  :doc:`ufunc`
+
+  .. autosummary::
+
+    Var.sign
+    Var.exp
+    Var.log
+    Var.log10
+    Var.cos
+    Var.sin
+    Var.tan
+    Var.cosd
+    Var.sind
+    Var.tand
+    Var.sinh
+    Var.cosh
+    Var.tanh
+    Var.arcsin
+    Var.arccos
+    Var.arctan
+    Var.arcsind
+    Var.arccosd
+    Var.arctand
+    Var.arcsinh
+    Var.arccosh
+    Var.arctanh
+    Var.sqrt
+    Var.absolute
+    Var.nan_to_num
+    Var.real
+    Var.imag
+    Var.angle
+
+  :doc:`var.other`
+
+  .. autosummary::
+
+    Var.deriv
+    Var.integrate
+    Var.interpolate 
+    Var.smooth
+
+  .. rubric:: Formatting and plotting operations
+
+  .. autosummary::
+
+    Var.formatstr
+    Var.formatvalue
+    Var.formatter
+    Var.locator
 
 .. attribute:: Var.name
 
@@ -34,7 +162,7 @@ abstracted in the following ways:
 
 .. attribute:: Var.axes
 
-    The axes of the variable, as a ``tuple``. See :doc:`axis`
+    The axes of the variable, as a ``tuple``. See :doc:`axes`.
 
 .. attribute:: Var.atts
 
@@ -43,128 +171,6 @@ abstracted in the following ways:
 .. attribute:: Var.dtype
 
     The type of numeric data that the Var represents.
-
-:doc:`var.get`
-
-.. autosummary::
-
-  Var.get
-  Var.__getitem__
-
-:doc:`varquery`
-
-.. autosummary::
-
-  Var.hasaxis
-  Var.whichaxis
-  Var.getaxis
-
-:doc:`varops`
-
-.. autosummary::
-
-  Var.__call__
-  Var.squeeze
-  Var.extend
-  Var.transpose
-  Var.sorted
-  Var.replace_axes
-  Var.rename
-  Var.rename_axes
-  Var.fill
-  Var.unfill
-  Var.as_type
-
-:doc:`reduce`
-
-.. autosummary::
-
-  Var.mean
-  Var.sum
-  Var.stdev
-  Var.variance
-  Var.nanmean
-  Var.nansum
-  Var.nanstdev
-  Var.nanvariance
-  Var.min
-  Var.max
-  Var.argmin
-  Var.argmax
-
-:doc:`var.arith`
-
-  ==========  ===================      ======================
-  Operation   Method                   Description
-  ==========  ===================      ======================
-  ``x + y``   :func:`Var.__add__`      Binary addition      
-  ``x - y``   :func:`Var.__sub__`      Binary subtraction
-  ``x * y``   :func:`Var.__mul__`      Binary multiplication
-  ``x / y``   :func:`Var.__div__`      Binary division
-  ``x ** y``  :func:`Var.__pow__`      Exponentiation
-  ``abs(x)``  :func:`Var.__abs__`      Absolute value
-  ``-x``      :func:`Var.__neg__`      Negation 
-  ``+x``      :func:`Var.__pos__`      Null operation
-  ``x % t``   :func:`Var.__mod__`      Modulo
-  ``x < y``   :func:`Var.__lt__`
-  ``x <= y``  :func:`Var.__le__`
-  ``x > y``   :func:`Var.__gt__`
-  ``x >= y``  :func:`Var.__ge__`
-  ``x == y``  :func:`Var.__eq__`
-  ``x != y``  :func:`Var.__ne__`
-  ==========  ===================      ======================
-
-:doc:`ufunc`
-
-.. autosummary::
-
-  Var.sign
-  Var.exp
-  Var.log
-  Var.log10
-  Var.cos
-  Var.sin
-  Var.tan
-  Var.cosd
-  Var.sind
-  Var.tand
-  Var.sinh
-  Var.cosh
-  Var.tanh
-  Var.arcsin
-  Var.arccos
-  Var.arctan
-  Var.arcsind
-  Var.arccosd
-  Var.arctand
-  Var.arcsinh
-  Var.arccosh
-  Var.arctanh
-  Var.sqrt
-  Var.absolute
-  Var.nan_to_num
-  Var.real
-  Var.imag
-  Var.angle
-
-.. rubric:: Other operations
-
-.. autosummary::
-
-  Var.deriv
-  Var.integrate
-  Var.interpolate 
-  Var.smooth
-
-.. rubric:: Formatting and plotting operations
-
-.. autosummary::
-
-  Var.formatstr
-  Var.formatvalue
-  Var.formatter
-  Var.locator
-
 
 .. toctree::
   :maxdepth: 2
