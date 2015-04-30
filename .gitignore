@@ -1,4 +1,5 @@
 *.pyc
+*.nc
 build/
 _build/
 _static/
