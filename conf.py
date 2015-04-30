@@ -35,7 +35,7 @@ extensions = ['matplotlib.sphinxext.mathmpl',
               'sphinx.ext.todo', 
               'sphinx.ext.autodoc', 
               'sphinx.ext.autosummary', 
-              'sphinx.ext.pngmath',
+              'sphinx.ext.mathjax',
               'sphinx.ext.doctest',
               'numpydoc',
               'IPython.sphinxext.ipython_directive',
@@ -237,6 +237,7 @@ man_pages = [
      [u'Mike Neish, Peter Hitchcock'], 1)
 ]
 
+# Short docstrings for attributes in autosummary tables
 attribdict = {'pygeode.Axis.rtol': 'Floating point tolerance for axis values', \
               'pygeode.Axis.formatstr': 'Formatting specification for printing values'}
 

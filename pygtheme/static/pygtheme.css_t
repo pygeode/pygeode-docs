@@ -101,7 +101,7 @@ dt {
   border-color: rgb(100, 100, 100);
 }
 
-dl.class, dl.method, dl.function, dl.classmethod, dl.attribute { 
+dl.class, dl.method, dl.function, dl.classmethod, dl.attribute, .module { 
   border-radius : 8pt;
   padding : 10pt;
   background-color: rgb(255, 255, 255);
