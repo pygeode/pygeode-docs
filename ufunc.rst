@@ -15,39 +15,6 @@ functions. They are augmented to handle PyGeode variables, and, in the case of
 functions that take a single argument, are available in two forms, as functions
 in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 
-.. autosummary:: 
-
-  sign
-  exp
-  log
-  log10
-  cos
-  sin
-  tan
-  cosd
-  sind
-  tand
-  sinh
-  cosh
-  tanh
-  arcsin
-  arccos
-  arctan
-  arctan2
-  arcsind
-  arccosd
-  arctand
-  arctand2
-  arcsinh
-  arccosh
-  arctanh
-  sqrt
-  absolute
-  nan_to_num
-  real
-  imag
-  angle
-
 .. autofunction:: sign
 
 .. automethod:: Var.sign

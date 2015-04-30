@@ -4,53 +4,156 @@ Reference
 
 .. currentmodule:: pygeode
 
-Fundamental PyGeode objects
--------------------------------------
+The vast majority of the functionality provided by PyGeode is available within
+the top level namespace of the module :mod:`pygeode`. The contents of this
+top level namespace is summarized here. Note that there are also several
+submodules with further functionality referenced in the summary as well. 
 
-:doc:`var`
+.. container:: module
 
-  The fundamental class :class:`Var` for representing a field on a geophysical grid, and
-  many of the basic operations. 
+  .. module:: pygeode
 
-:doc:`axes`
+  The top level pygeode namespace
 
-  The fundamental class :class:`Axis` and its children which represent one
-  dimension of the geophysical grid, and a description of all built-in types of
-  :class:`Axis` objects. 
+  .. rubric:: Fundamental Classes
 
-:doc:`dataset`
+  .. autosummary::
 
-  A collection class :class:`Dataset` to manage a set of :class:`Var` objects.
+    Var
+    Axis
+    Dataset
 
-Plotting package
--------------------------------------
-:doc:`plot`
+  .. rubric:: Axis Types
 
-  A module for plotting :class:`Var` objects.
+  .. autosummary::
 
-Top-level analysis
--------------------------------------
+    NamedAxis
+    Lon
+    Lat
+    Height
+    Pres
+    Hybrid
+    StandardTime
+    ModelTime365
+    ModelTime360
+    Yearless
 
-:doc:`toplevel`
+  .. rubric:: Axis creation helper functions
+  
+  .. autosummary::
+    regularlon
+    regularlat
+    gausslat
 
-  File input and output routines. 
+  :doc:`timeutils`
 
-:doc:`timeutils`
+  .. autosummary::
 
-  A module of routines for working with time axes
+    timeutils
 
-:doc:`climat`
+  :doc:`fileio`
 
-  A module of routines for computing climatological means and variances.
+  .. autosummary::
 
-:doc:`eof` 
+    open
+    openall
+    open_multi
+    save
 
-  A module of routines for computing empirical orthogonal functions, singular
-  value decompositions, and related variance decompositions.
+  .. rubric:: General operations
 
-:doc:`stats` 
+  .. autosummary::
+    concat
+    ensemble
+    composite
+    lag
+    vprod
+    vsum
 
-  A module of routines for computing correlations, regressions, and computing statistical tests.
+  :doc:`ufunc`
+
+  .. autosummary:: 
+
+    sign
+    exp
+    log
+    log10
+    cos
+    sin
+    tan
+    cosd
+    sind
+    tand
+    sinh
+    cosh
+    tanh
+    arcsin
+    arccos
+    arctan
+    arctan2
+    arcsind
+    arccosd
+    arctand
+    arctand2
+    arcsinh
+    arccosh
+    arctanh
+    sqrt
+    absolute
+    nan_to_num
+    minimum
+    maximum
+    real
+    imag
+    angle
+
+  :doc:`climat`
+
+  .. autosummary::
+
+    dailymean
+    monthlymean
+    seasonalmean
+    yearlymean
+    diurnalmean
+    climatology
+    climtrend
+    from_trend
+    climat
+
+  :doc:`stats`
+
+  .. autosummary::
+  
+    correlate
+    regress
+    multiple_regress
+    difference
+    isnonzero
+
+  :doc:`eof` 
+
+  .. autosummary::
+
+    EOF
+    SVD
+    eof
+
+  :doc:`plot`
+
+  .. autosummary::
+
+    showvar
+    showcol
+    showgrid
+    showlines
+    vcontour
+    vplot
+    vscatter
+    vquiver
+    vstreamplot
+    vsigmask
+    plot
 
 Under the hood
 -------------------------------------
@@ -66,7 +169,7 @@ Under the hood
   axes
   dataset
   plot
-  toplevel
+  fileio
   timeutils
   climat
   stats
