@@ -19,14 +19,14 @@ Time axes objects reference
 
   Parent class for axes representing times.
 
-.. rubric:: New and overridden methods
+  .. rubric:: New and overridden methods
 
-.. autosummary:: 
+  .. autosummary:: 
 
-  Time.__init__
-  Time.formatter
-  Time.locator
-  Time.map_to
+    Time.__init__
+    Time.formatter
+    Time.locator
+    Time.map_to
 
 .. class:: CalendarTime
 
@@ -34,16 +34,16 @@ Time axes objects reference
 
   Parent class for time axes with an associated calendar.
 
-.. rubric:: New and overridden methods
+  .. rubric:: New and overridden methods
 
-.. autosummary:: 
+  .. autosummary:: 
 
-  CalendarTime.__init__
-  CalendarTime.days_in_month
-  CalendarTime.formatvalue
-  CalendarTime.str_as_val
-  CalendarTime.val_as_date
-  CalendarTime.date_as_val
+    CalendarTime.__init__
+    CalendarTime.days_in_month
+    CalendarTime.formatvalue
+    CalendarTime.str_as_val
+    CalendarTime.val_as_date
+    CalendarTime.date_as_val
 
 .. currentmodule:: pygeode
 
