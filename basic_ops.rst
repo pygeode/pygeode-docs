@@ -14,9 +14,9 @@ over longitude as follows:
 
   In [1]: import pygeode as pyg
 
-  In [1]: from pygeode.tutorial import t1
+  In [2]: from pygeode.tutorial import t1
 
-  In [2]: t_av = t1.Temp.mean('lon')
+  In [3]: t_av = t1.Temp.mean('lon') # Fast: no computations carried out
 
 However, while the variable ``t_av`` now represents this average (and one
 can carry out further operations with it), no actual averaging has been done.
@@ -25,10 +25,10 @@ numpy array as below, or when writing the data to disk, or plotting it):
 
 .. ipython::
 
-  In [3]: print t_av[:]
+  In [4]: print t_av[:] # Slower: data is loaded, and the averaging is carried out
 
 This should be kept in mind for the rest of the tutorial! We'll get a bit lazy:
-what line 2 in the code above really does is return a new PyGeode variable
+what line 3 in the code above really does is return a new PyGeode variable
 that represents the mean over the longitude axis of the source variable, without
 actually calculating the mean, but we'll just say that we've computed the mean.
 All of the operations in this section work this way - in fact, almost all of the
@@ -38,7 +38,7 @@ when we get there.
 Selecting subsets
 ------------------
 
-Documentation: :meth:`Var.__call__`
+Reference: :meth:`Var.__call__`
 
 One of the most basic operations is to select a subset or subdomain of your
 variable. For instance, to select a rectangular region of the same temperature
@@ -46,19 +46,21 @@ variable we just saw:
 
 .. ipython::
 
-  In [4]: t1.Temp.lat.values
-
   In [5]: print t1.Temp(lat=(30, 50), lon=(100, 180))
+  
+  # We can take a look at the latitude grid points for reference
+  In [6]: t1.Temp.lat[:] 
 
 PyGeode makes use of the calling syntax of Python to do slicing. While this is
 arguably an abuse of the syntax, this operation is so common that it's a
 default behaviour for PyGeode variables. The axes are specified as keyword
 arguments, and ranges are given as a tuple in coordinate space (as opposed to
 the indices). Not all axes need be specified: any axes not mentioned are left
-alone. Note that the subset includes elements lying on the boundary of the
-range requested, so that in this case, the call returns a subset from latitude
-30 N (on the boundary of the range requested) to 48 N, since the next grid
-point is at 54 N. 
+alone. Note that the subset includes elements lying on and within the
+boundaries of the range requested (30 N to 50 N in this case). To demonstrate
+this we've printed out the grid points of the latitude axis in line 6; so one
+can see that this call returns a subset from latitude 30 N (on the boundary of
+the range requested) to 48 N, since the next grid point is at 54 N. 
 
 You can also request a single element. The returned variable will always have
 the same number of dimensions as the source variable (in the same order, though
@@ -158,14 +160,16 @@ way. More details about time axes can be found here :ref:`timeaxisops`.
 These examples all return a new PyGeode variable, as explained at the beginning
 of the section. If you ever do just need the raw numerical data (in the form of
 a numpy array), you can use standard slicing notation on a pygeode variable
-(``t1.Temp[:]`` will return everything), though note that unlike numpy slicing,
-degenerate axes are not automatically removed. That is, ``t1.Temp[0, 1].shape``
-will return ``(1, 1)``.
+(``t1.Temp[:]`` will return everything). Note that, unlike keyword-based subsetting, 
+but like the behaviour expected with selecting out of numpy arrays, degenerate
+axes are removed in this unlike numpy slicing, degenerate axes are removed.
+That is, ``t1.Temp[0, 1]`` returns a scalar, while ``t1.Temp(i_lat=0, i_lon=1)``
+returns a two dimensional variable.
 
 Arithmetic operations 
 ---------------------
 
-Documentation: :doc:`ufunc` and :doc:`var.arith`
+Reference: :doc:`ufunc` and :doc:`var.arith`
 
 Arithmetic and mathematical operations are also supported by PyGeode. The
 simplest are unary operations, which are performed elementwise. Most standard

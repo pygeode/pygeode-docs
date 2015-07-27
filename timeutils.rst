@@ -3,8 +3,20 @@ Timeutils module
 
 .. currentmodule:: pygeode.timeutils
 
-.. automodule:: pygeode.timeutils
-  :undoc-members: 
-  :members: conform_values, date_diff, delta, jointimeaxes, modify, reltime, removeleapyears, splittimeaxis, wrapdate
-  
+.. autofunction:: conform_values
 
+.. autofunction:: date_diff
+
+.. autofunction:: delta
+
+.. autofunction:: jointimeaxes
+
+.. autofunction:: modify
+
+.. autofunction:: reltime
+
+.. autofunction:: removeleapyears
+
+.. autofunction:: splittimeaxis
+
+.. autofunction:: wrapdate

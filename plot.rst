@@ -25,4 +25,6 @@ Plot module
 
 .. module:: pygeode.plot
 
+.. autoclass:: AxesWrapper
+
 .. autofunction:: grid

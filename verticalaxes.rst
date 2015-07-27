@@ -23,13 +23,13 @@ Vertical axes object reference
 
   Represents a pressure vertical coordinate.
 
-.. rubric:: New and overridden methods
+  .. rubric:: New and overridden methods
 
-.. autosummary:: 
+  .. autosummary:: 
 
-  Pres.logPAxis
-  Pres.locator
-  Pres.formatvalue
+    Pres.logPAxis
+    Pres.locator
+    Pres.formatvalue
 
 .. class:: Hybrid
 
@@ -39,12 +39,12 @@ Vertical axes object reference
 
   Auxilliary arrays: ``A`` and ``B``
 
-.. rubric:: New and overridden methods
+  .. rubric:: New and overridden methods
 
-.. autosummary:: 
+  .. autosummary:: 
 
-  Hybrid.__init__
-  Hybrid.locator
+    Hybrid.__init__
+    Hybrid.locator
 
 .. automethod:: Pres.logPAxis
 

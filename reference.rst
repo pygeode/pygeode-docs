@@ -15,6 +15,15 @@ submodules with further functionality referenced in the summary as well.
 
   The top level pygeode namespace
 
+  :doc:`fileio`
+
+  .. autosummary::
+
+    open
+    openall
+    open_multi
+    save
+
   .. rubric:: Fundamental Classes
 
   .. autosummary::
@@ -44,21 +53,6 @@ submodules with further functionality referenced in the summary as well.
     regularlon
     regularlat
     gausslat
-
-  :doc:`timeutils`
-
-  .. autosummary::
-
-    timeutils
-
-  :doc:`fileio`
-
-  .. autosummary::
-
-    open
-    openall
-    open_multi
-    save
 
   .. rubric:: General operations
 
@@ -120,6 +114,21 @@ submodules with further functionality referenced in the summary as well.
     climtrend
     from_trend
     climat
+
+  :doc:`timeutils`
+
+  .. autosummary::
+
+    timeutils
+    timeutils.conform_values
+    timeutils.date_diff
+    timeutils.delta
+    timeutils.jointimeaxes
+    timeutils.modify
+    timeutils.reltime
+    timeutils.removeleapyears
+    timeutils.splittimeaxis
+    timeutils.wrapdate
 
   :doc:`stats`
 

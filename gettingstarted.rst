@@ -1,7 +1,7 @@
 .. currentmodule:: pygeode
 
 ==================
-Getting started
+Getting Started
 ==================
 
 If the tutorial plugin has been installed, a variety of synthetic datasets will
@@ -110,9 +110,9 @@ high-latitude anomaly of our synthetic dataset:
   In [15]: pyg.showvar(Tcp(pres=1000, time='15 Jun 00'))
 
 We now actually need to perform these operations (though only on one pressure
-level and one latitude), so PyGeode goes back and accesses the data, then
-carries out all of our operations before sending the data off to matplotlib to
-produce a nice contour plot. 
+level and one latitude), so PyGeode goes back and accesses the required data
+(only), then carries out all of our operations before sending the data off to
+matplotlib to produce a nice contour plot. 
 
 Implied in the operations above is another principle of PyGeode. Note that
 nowhere did we need to remember which dimension of an array corresponded to
@@ -126,27 +126,35 @@ of our data. The underlying mapping is of course still there, and if it's ever
 more convenient to think in the space of the data arrays, you are still free to
 do so; the relevant syntax and commands are described later in this tutorial. 
 
-'This is all fine and good,' you may be thinking, 'but how do I work with my own
-data?' PyGeode supports a number of data formats (NB: link?), though it perhaps
-works most naturally with NetCDF (or HDF5) files. As an example, the synthetic dataset
-used above can be written out to a netcdf file:
+'This is all fine and good,' you may be thinking, 'but how do I work with my
+own data?' PyGeode supports a number of data formats, though it works most
+naturally with NetCDF (or HDF5) files. As an example, the synthetic dataset
+used above can be written out to a NetCDF file:
 
 .. ipython::
   
-  In [16]: from pygeode.formats import netcdf as nc
-
-  In [17]: nc.save('file.nc', t1)
+  In [17]: pyg.save('file.nc', t1)
 
 and then read back in using:
 
 .. ipython::
 
-  In [18]: ds = nc.open('file.nc')
+  In [18]: ds = pyg.open('file.nc')
  
   In [19]: print ds
 
 PyGeode is aware of the metadata in the file and constructs variables and axes
-accordingly. CF metadata standard used for climate
-Datasets that span multiple files can be handled as well, and one can tailor
-these calls so that PyGeode properly recognizes your data. More details can be
-found here.
+accordingly, following the CF metadata standard used for climate data. Datasets
+that span multiple files can be handled as well, and one can tailor these calls
+so that PyGeode properly recognizes your data regardless of the metadata in the
+file. 
+
+This concludes the introductory tutorial. We've seen the three basic objects in
+PyGeode: variables (:class:`Var`), axes (:class:`Axis`) and datasets
+(:class:`Dataset`). We've seen examples of how PyGeode carries out all
+operations in a 'lazy' fashion, delaying all loading and processing of data
+until the output is explicitly required. We've seen a few examples of the
+automatic annotation of plots that PyGeode takes care of for you, and finally
+we've seen how to save and load data to a file. The next part of these
+tutorials gives a deeper introduction to the :doc:`basic_ops` that one can
+perform on PyGeode variables. 

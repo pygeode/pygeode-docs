@@ -109,6 +109,14 @@ A more customized version:
 
 If you think your axis will be useful to others, please let us know, and we may include it in future versions.
 
+Aspects of customizing an axis:
+
+  * Defining its name
+  * Customize how values are formatted as strings
+  * Customize how strings are parsed into values
+  * Customize matplotlib formatting and tick positioning
+  * Customize CF-metadata encoding and decoding
+
 .. toctree::
   :hidden:
 

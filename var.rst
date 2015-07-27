@@ -69,15 +69,17 @@ abstracted in the following ways:
   .. autosummary::
 
     Var.mean
-    Var.sum
-    Var.stdev
-    Var.variance
     Var.nanmean
+    Var.sum
     Var.nansum
+    Var.stdev
     Var.nanstdev
+    Var.variance
     Var.nanvariance
     Var.min
+    Var.nanmin
     Var.max
+    Var.nanmax
     Var.argmin
     Var.argmax
 

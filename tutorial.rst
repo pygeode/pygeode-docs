@@ -14,7 +14,8 @@ PyGeode is based on a number of existing third party libraries which it uses to
 perform the underlying computations and manipulations. Much of the underlying
 computation and manipulation is done using numpy_, and PyGeode adopts many of
 its conventions. Some use is also made of scipy_, and matplotlib_ is used for
-plotting.
+plotting. At present a small number of routines from the GSL are also used for
+interpolation; this may change in the future to remove this dependency.
 
 .. _numpy: http://numpy.scipy.org/
 .. _scipy: http://numpy.scipy.org/
@@ -27,21 +28,26 @@ commands given should still work in any other interpreter.
 
 .. _ipython: http://ipython.scipy.org/
 
-This tutorial is written in four parts. The first part gives a broad overview
-and introduction to the library, including a brief description of some of the
-most common tasks. The second part is a tutorial on how to perform
-many typical operations on your data. The third part goes in to more detail on
-how to read in and write out data, and on creating variables from scratch; this
-includes an introduction to many of the types of axes recognized by PyGeode.
-Finally, the fourth part introduces the plotting features of the library. 
+This tutorial is written in four parts. The first part, :doc:`gettingstarted`,
+gives a broad overview and introduction to the library, including a brief
+description of some of the most common tasks. The second part, :doc:`basic_ops`,
+goes into more detail on some of the most fundamental operations one is likely
+to carry out on PyGeode variables; this is worth having a good understanding of
+if you plan to use the features of this library for anything but the most
+trivial operations.  The third part, :doc:`variableio`, goes in to more detail
+on how to read in and write out data, and on creating variables from scratch;
+this includes an introduction to many of the types of axes recognized by
+PyGeode. More advanced and specific operations that PyGeode can carry out are
+briefly introduced in the fourth part, :doc:`adv_ops`, and finally the fifth
+part, :doc:`plotting`, introduces the plotting features of PyGeode.
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
 
   gettingstarted
   basic_ops
-  adv_ops
   variableio
+  adv_ops
   plotting
 
 
