@@ -1,16 +1,20 @@
-Basic Variable Operations
-=========================
+================
+Basic Operations
+================
 
 .. currentmodule:: pygeode
 
 Much of the functionality of PyGeode is found in the operations you can perform
 on Var objects. We'll start with the basics of slicing variables, then move on
-to more complicated operations. One important thing to keep in mind, as
-discussed in :doc:`gettingstarted`, is that these operations all delayed until
+to more complicated operations. An important thing to keep in mind, as
+discussed in :doc:`tut_gettingstarted`, is that these operations all delayed until
 the data is specifically requested. For instance, one can compute an average
 over longitude as follows:
 
 .. ipython::
+
+  @suppress
+  In [6]: import pylab as pyl; pyl.ion();
 
   In [1]: import pygeode as pyg
 
@@ -166,22 +170,22 @@ axes are removed in this unlike numpy slicing, degenerate axes are removed.
 That is, ``t1.Temp[0, 1]`` returns a scalar, while ``t1.Temp(i_lat=0, i_lon=1)``
 returns a two dimensional variable.
 
-Arithmetic operations 
----------------------
+Arithmetic operations and broadcasting rules
+--------------------------------------------
 
 Reference: :doc:`ufunc` and :doc:`var.arith`
 
-Arithmetic and mathematical operations are also supported by PyGeode. The
+Arithmetic and other mathematical operations are also supported by PyGeode. The
 simplest are unary operations, which are performed elementwise. Most standard
-mathematical functions (powers, exponentials, trigonometric functions, etc.) are
-supported, and can be found in the main ``pygeode`` module:
+mathematical functions (powers, exponentials, trigonometric functions, etc.)
+are supported, and can be found in the main ``pygeode`` module:
 
 .. ipython::
 
   @suppress
   In [6]: import pylab as pyl; pyl.ion()
 
-  @showfig log_t1Temp.png width=4in
+  @savefig log_t1Temp.png width=4in
   In [8]: pyg.showvar(pyg.log(t1.Temp))     # Plot the natural logarithm of Temp
 
 There are some convenience functions included, for instance, most trig functions
@@ -189,7 +193,7 @@ have a version which takes arguments in degrees rather than radians:
 
 .. ipython::
 
-  @showfig sind_t1lat.png width=4in
+  @savefig sind_t1lat.png width=4in
   In [10]: pyg.showvar(pyg.sind(t1.lat))     # Compute the sine of latitude
 
 In most cases the underlying operation is performed by the numpy equivalent,
@@ -199,13 +203,23 @@ variables, so one should get accustomed to including the ``pyg`` prefix. This
 is also a good reason to import pygeode into its own namespace, rather than
 into the top-level namespace itself.
 
-Standard Python arithmetic operations (``+``, ``-``, ``*``, ``/``, ``**``,
-etc.) are also supported and work as one would expect if all the variables are
-defined on the same axes.  If the variables do not share the same axes, PyGeode
-follows a set of rules for automatically broadcasting them so that the
-operations behave as one might typically desire - it's important to be aware of
-these rules as you can sometimes end up with some unexpected results, so they
-are described here in some detail.
+Standard Python binary arithmetic operations (``+``, ``-``, ``*``, ``/``,
+``**``, etc.) are supported and work as one would expect if all the
+variables are defined on the same axes. Comparison operators (``>``, ``<``, etc.)
+are also supported and produce a boolean variable on the same axes with the result of
+the operation performed elementwise. This can be very useful for masking data, 
+since when cast to scalar values, ``True`` is equal to 1 and ``False`` is equal to 0:
+
+.. ipython::
+
+  @savefig t1mask.png width=4in
+  In [11]: pyg.showvar(2 + 3 * (t1.Temp > 280.))
+
+If the variables do not share the same axes, PyGeode follows a set of rules for
+automatically broadcasting them so that the operations behave as one might
+typically desire - it's important to be aware of these rules as you can
+sometimes end up with some unexpected results, so they are described here in
+some detail.
 
 .. _broadcasting:
 
@@ -343,9 +357,9 @@ be specified; those that are not will be appended in their present order.
 
 .. ipython::
 
-  In[8]: t2.Temp.axes
+  In [8]: t2.Temp.axes
 
-  In[9]: print t2.Temp.transpose('lon', 'lat', 'pres', 'time').axes
+  In [9]: print t2.Temp.transpose('lon', 'lat', 'pres', 'time').axes
 
 :func:`Var.replace_axes()` replaces any or all axes of a variable. The new
 axes must have the same length as those they are replacing.
@@ -353,8 +367,7 @@ axes must have the same length as those they are replacing.
 .. ipython::
 
   # The logPAxis method returns a log-pressure axis with a given scale height
-  In[8]: print t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000)).axes
-
+  In [8]: print t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000)).axes
 
 :func:`Var.squeeze()` removes degenerate axes (those with one or fewer elements).
 As mentioned above, the default selection behaviour is to always return a
@@ -365,11 +378,17 @@ all degenerate axes. Several other methods of calling are also available:
 
 .. ipython::
 
-  In[8]: print t2.Temp(time = 4, lon = 20).squeeze().axes
+  # Squeeze all degenerate axes
+  In [8]: print t2.Temp(time = 4, lon = 20).squeeze()
 
-  In[8]: print t2.Temp(time = 4, lon = 20).squeeze('time').axes
+  # Squeeze only the time axis (if it is degenerate)
+  In [8]: print t2.Temp(time = 4, lon = 20).squeeze('time')
 
-  In[8]: print t2.Temp.squeeze(i_time = 3, lon = (20, 40))
+  # Select a single value then squeeze the time axis
+  In [8]: print t2.Temp.squeeze(time = 4)
+
+  # Select a single value and sqeeze the time axis using a selection prefix
+  In [8]: print t2.Temp(s_time = 4, lon = (20, 40))
 
 There are also commands to rename variables and their axes
 (:func:`Var.rename()`, :func:`Var.rename_axes()`), for adding axes to a

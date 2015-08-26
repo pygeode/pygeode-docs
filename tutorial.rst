@@ -28,26 +28,18 @@ commands given should still work in any other interpreter.
 
 .. _ipython: http://ipython.scipy.org/
 
-This tutorial is written in four parts. The first part, :doc:`gettingstarted`,
-gives a broad overview and introduction to the library, including a brief
-description of some of the most common tasks. The second part, :doc:`basic_ops`,
-goes into more detail on some of the most fundamental operations one is likely
-to carry out on PyGeode variables; this is worth having a good understanding of
-if you plan to use the features of this library for anything but the most
-trivial operations.  The third part, :doc:`variableio`, goes in to more detail
-on how to read in and write out data, and on creating variables from scratch;
-this includes an introduction to many of the types of axes recognized by
-PyGeode. More advanced and specific operations that PyGeode can carry out are
-briefly introduced in the fourth part, :doc:`adv_ops`, and finally the fifth
-part, :doc:`plotting`, introduces the plotting features of PyGeode.
+The tutorial is split up into a series of parts, beginning with a brief
+overview the main features of the library and then proceeding through the
+different features in greater detail.
 
 .. toctree::
   :maxdepth: 2
 
-  gettingstarted
-  basic_ops
-  variableio
-  adv_ops
-  plotting
-
+  tut_gettingstarted
+  tut_basics
+  tut_io
+  tut_plot
+  tut_axes
+  tut_datasets
+  tut_adv
 

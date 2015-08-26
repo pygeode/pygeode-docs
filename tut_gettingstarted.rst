@@ -1,12 +1,11 @@
-.. currentmodule:: pygeode
-
 ==================
 Getting Started
 ==================
 
-If the tutorial plugin has been installed, a variety of synthetic datasets will
-be available in the data module. We can begin by looking at the first such
-dataset, which can be imported as follows:
+.. currentmodule:: pygeode
+
+We'll start by taking a look at a couple of synthetic datasets defined in the
+tutorial module of PyGeode. The first such dataset can be imported as follows:
 
 .. ipython::
 
@@ -97,7 +96,7 @@ loaded or computed.  We can, nonetheless, manipulate this variable as if it has:
 
 We've now computed (at least an abstract sense) the climatolgical anomaly from
 the zonal mean. Note that ``Tcz`` is defined on a reduced grid (we've lost the
-``Lon`` axis), and looks (and behaves) just like any other PyGeode variable;
+``Lon`` axis), and it looks and behaves just like any other PyGeode variable;
 PyGeode has some automatic logic for properly aligning ``Tc`` and ``Tcz`` when
 taking their difference. However, no data has yet been loaded, no actual
 averages have been taken, and no differences computed, since we haven't done
@@ -129,17 +128,20 @@ do so; the relevant syntax and commands are described later in this tutorial.
 'This is all fine and good,' you may be thinking, 'but how do I work with my
 own data?' PyGeode supports a number of data formats, though it works most
 naturally with NetCDF (or HDF5) files. As an example, the synthetic dataset
-used above can be written out to a NetCDF file:
+used above can be written out to a NetCDF file (this assumes that a
+subdirectory called 'sample_data' already exists in your working directory):
+
+.. _tutsavefile:
 
 .. ipython::
   
-  In [17]: pyg.save('file.nc', t1)
+  In [17]: pyg.save('sample_data/file.nc', t1)
 
 and then read back in using:
 
 .. ipython::
 
-  In [18]: ds = pyg.open('file.nc')
+  In [18]: ds = pyg.open('sample_data/file.nc')
  
   In [19]: print ds
 
@@ -156,5 +158,5 @@ operations in a 'lazy' fashion, delaying all loading and processing of data
 until the output is explicitly required. We've seen a few examples of the
 automatic annotation of plots that PyGeode takes care of for you, and finally
 we've seen how to save and load data to a file. The next part of these
-tutorials gives a deeper introduction to the :doc:`basic_ops` that one can
+tutorials gives a deeper introduction to the :doc:`tut_basics` that one can
 perform on PyGeode variables. 

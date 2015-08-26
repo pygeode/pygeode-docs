@@ -2,6 +2,8 @@
 Plotting
 ==================
 
+.. currentmodule:: pygeode
+
 The plotting system in PyGeode is intended to provide sensible defaults so that
 you can quickly see a reasonably annotated plot of the contents of a PyGeode
 variable, but also to allow as much flexibility in customizing your plots as
