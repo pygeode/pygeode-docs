@@ -25,6 +25,8 @@ Plot module
 
 .. module:: pygeode.plot
 
-.. autoclass:: AxesWrapper
+.. class:: AxesWrapper
+
+   A PyGeode wrapper class for a matplotlib figure or subplot
 
 .. autofunction:: grid

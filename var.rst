@@ -48,6 +48,8 @@ abstracted in the following ways:
     Var.whichaxis
     Var.getaxis
 
+  .. _varops-list:
+
   :doc:`varops`
 
   .. autosummary::
@@ -63,6 +65,8 @@ abstracted in the following ways:
     Var.fill
     Var.unfill
     Var.as_type
+
+  .. _reduce-list:
 
   :doc:`reduce`
 

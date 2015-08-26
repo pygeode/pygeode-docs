@@ -37,7 +37,7 @@ This is the recommended approach for Ubuntu systems, since it will automatically
 
 
 RPM-based Linux distributions (Fedora, CentOS, openSUSE, etc.)
-=============================================
+===============================================================
 
 Pre-built RPM packages are available via the `openSUSE Build Service <https://build.opensuse.org/package/show/home:neishm/python-pygeode>`_
 

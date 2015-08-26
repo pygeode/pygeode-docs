@@ -1,6 +1,6 @@
-==================
+==========================
 Creating a custom variable
-==================
+==========================
 
 Suppose one wants to perform an operation on data represented by some pygeode
 variable that cannot be done by existing pygeode variables. One can always
