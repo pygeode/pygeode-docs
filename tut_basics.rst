@@ -185,6 +185,9 @@ are supported, and can be found in the main ``pygeode`` module:
   @suppress
   In [6]: import pylab as pyl; pyl.ion()
 
+  @suppress
+  In [6]: import matplotlib as mpl; mpl.rc('figure', figsize=(5, 3))
+
   @savefig log_t1Temp.png width=4in
   In [8]: pyg.showvar(pyg.log(t1.Temp))     # Plot the natural logarithm of Temp
 

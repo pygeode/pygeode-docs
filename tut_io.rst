@@ -9,10 +9,11 @@ Reading from a single file
 
 PyGeode was intended for dealing with large gridded datasets - nearly always
 such datasets will be serialized on disk, sometimes in a single file, but often
-spread over many files. While PyGeode supports NetCDF files most natively, the
-commands for loading and saving data to disk are to a large extend independent
-of the format used, and attempts are made to automatically detect which format
-you are working with. We'll start by looking at reading a single file. 
+spread over many files. PyGeode supports a number of different :ref:`formats
+<formats>`, and the commands for loading and saving data to disk are to a large
+extent independent of the format used, and attempts are made to automatically
+detect which format you are working with. This being said, NetCDF files are the
+most completely supported. We'll start by looking at reading a single file. 
 
 The basics
 ..........
@@ -100,7 +101,10 @@ metadata. In this case PyGeode will not be able to recognize what kind of
   @suppress
   In [6]: import pylab as pyl; pyl.ion();
 
-  @savefig t1Temp_nometadata.png width=6in
+  @suppress
+  In [6]: import matplotlib as mpl; mpl.rc('figure', figsize=(5, 3))
+
+  @savefig t1Temp_nometadata.png width=4in
   In [6]: pyg.showvar(ds2.Temp)
 
 As you can see, the ``lat`` and ``lon`` axes are now the default type
@@ -189,17 +193,122 @@ works by opening each file explicitly, then merging the contents of each file
 into a single PyGeode dataset. Since each file is explicitly opened and its
 metadata read in, this can add up for datasets consisting of a large number of
 files. A subtler issue is that the concatenation PyGeode uses in this case is
-also, at present, somewhat less efficient than it could be. 
+also, at present, somewhat less efficient than it could be. As a result,
+accessing the data opened with this method is not as fast as the second
+method. 
 
-The second, :meth:`open_multi`, is somewhat more complicated to use, but 
-is better suited for very large datasets, particularly in which the dataset is
+The second, :meth:`open_multi`, is somewhat more complicated to use, but is
+better suited for very large datasets, particularly in which the dataset is
 separated along the time axis. In this case PyGeode simply opens the first and
 last file in the dataset, reads in their metadata, then infers the contents of
 the rest of the files given an addition (user-defined) function that maps
 filenames to dates. Since only two files are opened, this is a very efficient
-operation even for extremely large datasets.
+operation even for extremely large datasets. As was just mentioned, the data is
+also loaded more efficiently than from datasets opened with the first method.
 
+To demonstrate these two methods, we'll need a sample dataset to work with. To
+keep the dataset small, we'll write out the zonal mean of the temperature field
+from the second tutorial dataset, one year per file
 
+.. ipython::
+
+  In [1]: from pygeode.tutorial import t2
+
+  In [2]: for y in range(2011, 2021): 
+     ...:   pyg.save('sample_data/temp_zm_y%d.nc' % y, t2.Temp(year=y).mean('lon'))
+
+This produces ten files, each with a year of data in them. 
+
+To demonstrate :meth:`openall`, we can simply provide a wildcard filename which matches
+the filenames:
+
+.. ipython::
+
+  In [3]: ds = pyg.openall('sample_data/temp_zm_*.nc', namemap=dict(Temp='T'))
+
+  In [4]: print ds.T
+
+PyGeode expands the wildcard, opens each of the files, then concatenates the
+datasets. The result is a single dataset object with 10 years of temperature data that
+you can use without worrying further about how the data is distributed on disk. The filenames
+can alternatively be specified as a list; in fact in this case PyGeode expands each item 
+in the list if there are wildcards (using :func:`glob.glob`). 
+
+The same arguments (``dimtypes`` and ``namemap``) apply; here we've renamed the
+variable ``Temp`` to ``T``. In addition, if you need to do more sophisticated
+manipulations of the data in each file before PyGeode concatenates the
+individual datasets, you can provide a function that takes the filename (as a
+string) as a single argument, and returns the modified dataset. This can be
+useful, for instance, for correcting issues in individual files:
+
+.. ipython::
+
+  In [5]: def opener(f):
+     ...:   ds = pyg.open(f)
+     ...:   if '2016' in f: # Replace the data in this file with a dummy value
+     ...:     return pyg.Dataset([ds.Temp * 0 + 250.])
+     ...:   else:
+     ...:     return ds
+              
+  In [3]: ds = pyg.openall('sample_data/temp_zm_*.nc', opener=opener)
+
+  @savefig t1Temp_modified.png width=4in
+  In [4]: pyg.showvar(ds.Temp(lat=15, pres=500))
+
+Using :meth:`open_multi` is in most respects very similar. The main difference is that 
+in addition to specifying the filenames, this method assumes that the dataset
+is divided along the time axis, and you need to provide a way for PyGeode to
+map each filename to a date. 
+
+In simple cases this can be done by simply specifying a regular expression that matches 
+the components of the date in the filename. For instance:
+
+.. ipython::
+
+  In [5]: patt = 'temp_zm_y(?P<year>[0-9]{4}).nc'
+              
+  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt)
+
+The regular expression matches the four digit year in the filenames in a way
+that PyGeode can understand. Since this four digit format is commonly encountered, 
+there is an abbreviation for it you can use which saves you the trouble of remembering
+how Python regular expressions work:
+
+.. ipython::
+
+  In [5]: patt = 'temp_zm_y$Y.nc'
+              
+  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt)
+
+Similar abbreviations exist for 2-digit month, day, hour, and minute fields
+(see :meth:`open_multi` for details), though if the filenames you're working
+with aren't in the appropriate format, you'll have to provide the full regular
+expression. 
+
+In some cases the filenames themselves don't quite have enough information, or
+else it's difficult to write an appropriate regular expression to parse out the
+right information. As an alternative, you can also specify a Python function that
+takes the filename as an argument, and returns the corresponding date dictionary. 
+As a simple example, 
+
+.. ipython::
+
+  In [5]: def f2d(fn):
+     ...:   date = dict(month=1, day=1)
+     ...:   date['year'] = int(fn[-7:-3]) # Extract the year from the filename and convert to an integer
+     ...:   return date
+              
+  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', file2date = f2d)
+
+Note that in the interests of speed, PyGeode only opens the first and last file
+in the dataset, and then infers the contents of the remainder of the files. The
+assumption is made that the contents of each file are identical, only translated
+in time. If there are errors or missing data in the interior files, these will
+not be detected when opening the dataset. It is good practice when opening such
+a dataset for the first time to explicitly load in at least some of the data
+from each file in the dataset to confirm that all the files are well-formed.
+
+.. ipython::
 
 Saving to files
 ---------------

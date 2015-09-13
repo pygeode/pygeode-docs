@@ -8,6 +8,7 @@ in memory.  That is to say, you don't normally *have* the numerical values at
 hand.  Instead, you work with a symbolic reference to the data, and build a
 sequence of operations that will be performed *only when data is needed*.
 Usually, this is when:
+
   * You are saving the variable to a file
   * You are generating a plot
   * You are calling an iterative routine such as :func:`EOF`, or some other

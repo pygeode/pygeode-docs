@@ -17,6 +17,9 @@ compute climatologies. As described in the first of these tutorials this is
 simply performed as follows
 
 .. ipython::
+  
+  @suppress
+  In [0]: import pygeode as pyg
 
   In [10]: from pygeode.tutorial import t2
 
@@ -29,7 +32,7 @@ Other Operations
 ----------------
 
 EOFs, correlation, and regression analysis
-.........................................
+..........................................
 
 include lag correlation
 

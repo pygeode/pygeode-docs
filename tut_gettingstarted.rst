@@ -53,6 +53,9 @@ plotting the contents of our first variable:
   @suppress
   In [6]: import pylab as pyl; pyl.ion();
 
+  @suppress
+  In [6]: import matplotlib as mpl; mpl.rc('figure', figsize=(5, 3))
+
   @savefig t1Temp.png width=6in
   In [6]: pyg.showvar(t1.Temp)
 

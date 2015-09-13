@@ -17,6 +17,9 @@ constructors to create them directly.
 
 .. ipython::
 
+  @suppress
+  In [0]: import pygeode as pyg, numpy as np
+  
   # The simplest, default case
   In [1]: print pyg.NamedAxis(np.arange(15), 'myaxis')
 
