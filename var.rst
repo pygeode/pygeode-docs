@@ -146,6 +146,7 @@ abstracted in the following ways:
 
   .. autosummary::
 
+    Var.diff
     Var.deriv
     Var.integrate
     Var.interpolate 
@@ -192,6 +193,7 @@ abstracted in the following ways:
 
 ..
   intgr
+  diff
   deriv
   smooth
   interpolate

@@ -3,6 +3,8 @@ Other operations
 
 .. currentmodule:: pygeode
 
+.. automethod:: Var.diff
+
 .. automethod:: Var.deriv
 
 .. automethod:: Var.integrate
