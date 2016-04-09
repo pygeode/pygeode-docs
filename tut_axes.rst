@@ -46,6 +46,17 @@ the reference date (``startdate``), offsets, and the native unit:
 
   In [2]: time = pyg.ModelTime365(values=np.arange(3650), units='days', startdate=dict(year=2000, month=1))
 
+but some simple helpers are available here as well:
+
+.. ipython::
+
+  # A time axis of fixed length
+  In [2]: print pyg.modeltime365n('1 Jan 2000', 3650, units='days')
+
+  # A time axis spanning a range of dates
+  In [2]: print pyg.modeltime365range('1 Jan 2000', '1 Jan 2001', step=6, units='hours')
+
+
 Usually the easiest approach to creating variables in memory is to apply the
 relevant mathematical operations to the axes themselves:
 
@@ -122,24 +133,26 @@ order of operations:
 .. ipython::
 
   # A time axis representing the year 2005 at 6 h increments
-  In [5]: t1 = pyg.ModelTime365(values=np.arange(0, 24*365, 6), units = 'hours', startdate=dict(year=2005, month=1, day=1))
+  In [5]: t1 = pyg.modeltime365range('1 Jan 2005', '1 Jan 2006', step=6, units = 'hours')
 
-  # Another time axis representing the same dates but with a different reference
-  In [5]: t2 = pyg.ModelTime365(values=365. + np.arange(0, 365, 0.25), units = 'days', startdate=dict(year=2004, month=1, day=1))
+  # Another time axis representing the same dates but with a different reference date and different units
+  In [5]: t2 = pyg.modeltime365range('1 Jan 2005', '1 Jan 2006', step=0.25, units = 'days', From='1 Jan 2004')
 
-  # Sum these in two different ways
+  # Add these in two different ways
   In [5]: ts12 = t1 + t2
 
   # Since either axis can be mapped to each other, these will differ
   In [5]: ts21 = t2 + t1 
 
   # Both of these work and refer to the same time period...
-  In [6]: print ts12.time.units
+  In [6]: print ts12.time
+  
+  In [6]: print ts21.time
 
-  # ...but are defined in different reference frames.
-  In [6]: print ts21.time.units
+  # ...but are defined in different reference frames, with different units.
+  In [6]: print ts12.time.units, ts21.time.units
 
-  # Accessing absolute times will work the same in each case
+  # Accessing absolute times will refer to the same value in each case
   In [6]: print ts12(time='15 Jan 2005').time, ts21(time='15 Jan 2005').time
 
   # But relative times will differ

@@ -11,6 +11,8 @@ submodules with further functionality referenced in the summary as well.
 
 .. container:: module
 
+  .. rubric:: pygeode
+
   .. module:: pygeode
 
   The top level pygeode namespace
@@ -53,6 +55,13 @@ submodules with further functionality referenced in the summary as well.
     regularlon
     regularlat
     gausslat
+    standardtimerange
+    standardtimen
+    modeltime365range
+    modeltime365n
+    modeltime360range
+    modeltime360n
+    yearlessn
 
   .. rubric:: General operations
 
@@ -153,7 +162,6 @@ submodules with further functionality referenced in the summary as well.
   .. autosummary::
 
     showvar
-    showcol
     showgrid
     showlines
     vcontour

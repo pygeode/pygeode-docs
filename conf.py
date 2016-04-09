@@ -239,7 +239,8 @@ man_pages = [
 
 # Short docstrings for attributes in autosummary tables
 attribdict = {'pygeode.Axis.rtol': 'Floating point tolerance for axis values', \
-              'pygeode.Axis.formatstr': 'Formatting specification for printing values'}
+              'pygeode.Axis.formatstr': 'Formatting specification for printing values', \
+              'pygeode.timeaxis.CalendarTime.parse_pattern': 'Regular expression for parsing dates'}
 
 def proc_docstring(app, what, name, obj, options, lines):
   if what == 'attribute':

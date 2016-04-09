@@ -34,6 +34,12 @@ Time axes objects reference
 
   Parent class for time axes with an associated calendar.
 
+  .. rubric:: Attributes
+
+  .. autosummary::
+
+    CalendarTime.parse_pattern
+
   .. rubric:: New and overridden methods
 
   .. autosummary:: 
@@ -78,6 +84,18 @@ Time axes objects reference
     Yearless.__init__
     Yearless.days_in_month
 
+.. rubric:: Utility functions
+
+.. autosummary:: 
+
+  standardtimerange
+  standardtimen
+  modeltime365range
+  modeltime365n
+  modeltime360range
+  modeltime360n
+  yearlessn
+
 .. currentmodule:: pygeode.timeaxis
 
 .. automethod:: Time.__init__
@@ -88,6 +106,13 @@ Time axes objects reference
 
 .. automethod:: Time.map_to
 
+.. attribute:: CalendarTime.parse_pattern
+
+    A Python regular expression used to parse a string as a date. Date fields
+    are extracted using the groups 'year', 'month', 'day', 'hour', 'minute', and 'second'. 
+    Default pattern recognized strings of the form '1 Jan 2000' or '06:00 1 Jan 2000' or 
+    '06:00:00 1 Jan 2000'.
+    
 .. automethod:: CalendarTime.__init__
 
 .. automethod:: CalendarTime.days_in_month
@@ -105,4 +130,20 @@ Time axes objects reference
 .. automethod:: Yearless.__init__
 
 .. automethod:: Yearless.days_in_month
+
+.. currentmodule:: pygeode
+
+.. autofunction:: standardtimerange
+
+.. autofunction:: standardtimen
+
+.. autofunction:: modeltime365range
+
+.. autofunction:: modeltime365n
+
+.. autofunction:: modeltime360range
+
+.. autofunction:: modeltime360n
+
+.. autofunction:: yearlessn
 
