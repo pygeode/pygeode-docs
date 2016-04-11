@@ -2,6 +2,12 @@
 Installing PyGeode
 **********************
 
+Anaconda
+============================
+
+Conda packages for PyGeode are maintained in the custom channel `https://conda.anaconda.org/aph42`
+
+
 Windows installer
 ============================
 
