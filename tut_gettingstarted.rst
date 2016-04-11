@@ -15,10 +15,10 @@ tutorial module of PyGeode. The first such dataset can be imported as follows:
 
   In [2]: print t1
 
-We can see the dataset ``t1`` contains one pygeode variable object, ``Temp``,
-which is defined on a two dimensional grid of 32 latitudes and 64 longitudes.
-The grid is defined by the two pygeode axes objects, ``lat`` and ``lon``,
-which span from 85 S to 85 N, and from 0 E to 354 E. respectively. 
+The dataset ``t1`` contains one pygeode variable object, ``Temp``, which is
+defined on a two dimensional grid of 31 latitudes and 60 longitudes.  The grid
+is defined by the two pygeode axes objects, ``lat`` and ``lon``, which span
+from 85 S to 85 N, and from 0 E to 354 E. respectively. 
 
 We can take a closer look at our variable ``Temp``:
 
@@ -50,7 +50,8 @@ plotting the contents of our first variable:
 
 .. ipython:: 
 
-  @suppress
+  # Depending on what python interpreter you are using, you may need to run
+  # these commands to access the plotting functionality of matplotlib
   In [6]: import pylab as pyl; pyl.ion();
 
   @suppress
@@ -94,6 +95,8 @@ loaded or computed.  We can, nonetheless, manipulate this variable as if it has:
   In [12]: print Tcz 
 
   In [13]: Tcp = Tc - Tcz              # Compute anomaly from the zonal mean
+
+  In [13]: Tcp = Tcp.rename("T'")      # Rename variable
   
   In [14]: print Tcp
 

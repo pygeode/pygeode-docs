@@ -13,7 +13,6 @@ over longitude as follows:
 
 .. ipython::
 
-  @suppress
   In [6]: import pylab as pyl; pyl.ion();
 
   In [1]: import pygeode as pyg
@@ -141,7 +140,7 @@ possibilities exist:
   # Select a range of dates, from 12 December 2013 to 18 January 2014
   In [5]: print t2.Temp(time=('12 Dec 2013', '18 Jan 2014')).time  
 
-PyGeode also recognizes the format ``16:00:00 13 May 1982`` if a more precise
+PyGeode also recognizes the format ``16:00 13 May 1982`` if a more precise
 specification is required.
 
 .. ipython::
@@ -215,8 +214,10 @@ since when cast to scalar values, ``True`` is equal to 1 and ``False`` is equal 
 
 .. ipython::
 
+  In [10]: import numpy as np
+
   @savefig t1mask.png width=4in
-  In [11]: pyg.showvar(2 + 3 * (t1.Temp > 280.))
+  In [11]: pyg.showvar(t1.Temp > 280., clevs=np.arange(-0.1, 1.11, 0.1))
 
 If the variables do not share the same axes, PyGeode follows a set of rules for
 automatically broadcasting them so that the operations behave as one might

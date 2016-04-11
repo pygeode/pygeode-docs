@@ -107,9 +107,9 @@ metadata. In this case PyGeode will not be able to recognize what kind of
   @savefig t1Temp_nometadata.png width=4in
   In [6]: pyg.showvar(ds2.Temp)
 
-As you can see, the ``lat`` and ``lon`` axes are now the default type
-:class:`NamedAxes`. While this is still a perfectly useable PyGeode dataset, 
-PyGeode no longer knows how to properly annotate and format plots. 
+The ``lat`` and ``lon`` axes are now the default type :class:`NamedAxes`. While
+this is still a perfectly useable PyGeode dataset, PyGeode no longer knows how
+to properly annotate and format plots. 
 
 However, if you know what the contents of the file represent, you can provide
 this information to PyGeode when opening it by passing special keyword
