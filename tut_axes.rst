@@ -136,7 +136,7 @@ order of operations:
   In [5]: t1 = pyg.modeltime365range('1 Jan 2005', '1 Jan 2006', step=6, units = 'hours')
 
   # Another time axis representing the same dates but with a different reference date and different units
-  In [5]: t2 = pyg.modeltime365range('1 Jan 2005', '1 Jan 2006', step=0.25, units = 'days', From='1 Jan 2004')
+  In [5]: t2 = pyg.modeltime365range('1 Jan 2005', '1 Jan 2006', step=0.25, units = 'days', ref = '1 Jan 2004')
 
   # Add these in two different ways
   In [5]: ts12 = t1 + t2
