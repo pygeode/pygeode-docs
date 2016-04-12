@@ -7,25 +7,25 @@ These methods are called implicitly when any arithmetic operation is applied to 
 The result is a new Var object, which will apply the operation to any incoming data requests.
 The following is a table of all built-in Python arithmetic operations that are supported:
 
-===================  ===============
-Method:              Example of use:
-===================  ===============
-:func:`Var.__add__`  ``x + y``
-:func:`Var.__sub__`  ``x - y``
-:func:`Var.__mul__`  ``x * y``
-:func:`Var.__div__`  ``x / y``
-:func:`Var.__pow__`  ``x ** y``
-:func:`Var.__abs__`  ``abs(x)``
-:func:`Var.__neg__`  ``-x``
-:func:`Var.__pos__`  ``+x``
-:func:`Var.__mod__`  ``x % t``
-:func:`Var.__lt__`   ``x < y``
-:func:`Var.__le__`   ``x <= y``
-:func:`Var.__gt__`   ``x > y``
-:func:`Var.__ge__`   ``x >= y``
-:func:`Var.__eq__`   ``x == y``
-:func:`Var.__ne__`   ``x != y``
-===================  ===============
+===================  ===============  ========================================
+Method:              Example of use:  Returns:
+===================  ===============  ========================================
+:func:`Var.__add__`  ``x + y``        Sum of ``x`` and ``y``
+:func:`Var.__sub__`  ``x - y``        Difference between ``x`` and ``y``
+:func:`Var.__mul__`  ``x * y``        Product of ``x`` and ``y``
+:func:`Var.__div__`  ``x / y``        Quotient of ``x`` and ``y``
+:func:`Var.__pow__`  ``x ** y``       ``x`` to the power of ``y``
+:func:`Var.__abs__`  ``abs(x)``       Absolute value of ``x``
+:func:`Var.__neg__`  ``-x``           Negative of ``x``
+:func:`Var.__pos__`  ``+x``           Positive of ``x``
+:func:`Var.__mod__`  ``x % t``        ``x`` modulo ``t``
+:func:`Var.__lt__`   ``x < y``        Mask where ``x`` is less than ``y``
+:func:`Var.__le__`   ``x <= y``       Mask where ``x`` is not more than ``y``
+:func:`Var.__gt__`   ``x > y``        Mask where ``x`` is more than ``y``
+:func:`Var.__ge__`   ``x >= y``       Mask where ``x`` is not less than ``y``
+:func:`Var.__eq__`   ``x == y``       Mask where ``x`` is equal to than ``y``
+:func:`Var.__ne__`   ``x != y``       Mask where ``x`` is not equal to ``y``
+===================  ===============  ========================================
 
 **Axis rules for arithmetic:**
 

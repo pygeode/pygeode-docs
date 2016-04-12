@@ -89,25 +89,25 @@ abstracted in the following ways:
 
   :doc:`var.arith`
 
-    ==========  ===================      ======================
+    ==========  ===================      ===========================
     Operation   Method                   Description
-    ==========  ===================      ======================
-    ``x + y``   :func:`Var.__add__`      Binary addition      
-    ``x - y``   :func:`Var.__sub__`      Binary subtraction
-    ``x * y``   :func:`Var.__mul__`      Binary multiplication
-    ``x / y``   :func:`Var.__div__`      Binary division
+    ==========  ===================      ===========================
+    ``x + y``   :func:`Var.__add__`      Element-wise addition
+    ``x - y``   :func:`Var.__sub__`      Element-wise subtraction
+    ``x * y``   :func:`Var.__mul__`      Element-wise multiplication
+    ``x / y``   :func:`Var.__div__`      Element-wise division
     ``x ** y``  :func:`Var.__pow__`      Exponentiation
     ``abs(x)``  :func:`Var.__abs__`      Absolute value
     ``-x``      :func:`Var.__neg__`      Negation 
     ``+x``      :func:`Var.__pos__`      Null operation
     ``x % t``   :func:`Var.__mod__`      Modulo
-    ``x < y``   :func:`Var.__lt__`
-    ``x <= y``  :func:`Var.__le__`
-    ``x > y``   :func:`Var.__gt__`
-    ``x >= y``  :func:`Var.__ge__`
-    ``x == y``  :func:`Var.__eq__`
-    ``x != y``  :func:`Var.__ne__`
-    ==========  ===================      ======================
+    ``x < y``   :func:`Var.__lt__`       ``True`` where ``x < y``
+    ``x <= y``  :func:`Var.__le__`       ``True`` where ``x <= y``
+    ``x > y``   :func:`Var.__gt__`       ``True`` where ``x > y``
+    ``x >= y``  :func:`Var.__ge__`       ``True`` where ``x >= y``
+    ``x == y``  :func:`Var.__eq__`       ``True`` where ``x == y``
+    ``x != y``  :func:`Var.__ne__`       ``True`` where ``x != y``
+    ==========  ===================      ===========================
 
   :doc:`ufunc`
 

@@ -31,4 +31,4 @@ the relevant normalization
 **See Also:**
   :doc:`var`
 
-  :ref:`arrays.ndarray.calculation`  (external Numpy documentation)
+  :ref:`arrays.ndarray`  (external Numpy documentation)
