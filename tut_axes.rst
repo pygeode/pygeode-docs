@@ -4,6 +4,8 @@ Working with Axes
 
 .. currentmodule:: pygeode
 
+.. _constructing-vars:
+
 Constructing variables in memory
 --------------------------------
 

@@ -10,7 +10,7 @@ a large NetCDF file which defines multiple variables, but datasets can be used
 to perform a number of bulk operations on all (or some) of the variables they
 contain, which can also be quite powerful. 
 
-As a simple example, lets return to the second dataset in the tutorial module, 
+As a simple example, let's return to the second dataset in the tutorial module, 
 and select a single timestep:
 
 .. ipython::
