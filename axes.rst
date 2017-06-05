@@ -31,6 +31,7 @@ The following is a (non-exhaustive) list of more commonly used axes built into P
   ModelTime365
   ModelTime360
   Yearless
+  NonCoordinateAxis
 
 If PyGeode doesn't have a built-in representation of an axis that your input
 data uses, it will default to a generic  :class:`NamedAxis` object, with no additional
@@ -45,28 +46,33 @@ the :class:`Var` class; see :doc:`var` for this functionality.
 
   Inherits from :class:`Var`
 
-  .. rubric:: Useful attributes
+  .. rubric:: Generic attributes
 
   .. autosummary::
 
-    Axis.rtol
-    Axis.formatstr
-    Axis.auxatts
     Axis.auxarrays
-    Axis.plotatts
+    Axis.auxatts
+    Axis.rtol
 
-  .. rubric:: Generic Axis Methods
+  .. rubric:: Generic Axis methods
 
   .. autosummary::
 
     Axis.__init__
     Axis.argsort
     Axis.auxasvar
-    Axis.formatter
-    Axis.locator
     Axis.rename
     Axis.sorted
     Axis.str_as_val
+
+  .. rubric:: Formatting and Plotting
+
+  .. autosummary::
+
+    Axis.formatstr
+    Axis.formatter
+    Axis.locator
+    Axis.plotatts
 
   .. rubric:: Internal calls
 
