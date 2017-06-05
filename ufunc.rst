@@ -119,6 +119,10 @@ in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 
 .. automethod:: Var.nan_to_num
 
+.. autofunction:: maximum
+
+.. autofunction:: minimum
+
 .. autofunction:: real
 
 .. automethod:: Var.real
@@ -131,3 +135,6 @@ in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 
 .. automethod:: Var.angle
 
+.. autofunction:: conj
+
+.. automethod:: Var.conj
