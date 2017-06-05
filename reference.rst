@@ -48,6 +48,7 @@ submodules with further functionality referenced in the summary as well.
     ModelTime365
     ModelTime360
     Yearless
+    NonCoordinateAxis
 
   .. rubric:: Axis creation helper functions
   
@@ -63,13 +64,11 @@ submodules with further functionality referenced in the summary as well.
     modeltime360n
     yearlessn
 
-  .. rubric:: General operations
+  :doc:`genops`
 
   .. autosummary::
-    concat
+    concatenate
     ensemble
-    composite
-    lag
     vprod
     vsum
 
@@ -109,6 +108,7 @@ submodules with further functionality referenced in the summary as well.
     real
     imag
     angle
+    conj
 
   :doc:`climat`
 
@@ -122,13 +122,11 @@ submodules with further functionality referenced in the summary as well.
     climatology
     climtrend
     from_trend
-    climat
 
   :doc:`timeutils`
 
   .. autosummary::
 
-    timeutils
     timeutils.conform_values
     timeutils.date_diff
     timeutils.delta
@@ -147,6 +145,7 @@ submodules with further functionality referenced in the summary as well.
     regress
     multiple_regress
     difference
+    paired_difference
     isnonzero
 
   :doc:`eof` 
@@ -155,7 +154,6 @@ submodules with further functionality referenced in the summary as well.
 
     EOF
     SVD
-    eof
 
   :doc:`plot`
 
@@ -170,7 +168,12 @@ submodules with further functionality referenced in the summary as well.
     vquiver
     vstreamplot
     vsigmask
-    plot
+    vhist
+    clfdict
+    cldict
+    log1sdict
+    log2sdict
+
 
 Under the hood
 -------------------------------------
@@ -185,6 +188,7 @@ Under the hood
   var
   axes
   dataset
+  genops
   plot
   fileio
   timeutils
@@ -192,3 +196,4 @@ Under the hood
   stats
   eof
   view
+  custom
