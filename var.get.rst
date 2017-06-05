@@ -26,5 +26,7 @@ can do whatever you want with the data.
 
 .. automethod:: Var.__getitem__
 
+.. automethod:: Var.load
+
 **See Also:**
   :doc:`var`

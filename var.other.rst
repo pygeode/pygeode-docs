@@ -13,5 +13,13 @@ Other operations
 
 .. automethod:: Var.smooth
 
+.. automethod:: Var.fft_smooth
+
+.. automethod:: Var.composite
+
+.. automethod:: Var.flatten
+
+.. automethod:: Var.lag
+
 **See Also:**
   :doc:`var`

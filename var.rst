@@ -24,14 +24,22 @@ abstracted in the following ways:
 
 .. class:: Var
 
+  .. autosummary::
+
+    Var.__init__
+
   .. rubric:: Useful attributes
 
   .. autosummary::
 
     Var.name
     Var.axes
+    Var.naxes
+    Var.shape
+    Var.size
     Var.atts
     Var.dtype
+    Var.units
 
   :doc:`var.get`
 
@@ -39,6 +47,7 @@ abstracted in the following ways:
 
     Var.get
     Var.__getitem__
+    Var.load
 
   :doc:`varquery`
 
@@ -47,6 +56,7 @@ abstracted in the following ways:
     Var.hasaxis
     Var.whichaxis
     Var.getaxis
+    Var.getweights
 
   .. _varops-list:
 
@@ -55,6 +65,8 @@ abstracted in the following ways:
   .. autosummary::
 
     Var.__call__
+    Var.slice
+    Var._getitem_asvar
     Var.squeeze
     Var.extend
     Var.transpose
@@ -141,6 +153,7 @@ abstracted in the following ways:
     Var.real
     Var.imag
     Var.angle
+    Var.conj
 
   :doc:`var.other`
 
@@ -151,33 +164,58 @@ abstracted in the following ways:
     Var.integrate
     Var.interpolate 
     Var.smooth
+    Var.fft_smooth
+    Var.composite
+    Var.flatten
+    Var.lag
 
   .. rubric:: Formatting and plotting operations
 
   .. autosummary::
 
+    Var.plotatts
     Var.formatstr
     Var.formatvalue
     Var.formatter
     Var.locator
 
-.. attribute:: Var.name
+.. automethod:: Var.__init__
 
-    A description of the variable (may not be set).  Usually determined at the
-    data source (e.g. input file), and may be used to identify the variable
-    when saving to an output file.
+.. autoattribute:: Var.name
+    :annotation: string
 
-.. attribute:: Var.axes
+.. autoattribute:: Var.axes
+    :annotation: tuple of Axis classes
 
-    The axes of the variable, as a ``tuple``. See :doc:`axes`.
+.. autoattribute:: Var.naxes
+    :annotation: integer
 
-.. attribute:: Var.atts
+.. autoattribute:: Var.shape
+    :annotation: tuple
 
-    A ``dict`` of metadata associated with the variable (if applicable).
+.. autoattribute:: Var.size
+    :annotation: integer
 
-.. attribute:: Var.dtype
+.. autoattribute:: Var.atts
+    :annotation: dictionary
 
-    The type of numeric data that the Var represents.
+.. autoattribute:: Var.dtype
+    :annotation: numpy dtype
+
+.. autoattribute:: Var.units
+    :annotation: string
+
+.. autoattribute:: Var.plotatts
+    :annotation: dictionary
+
+.. autoattribute:: Var.formatstr
+    :annotation: string
+
+.. automethod:: Var.formatvalue
+
+.. automethod:: Var.formatter
+
+.. automethod:: Var.locator
 
 .. toctree::
   :maxdepth: 2
