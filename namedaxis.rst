@@ -23,3 +23,28 @@ NamedAxis object reference
 
 .. automethod:: NamedAxis.map_to
   
+.. class:: NonCoordinateAxis
+
+  Inherits from :class:`Axis`
+
+  An axis for non-coordinate dimensions (e.g. categorical data such as stations, etc.). 
+
+  .. rubric:: New or Overridden Methods
+
+  .. autosummary:: 
+
+    NonCoordinateAxis.__init__
+    NonCoordinateAxis.map_to
+    NonCoordinateAxis.str_as_val
+    NonCoordinateAxis.formatvalue
+    NonCoordinateAxis.__eq__
+
+.. automethod:: NonCoordinateAxis.__init__
+
+.. automethod:: NonCoordinateAxis.map_to
+
+.. automethod:: NonCoordinateAxis.str_as_val
+
+.. automethod:: NonCoordinateAxis.formatvalue
+
+.. automethod:: NonCoordinateAxis.__eq__
