@@ -1,5 +1,7 @@
 *.pyc
 *.nc
+*.png
+to_document.txt
 build/
 _build/
 _static/
