@@ -37,7 +37,7 @@ Dataset:
       {}
     Type:  Add_Var (dtype="float64")
 
-More exambles can be found in `tut_datasets`.
+More examples can be found in `tut_datasets`.
 
 .. class:: Dataset
 
@@ -55,8 +55,11 @@ More exambles can be found in `tut_datasets`.
   .. autosummary::
 
     Dataset.__init__
+    Dataset.__getitem__
+    Dataset.__call__
     Dataset.add
     Dataset.copy
+    Dataset.load
     Dataset.map
     Dataset.remove
     Dataset.rename_vars
@@ -86,13 +89,8 @@ More exambles can be found in `tut_datasets`.
     Dataset.unfill
     Dataset.as_type
 
-
-.. rubric:: Helper Functions
-
-.. autosummary::
-
-  asdataset
-  ~dataset.concat
+Dataset Attributes
+------------------
 
 .. autoattribute:: Dataset.vars
   :annotation: list of Var instances
@@ -106,11 +104,20 @@ More exambles can be found in `tut_datasets`.
 .. autoattribute:: Dataset.atts
   :annotation: dictionary
 
+Dataset Methods
+---------------
+
 .. automethod:: Dataset.__init__
+
+.. automethod:: Dataset.__getitem__
+
+.. automethod:: Dataset.__call__
 
 .. automethod:: Dataset.add
 
 .. automethod:: Dataset.copy
+
+.. automethod:: Dataset.load
 
 .. automethod:: Dataset.map
 
@@ -119,19 +126,3 @@ More exambles can be found in `tut_datasets`.
 .. automethod:: Dataset.rename_vars
 
 .. automethod:: Dataset.replace_vars
-
-.. currentmodule:: pygeode.dataset
-
-.. autofunction:: asdataset
-
-.. autofunction:: concat
-
-Creating a Dataset
-------------------
-
-TODO
-
-Neat tricks
------------
-
-TODO

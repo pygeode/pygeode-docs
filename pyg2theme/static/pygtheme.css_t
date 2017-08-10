@@ -1,0 +1,31 @@
+@import url("haiku.css");
+
+html, body, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu', sans-serif
+}
+ 
+code {
+  font-family: 'Ubuntu Mono', monospace;
+  font-size: 1.1em;
+  background-color = #FAFAFA;
+}
+
+em.property { 
+  font-family: monospace; 
+  font-size: 100%;
+}
+
+.field-even {
+  background-color: #F8F8F8;
+}
+
+.field-odd {
+  background-color: #F0F0F0;
+}
+
+dl.class, dl.method, dl.function, dl.classmethod, dl.attribute, .module { 
+  border-radius : 8pt;
+  padding : 10pt;
+  background-color: #F4F4F4;
+}
+

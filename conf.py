@@ -35,7 +35,7 @@ extensions = ['matplotlib.sphinxext.mathmpl',
               'sphinx.ext.todo', 
               'sphinx.ext.autodoc', 
               'sphinx.ext.autosummary', 
-              'sphinx.ext.mathjax',
+              #'sphinx.ext.mathjax',
               'sphinx.ext.doctest',
               'numpydoc',
               'IPython.sphinxext.ipython_directive',
@@ -81,7 +81,7 @@ release = '1.0 alpha'
 exclude_patterns = ['_build']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
-#default_role = None
+default_role = 'any'
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
 #add_function_parentheses = True
@@ -108,13 +108,13 @@ doctest_test_doctest_blocks = 'default'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'pygtheme'
+html_theme = 'pyg2theme'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-  "rightsidebar": "true",
+  #"rightsidebar": "true",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -238,14 +238,15 @@ man_pages = [
 ]
 
 # Short docstrings for attributes in autosummary tables
-attribdict = {'pygeode.Axis.rtol': 'Floating point tolerance for axis values', \
-              'pygeode.Axis.formatstr': 'Formatting specification for printing values', \
+attribdict = {#'pygeode.Axis.rtol': 'Floating point tolerance for axis values', \
+              #'pygeode.Axis.formatstr': 'Formatting specification for printing values', \
               'pygeode.timeaxis.CalendarTime.parse_pattern': 'Regular expression for parsing dates'}
 
 def proc_docstring(app, what, name, obj, options, lines):
   if what == 'attribute':
     str = attribdict.get(name, None)
-    if str is not None: lines[0] = str
+    if str is not None and len(lines) > 0: 
+      lines[0] = str
 
 def setup(app):
   app.connect('autodoc-process-docstring', proc_docstring);

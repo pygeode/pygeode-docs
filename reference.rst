@@ -67,6 +67,7 @@ submodules with further functionality referenced in the summary as well.
   :doc:`genops`
 
   .. autosummary::
+    asdataset
     concatenate
     ensemble
     vprod

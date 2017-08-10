@@ -11,5 +11,7 @@ Stats module
 
 .. autofunction:: difference
 
+.. autofunction:: paired_difference
+
 .. autofunction:: isnonzero
 

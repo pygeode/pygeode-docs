@@ -3,7 +3,7 @@ EOF Analysis
 
 .. currentmodule:: pygeode
 
-.. automethod:: eof.EOF
+.. autofunction:: EOF
 
-.. automodule:: pygeode.svd
-  :members:
+.. autofunction:: SVD
+
