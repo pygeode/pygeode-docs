@@ -21,13 +21,21 @@ Format    Extension     String Identifier Notes
 ========= ============  ================= =========
 NetCDF    .nc           netcdf
 HDF5                    netcdf            Uses the same library as NetCDF
+NetCDF4   .nc           netcdf4           Requires the netCDF4_ package.
 HDF4      .hdf          hdf4
 GRIB      .grib         grib
 ========= ============  ================= =========
 
+Plugins for other formats are available in add-on packages, such as
+`pygeode-rpn`_ for reading *RPN Standard Files* from Environment and Climate
+Change Canada.
+
 Code also exists to read the native binary format used by the Canadian Centre
 for Climate Modeling and Analysis, but this is not distributed with PyGeode by
 default.
+
+.. _netCDF4: http://unidata.github.io/netcdf4-python/
+.. _pygeode-rpn: https://github.com/neishm/pygeode-rpn
 
 .. autofunction:: open
 
