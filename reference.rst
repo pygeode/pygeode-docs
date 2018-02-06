@@ -179,8 +179,8 @@ submodules with further functionality referenced in the summary as well.
 
   .. autosummary::
 
-    external.to_xarray
-    external.from_xarray
+    ext_xarray.to_xarray
+    ext_xarray.from_xarray
 
 Under the hood
 -------------------------------------

@@ -1,13 +1,11 @@
-External module
+External Interfaces
 ===================================
 
-.. currentmodule:: pygeode.external
+.. currentmodule:: pygeode.ext_xarray
 
 .. container:: module
 
-  pygeode.external
-
-  Module containing external interfaces for PyGeode. 
+  Methods for converting from PyGeode to other structures, and vice-versa.
 
   .. rubric:: Converting to/from xarray_
 
