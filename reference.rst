@@ -175,6 +175,12 @@ submodules with further functionality referenced in the summary as well.
     log1sdict
     log2sdict
 
+  :doc:`external`
+
+  .. autosummary::
+
+    ext_xarray.to_xarray
+    ext_xarray.from_xarray
 
 Under the hood
 -------------------------------------
@@ -198,3 +204,4 @@ Under the hood
   eof
   view
   custom
+  external
