@@ -28,7 +28,7 @@ Started <tutsavefile>` section of the tutorial:
 
   In [0]: ds = pyg.open('sample_data/file.nc')
 
-  In [0]: print ds
+  In [0]: print(ds)
 
 As you can see, this returns a :class:`Dataset` object with the contents of the
 file. The format of the file has been automatically detected. In this case the
@@ -78,7 +78,7 @@ instance, taking averages (:meth:`mean`) over the latitude axis.
 
 .. ipython::
 
-  In [0]: print ds.lat.weights
+  In [0]: print(ds.lat.weights)
 
 Overriding metadata
 ...................
@@ -96,7 +96,7 @@ metadata. In this case PyGeode will not be able to recognize what kind of
 
   In [1]: ds2 = pyg.open('sample_data/file_nometa.nc')
 
-  In [2]: print ds2
+  In [2]: print(ds2)
 
   @suppress
   In [6]: import pylab as pyl; pyl.ion();
@@ -122,7 +122,7 @@ associate with that dimension. This is perhaps best illustrated by example:
 
   In [0]: dt = dict(lat = pyg.Lat, lon = pyg.regularlon(60))
 
-  In [1]: print pyg.open('sample_data/file_nometa.nc', dimtypes=dt)
+  In [1]: print(pyg.open('sample_data/file_nometa.nc', dimtypes=dt))
 
 We can see that now the :class:`NamedAxis` objects have been replaced by the
 appropriate axis types, :class:`Lat` and :class:`Lon`, respectively. You will
@@ -154,7 +154,7 @@ bit opaque):
 
   In [0]: dt2 = dict(lon = (pyg.StandardTime, kwargs))
 
-  In [1]: print pyg.open('sample_data/file_nometa.nc', dimtypes=dt2)
+  In [1]: print(pyg.open('sample_data/file_nometa.nc', dimtypes=dt2))
 
 Here we have decided to treat the ``lon`` axis describing a time axis, but for
 some reason we wish to use the coordinate data as actual time information. As
@@ -175,7 +175,7 @@ to simply rename variables and axes:
 
   In [0]: nm = dict(lon = 'Longitude', Temp='Temperature')
 
-  In [1]: print pyg.open('sample_data/file_nometa.nc', namemap=nm, dimtypes=dt)
+  In [1]: print(pyg.open('sample_data/file_nometa.nc', namemap=nm, dimtypes=dt))
 
 As you can see, the original axes names as defined in the file are still used to
 replace axis types in the ``dimtypes`` dictionary; the axis is renamed after it
@@ -226,7 +226,7 @@ the filenames:
 
   In [3]: ds = pyg.openall('sample_data/temp_zm_*.nc', namemap=dict(Temp='T'))
 
-  In [4]: print ds.T
+  In [4]: print(ds.T)
 
 PyGeode expands the wildcard, opens each of the files, then concatenates the
 datasets. The result is a single dataset object with 10 years of temperature data that
@@ -267,7 +267,7 @@ the components of the date in the filename. For instance:
 
   In [5]: patt = 'temp_zm_y(?P<year>[0-9]{4}).nc'
               
-  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt)
+  In [3]: print(pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt))
 
 The regular expression matches the four digit year in the filenames in a way
 that PyGeode can understand. Since this four digit format is commonly encountered, 
@@ -278,7 +278,7 @@ how Python regular expressions work:
 
   In [5]: patt = 'temp_zm_y$Y.nc'
               
-  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt)
+  In [3]: print(pyg.open_multi('sample_data/temp_zm_*.nc', pattern=patt))
 
 Similar abbreviations exist for 2-digit month, day, hour, and minute fields
 (see :meth:`open_multi` for details), though if the filenames you're working
@@ -298,7 +298,7 @@ As a simple example,
      ...:   date['year'] = int(fn[-7:-3]) # Extract the year from the filename and convert to an integer
      ...:   return date
               
-  In [3]: print pyg.open_multi('sample_data/temp_zm_*.nc', file2date = f2d)
+  In [3]: print(pyg.open_multi('sample_data/temp_zm_*.nc', file2date = f2d))
 
 Note that in the interests of speed, PyGeode only opens the first and last file
 in the dataset, and then infers the contents of the remainder of the files. The

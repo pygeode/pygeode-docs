@@ -51,10 +51,10 @@ Axis class reference
 
   >>> from pygeode import Lat
   >>> x = Lat([10,20,30])
-  >>> print x
+  >>> print(x)
   lat <Lat>      :  10 N to 30 N (3 values)
   >>> x.formatstr = '%d deg'
-  >>> print x
+  >>> print(x)
   lat <Lat>      :  10 deg N to 30 deg N (3 values)
   >>> #               ^^^ yay!
   >>> print x(lat=(10,20))
@@ -65,16 +65,16 @@ To get around this, make your changes to the class itself.  As an added benefit,
 
   >>> from pygeode import Lat
   >>> x = Lat([10,20,30])
-  >>> print x
+  >>> print(x)
   lat <Lat>      :  10 N to 30 N (3 values)
   >>> #  change this ^^^  on all latitude axes:
   >>> Lat.formatstr = '%d deg'
-  >>> print x
+  >>> print(x)
   lat <Lat>      :  10 deg N to 30 deg N (3 values)
   >>> print x(lat=(10,20))    # check if the changes 'stick'
   lat <Lat>      :  10 deg N to 20 deg N (2 values)
   >>> y = Lat([40,50,60])     # will work on all Lat axes now.
-  >>> print y
+  >>> print(y)
   lat <Lat>      :  40 deg N to 60 deg N (3 values)
 
 .. automethod:: Axis.__init__

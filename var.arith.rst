@@ -75,7 +75,7 @@ Example
 -------
 Start with some 2D data:
   >>> from pygeode.tutorial import t1
-  >>> print t1.Temp
+  >>> print(t1.Temp)
   <Var 'Temp'>:
     Shape:  (lat,lon)  (32,64)
     Axes:
@@ -88,7 +88,7 @@ Start with some 2D data:
 Generate a time axis (say, every 6 hours starting at January 1, 2000)
   >>> import numpy as np
   >>> hour_values = np.arange(124) * 6
-  >>> print hour_values
+  >>> print(hour_values)
   [  0   6  12  18  24  30  36  42  48  54  60  66  72  78  84  90  96 102
    108 114 120 126 132 138 144 150 156 162 168 174 180 186 192 198 204 210
    216 222 228 234 240 246 252 258 264 270 276 282 288 294 300 306 312 318
@@ -99,14 +99,14 @@ Generate a time axis (say, every 6 hours starting at January 1, 2000)
   >>> start_date = dict(year=2000,month=1,day=1,hour=0)
   >>> from pygeode import StandardTime
   >>> taxis = StandardTime(values=hour_values, units='hours', startdate=start_date)
-  >>> print taxis
+  >>> print(taxis)
   time <StandardTime>:  Jan 1, 2000 00:00:00 to Jan 31, 2000 18:00:00 (124 values)
 
 **1) Operation between a Var and a scalar**
 
 Create a small linear temperature trend along the time axis.  Since our time axis is stored in units of 'hours', let's make a trend of 0.01 degrees per hour.
   >>> t_trend = taxis * 0.01
-  >>> print t_trend
+  >>> print(t_trend)
   <Var '(time*0.01)'>:
     Shape:  (time)  (124)
     Axes:
@@ -114,7 +114,7 @@ Create a small linear temperature trend along the time axis.  Since our time axi
     Attributes:
       {}
     Type:  Mul_Var (dtype="float64")
-  >>> print t_trend.get()
+  >>> print(t_trend.get())
   [ 0.    0.06  0.12  0.18  0.24  0.3   0.36  0.42  0.48  0.54  0.6   0.66
     0.72  0.78  0.84  0.9   0.96  1.02  1.08  1.14  1.2   1.26  1.32  1.38
     1.44  1.5   1.56  1.62  1.68  1.74  1.8   1.86  1.92  1.98  2.04  2.1
@@ -132,7 +132,7 @@ Create a small linear temperature trend along the time axis.  Since our time axi
 
 Add this to our 2D data, to get a 3D field.  Use the time-dependant data as the left argument of the addition, so that the time axis is our first (leftmost) axis for the output.
   >>> mydata = t_trend + t1.Temp
-  >>> print mydata
+  >>> print(mydata)
   <Var '((time*0.01)+Temp)'>:
     Shape:  (time,lat,lon)  (124,32,64)
     Axes:
@@ -145,7 +145,7 @@ Add this to our 2D data, to get a 3D field.  Use the time-dependant data as the 
 
 Give this variable a better name (so it's more easily identifiable if we save it to a file):
   >>> mydata = mydata.rename('Temp')
-  >>> print mydata
+  >>> print(mydata)
   <Var 'Temp'>:
     Shape:  (time,lat,lon)  (124,32,64)
     Axes:

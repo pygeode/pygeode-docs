@@ -23,23 +23,23 @@ constructors to create them directly.
   In [0]: import pygeode as pyg, numpy as np
   
   # The simplest, default case
-  In [1]: print pyg.NamedAxis(np.arange(15), 'myaxis')
+  In [1]: print(pyg.NamedAxis(np.arange(15), 'myaxis'))
 
   # Some simple examples
   In [1]: lon = pyg.Lon(180)
   
-  In [1]: print lon
+  In [1]: print(lon)
 
   In [2]: lat = pyg.Lat(92)
 
-  In [2]: print lat
+  In [2]: print(lat)
 
   In [3]: pres = pyg.Pres([1000, 900, 800, 700, 500, 300, 200, 100, 50, 30, 10])
 
   # Gaussian latitudes (with appropriate weights)
   In [2]: lat2 = pyg.gausslat(64)
 
-  In [2]: print lat2
+  In [2]: print(lat2)
 
 Time axes are somewhat more complicated, as you need to specify the calendar,
 the reference date (``startdate``), offsets, and the native unit:
@@ -53,10 +53,10 @@ but some simple helpers are available here as well:
 .. ipython::
 
   # A time axis of fixed length
-  In [2]: print pyg.modeltime365n('1 Jan 2000', 3650, units='days')
+  In [2]: print(pyg.modeltime365n('1 Jan 2000', 3650, units='days'))
 
   # A time axis spanning a range of dates
-  In [2]: print pyg.modeltime365range('1 Jan 2000', '1 Jan 2001', step=6, units='hours')
+  In [2]: print(pyg.modeltime365range('1 Jan 2000', '1 Jan 2001', step=6, units='hours'))
 
 
 Usually the easiest approach to creating variables in memory is to apply the
@@ -75,7 +75,7 @@ variable, this can also be done.
 
   In [2]: x = np.ones((64, 180), 'd')
 
-  In [3]: print pyg.Var((lat2, lon), name = 'myvar', values=x)
+  In [3]: print(pyg.Var((lat2, lon), name = 'myvar', values=x))
 
 .. _timeaxisops:
 
@@ -108,10 +108,10 @@ is usually the more convenient way to construct an axis.
   In [1]: import pygeode as pyg, numpy as np
 
   # A time axis representing the (leap) year 2008 at 6 h increments
-  In [2]: print pyg.StandardTime(values=np.arange(0, 24*366, 6), units = 'hours', startdate=dict(year=2008, month=1, day=1))
+  In [2]: print(pyg.StandardTime(values=np.arange(0, 24*366, 6), units = 'hours', startdate=dict(year=2008, month=1, day=1)))
 
   # 2000 to 2010 in 360-day years
-  In [3]: print pyg.ModelTime360(values=np.arange(10*360), units = 'days', startdate=dict(year=2000, month=1, day=1))
+  In [3]: print(pyg.ModelTime360(values=np.arange(10*360), units = 'days', startdate=dict(year=2000, month=1, day=1)))
 
 The second involves providing an explicit list of the dates and times of each element of the 
 axis. PyGeode recognizes the auxiliary arrays ``year``, ``month``, ``day``,
@@ -121,7 +121,7 @@ provided:
 .. ipython::
 
   # A time axis representing the months of 1890
-  In [4]: print pyg.ModelTime365(year=12*[1890], month=range(1, 13), units='days')
+  In [4]: print(pyg.ModelTime365(year=12*[1890], month=range(1, 13), units='days'))
 
 Combining Time Axes
 ...................
@@ -147,18 +147,18 @@ order of operations:
   In [5]: ts21 = t2 + t1 
 
   # Both of these work and refer to the same time period...
-  In [6]: print ts12.time
+  In [6]: print(ts12.time)
   
-  In [6]: print ts21.time
+  In [6]: print(ts21.time)
 
   # ...but are defined in different reference frames, with different units.
-  In [6]: print ts12.time.units, ts21.time.units
+  In [6]: print(ts12.time.units, ts21.time.units)
 
   # Accessing absolute times will refer to the same value in each case
-  In [6]: print ts12(time='15 Jan 2005').time, ts21(time='15 Jan 2005').time
+  In [6]: print(ts12(time='15 Jan 2005').time, ts21(time='15 Jan 2005').time)
 
   # But relative times will differ
-  In [6]: print ts12(time=400).time, ts21(time=400).time
+  In [6]: print(ts12(time=400).time, ts21(time=400).time)
 
 Accessing any results by an absolute date will therefore yield the same result,
 but accessing by value will not. Moreover since PyGeode used the ``values``
