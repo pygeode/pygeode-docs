@@ -17,11 +17,11 @@
         «&#160;&#160;<a href="{{ prev.link|e }}">{{ prev.title }}</a>
         &#160;&#160;::&#160;&#160;
         {%- endif %}
-        <a class="uplink" href="reference.html">Reference</a>
+        <a class="uplink" href="{{ pathto('reference') }}">Reference</a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="tutorial.html">Tutorial</a>
+        <a class="uplink" href="{{ pathto('tutorial') }}">Tutorial</a>
         &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="gallery.html">Gallery</a>
+        <a class="uplink" href="{{ pathto('gallery/index') }}">Gallery</a>
         {%- if next %}
         &#160;&#160;::&#160;&#160;
         <a href="{{ next.link|e }}">{{ next.title }}</a>&#160;&#160;»

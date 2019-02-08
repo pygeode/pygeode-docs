@@ -1,3 +1,8 @@
+"""
+Line plot
+=========
+"""
+
 import pylab as pyl 
 import pygeode as pyg, numpy as np
 

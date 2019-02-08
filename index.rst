@@ -31,7 +31,7 @@ aspects of the code.
 
 There is also a :doc:`reference` with full details.
 
-A :doc:`gallery` with examples of plots made with PyGeode is also in development.
+A :doc:`Gallery <gallery/index>` with examples of plots made with PyGeode is also in development.
 
 About PyGeode
 -----------------------------------
@@ -39,9 +39,10 @@ PyGeode was originally developed by Mike Neish and Peter Hitchcock in the Depart
 the University of Toronto, with contributions from Andre Erler and Isla Simpson.
 
 .. toctree::
-  :hidden:
+   :maxdepth: 2
+   :hidden:
 
-  install
-  tutorial
-  reference
-  gallery
+   install
+   tutorial
+   reference
+   gallery/index

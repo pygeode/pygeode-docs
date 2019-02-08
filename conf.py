@@ -20,7 +20,7 @@ import sys, os
 sys.path.insert(0, os.path.abspath('../trunk/'))
 sys.path.append(os.path.abspath('sphinxext'))
 sys.path.append(os.path.abspath('.'))
-sys.path.append('/home/adk33/pygeode_git/pygeode/')
+sys.path.append('$HOME/pygeode_git/pygeode/')
 
 # -- General configuration -----------------------------------------------------
 
@@ -40,7 +40,8 @@ extensions = ['matplotlib.sphinxext.mathmpl',
               'sphinx.ext.doctest',
               'numpydoc',
               'IPython.sphinxext.ipython_directive',
-              'IPython.sphinxext.ipython_console_highlighting']
+              'IPython.sphinxext.ipython_console_highlighting',
+              'sphinx_gallery.gen_gallery']
 
 ipython_warning_is_error = False
 
@@ -258,3 +259,11 @@ def setup(app):
 intersphinx_mapping = {'http://docs.python.org/': None,
      'http://docs.scipy.org/doc/numpy': None,
      'http://docs.scipy.org/doc/scipy/reference': None}
+
+
+sphinx_gallery_conf = {
+            'examples_dirs': ['examples',],
+            'gallery_dirs': ['gallery',],
+            'download_all_examples': False,
+            'min_reported_time': 5,
+}
