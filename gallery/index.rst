@@ -66,6 +66,26 @@ Gallery
    :hidden:
 
    /gallery/plot_line
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plot 2 contours and remove the last one">
+
+.. only:: html
+
+    .. figure:: /gallery/images/thumb/sphx_glr_plot_remove_contours_thumb.png
+
+        :ref:`sphx_glr_gallery_plot_remove_contours.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery/plot_remove_contours
 .. raw:: html
 
     <div style='clear:both'></div>
