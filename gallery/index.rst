@@ -9,6 +9,26 @@ Gallery
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Specify contour levels">
+
+.. only:: html
+
+    .. figure:: /gallery/images/thumb/sphx_glr_plot_clfdict_thumb.png
+
+        :ref:`sphx_glr_gallery_plot_clfdict.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery/plot_clfdict
+
+.. raw:: html
+
     <div class="sphx-glr-thumbcontainer" tooltip="Contour plot">
 
 .. only:: html
@@ -66,6 +86,26 @@ Gallery
    :hidden:
 
    /gallery/plot_line
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Stitch plots together into a grid">
+
+.. only:: html
+
+    .. figure:: /gallery/images/thumb/sphx_glr_plot_grid_thumb.png
+
+        :ref:`sphx_glr_gallery_plot_grid.py`
+
+.. raw:: html
+
+    </div>
+
+
+.. toctree::
+   :hidden:
+
+   /gallery/plot_grid
 
 .. raw:: html
 

@@ -31,7 +31,7 @@ pyl.ion()
 ax_wrapper.render()
 
 ###########################################################
-# 'ax_wrapper.axes[0].plots' contains a list of all the plotted objects
+# ``ax_wrapper.axes[0].plots`` contains a list of all the plotted objects
 #
 
 print(*ax_wrapper.axes[0].plots, sep="\n")

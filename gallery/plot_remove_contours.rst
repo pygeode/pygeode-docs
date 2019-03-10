@@ -50,7 +50,7 @@ Use :func:`showvar()` to plot the wind as a filled contour plot and the temperat
 
 
 
-'ax_wrapper.axes[0].plots' contains a list of all the plotted objects
+``ax_wrapper.axes[0].plots`` contains a list of all the plotted objects
 
 
 
@@ -70,10 +70,10 @@ Use :func:`showvar()` to plot the wind as a filled contour plot and the temperat
 
  .. code-block:: none
 
-    <pygeode.plot.wrappers.Contour object at 0x7f7307c86eb8>
-    <pygeode.plot.wrappers.Contourf object at 0x7f7307c27e80>
-    <pygeode.plot.wrappers.Contour object at 0x7f7307c27fd0>
-    <pygeode.plot.wrappers.Colorbar object at 0x7f7307c2df60>
+    <pygeode.plot.wrappers.Contour object at 0x7fcd674a57f0>
+    <pygeode.plot.wrappers.Contourf object at 0x7fcd674b67f0>
+    <pygeode.plot.wrappers.Contour object at 0x7fcd674b6978>
+    <pygeode.plot.wrappers.Colorbar object at 0x7fcd674a5d30>
 
 
 Remove the temperatue contours from the list and plot the zonal wind contours and colourbar only.
@@ -114,9 +114,9 @@ Remove the temperatue contours from the list and plot the zonal wind contours an
 
  .. code-block:: none
 
-    <pygeode.plot.wrappers.Contourf object at 0x7f7307c27e80>
-    <pygeode.plot.wrappers.Contour object at 0x7f7307c27fd0>
-    <pygeode.plot.wrappers.Colorbar object at 0x7f7307c2df60>
+    <pygeode.plot.wrappers.Contourf object at 0x7fcd674b67f0>
+    <pygeode.plot.wrappers.Contour object at 0x7fcd674b6978>
+    <pygeode.plot.wrappers.Colorbar object at 0x7fcd674a5d30>
 
 
 
