@@ -41,10 +41,10 @@ extensions = ['matplotlib.sphinxext.mathmpl',
               'numpydoc',
               'IPython.sphinxext.ipython_directive',
               'IPython.sphinxext.ipython_console_highlighting',
-              'sphinx_gallery.gen_gallery',
-              'nbsphinx',
-              'nbsphinx_link',
-              'jupyter_sphinx.embed_widgets']
+              'sphinx_gallery.gen_gallery']
+              #'nbsphinx',
+              #'nbsphinx_link',
+              #'jupyter_sphinx.embed_widgets']
 
 ipython_warning_is_error = False
 

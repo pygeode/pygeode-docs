@@ -70,10 +70,10 @@ Use :func:`showvar()` to plot the wind as a filled contour plot and the temperat
 
  .. code-block:: none
 
-    <pygeode.plot.wrappers.Contour object at 0x7fcd674a57f0>
-    <pygeode.plot.wrappers.Contourf object at 0x7fcd674b67f0>
-    <pygeode.plot.wrappers.Contour object at 0x7fcd674b6978>
-    <pygeode.plot.wrappers.Colorbar object at 0x7fcd674a5d30>
+    <pygeode.plot.wrappers.Contour object at 0x7f0f382c2128>
+    <pygeode.plot.wrappers.Contourf object at 0x7f0f37ff97b8>
+    <pygeode.plot.wrappers.Contour object at 0x7f0f37ff9940>
+    <pygeode.plot.wrappers.Colorbar object at 0x7f0f382c2fd0>
 
 
 Remove the temperatue contours from the list and plot the zonal wind contours and colourbar only.
@@ -114,9 +114,9 @@ Remove the temperatue contours from the list and plot the zonal wind contours an
 
  .. code-block:: none
 
-    <pygeode.plot.wrappers.Contourf object at 0x7fcd674b67f0>
-    <pygeode.plot.wrappers.Contour object at 0x7fcd674b6978>
-    <pygeode.plot.wrappers.Colorbar object at 0x7fcd674a5d30>
+    <pygeode.plot.wrappers.Contourf object at 0x7f0f37ff97b8>
+    <pygeode.plot.wrappers.Contour object at 0x7f0f37ff9940>
+    <pygeode.plot.wrappers.Colorbar object at 0x7f0f382c2fd0>
 
 
 
