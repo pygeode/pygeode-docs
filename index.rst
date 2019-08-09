@@ -1,9 +1,4 @@
-.. PyGeode documentation master file, created by
-   sphinx-quickstart on Sun Mar 13 21:23:23 2011.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-PyGeode 1.0
+PyGeode 1.3
 =================================
 
 Welcome! PyGeode is a python package intended to simplify the manipulation,
@@ -12,7 +7,7 @@ climate models. It is particularly suited to dealing with large datasets that
 don't fit into memory. It is also intended to simplify plotting this data with
 matplotlib_. For more of an introduction, see the :doc:`tutorial`.
 
-This documentation will describe version 1.0, it is still a work in progress.
+This documentation describes version 1.3.
 
 .. _matplotlib: http://matplotlib.sourceforge.net/
 
