@@ -3,5 +3,7 @@
 *.png
 to_document.txt
 build/
+gallery/
 _build/
 _static/
+*/.ipynb_checkpoints/*

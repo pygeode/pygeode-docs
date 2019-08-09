@@ -20,6 +20,7 @@ import sys, os
 sys.path.insert(0, os.path.abspath('../trunk/'))
 sys.path.append(os.path.abspath('sphinxext'))
 sys.path.append(os.path.abspath('.'))
+sys.path.append('$HOME/pygeode_git/pygeode/')
 
 # -- General configuration -----------------------------------------------------
 
@@ -29,7 +30,7 @@ sys.path.append(os.path.abspath('.'))
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 extensions = ['matplotlib.sphinxext.mathmpl',
-              'matplotlib.sphinxext.only_directives',
+              #'matplotlib.sphinxext.only_directives',
               'matplotlib.sphinxext.plot_directive',
               'sphinx.ext.intersphinx', 
               'sphinx.ext.todo', 
@@ -39,10 +40,16 @@ extensions = ['matplotlib.sphinxext.mathmpl',
               'sphinx.ext.doctest',
               'numpydoc',
               'IPython.sphinxext.ipython_directive',
-              'IPython.sphinxext.ipython_console_highlighting']
+              'IPython.sphinxext.ipython_console_highlighting',
+              'sphinx_gallery.gen_gallery']
+              #'nbsphinx',
+              #'nbsphinx_link',
+              #'jupyter_sphinx.embed_widgets']
+
+ipython_warning_is_error = False
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ['pyg2themes']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -255,3 +262,11 @@ def setup(app):
 intersphinx_mapping = {'http://docs.python.org/': None,
      'http://docs.scipy.org/doc/numpy': None,
      'http://docs.scipy.org/doc/scipy/reference': None}
+
+
+sphinx_gallery_conf = {
+            'examples_dirs': ['examples',],
+            'gallery_dirs': ['gallery',],
+            'download_all_examples': False,
+            'min_reported_time': 5,
+}

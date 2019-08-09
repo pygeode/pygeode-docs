@@ -100,7 +100,7 @@ For example, suppose one of the dimensions of your data is solar zenith angle (S
 You can now use it like any other axis:
 
   >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
-  >>> print sza
+  >>> print(sza)
   sza_axis <SZA_Axis>:  20.1 to 20.5 (5 values)
 
 A more customized version:
@@ -110,7 +110,7 @@ A more customized version:
   ...   units = "degrees"
   ...
   >>> sza = SZA_Axis ([20.1, 20.2, 20.3, 20.4, 20.5])
-  >>> print sza
+  >>> print(sza)
   sza <SZA_Axis> :  20.1 degrees to 20.5 degrees (5 values)
 
 If you think your axis will be useful to others, please let us know, and we may include it in future versions.

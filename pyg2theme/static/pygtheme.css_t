@@ -29,3 +29,54 @@ dl.class, dl.method, dl.function, dl.classmethod, dl.attribute, .module {
   background-color: #F4F4F4;
 }
 
+/*
+ *  * Alternate Sphinx design
+ *   * Originally created by Armin Ronacher for Werkzeug, adapted by Georg Brandl.
+ *    */
+
+/* Sphinx gallery display */
+
+div.align-center {
+    margin: auto;
+    text-align: center;
+}
+
+p.caption {
+    text-align: center !important;
+}
+
+div#gallery.section, div#tutorials.section {
+    overflow: hidden;
+}
+
+.sphx-glr-multi-img{
+    max-width: 99% !important;
+}
+
+.sphx-glr-thumbcontainer {
+    border: solid #d6d6d6 1px !important;
+    text-align: center !important;
+    font-size: 1.2em !important;
+}
+
+div.sphx-glr-download {
+    width: auto !important;
+}
+
+div.sphx-glr-download a {
+   background-color: #d9edf7 !important;
+   border: 1px solid #bce8f1 !important;
+   background-image: none !important;
+}
+
+p.sphx-glr-signature {
+   display: none !important;
+}
+
+div.sphx-glr-download-link-note {
+   display: none !important;
+}
+
+.sphx-glr-thumbcontainer a.internal {
+    font-weight: 400;
+}

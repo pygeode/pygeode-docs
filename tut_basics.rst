@@ -28,7 +28,7 @@ numpy array as below, or when writing the data to disk, or plotting it):
 
 .. ipython::
 
-  In [4]: print t_av[:] # Slower: data is loaded, and the averaging is carried out
+  In [4]: print(t_av[:]) # Slower: data is loaded, and the averaging is carried out
 
 This should be kept in mind for the rest of the tutorial! We'll get a bit lazy:
 what line 3 in the code above really does is return a new PyGeode variable
@@ -49,7 +49,7 @@ variable we just saw:
 
 .. ipython::
 
-  In [5]: print t1.Temp(lat=(30, 50), lon=(100, 180))
+  In [5]: print(t1.Temp(lat=(30, 50), lon=(100, 180)))
   
   # We can take a look at the latitude grid points for reference
   In [6]: t1.Temp.lat[:] 
@@ -71,27 +71,27 @@ not necessarily the same length), even if some of them are of length 1.
 
 .. ipython::
 
-  In [6]: print t1.Temp(lat=12)
+  In [6]: print(t1.Temp(lat=12))
 
 If the (zero-based) index is more convenient, you can specify this by prefixing
 the axis name with ``i_``:
 
 .. ipython::
 
-  In [5]: print t1.Temp(i_lat=5).lat
+  In [5]: print(t1.Temp(i_lat=5).lat)
 
 Negative values index the axes in reverse, as in Python:
 
 .. ipython::
 
-  In [5]: print t1.Temp(i_lat=-5).lat
+  In [5]: print(t1.Temp(i_lat=-5).lat)
 
 Another useful prefix is ``l_``, which lets you select an arbitrary set of
 points:
 
 .. ipython::
 
-  In [7]: print t1.Temp(l_lat=(-25, 0, 60, 92)).lat.values
+  In [7]: print(t1.Temp(l_lat=(-25, 0, 60, 92)).lat.values)
 
 You'll notice that if the requested value lies between two grid points in the
 subsetted axis (``lat`` in this case), the closer of the two will be returned.
@@ -120,16 +120,16 @@ this case in days) from a reference date:
 
   In [10]: from pygeode.tutorial import t2
 
-  In [5]: print t2.time.startdate
+  In [5]: print(t2.time.startdate)
 
-  In [5]: print t2.time.values
+  In [5]: print(t2.time.values)
 
 Time axes can be subsetted exactly as above, in which case the requested value
 is matched against this offset:
 
 .. ipython::
 
-  In [5]: print t2.Temp(time=8).time
+  In [5]: print(t2.Temp(time=8).time)
 
 However, these can be difficult to use directly, and can easily correspond to
 very different dates if two time axes have different reference dates. Other
@@ -138,7 +138,7 @@ possibilities exist:
 .. ipython::
 
   # Select a range of dates, from 12 December 2013 to 18 January 2014
-  In [5]: print t2.Temp(time=('12 Dec 2013', '18 Jan 2014')).time  
+  In [5]: print(t2.Temp(time=('12 Dec 2013', '18 Jan 2014')).time)
 
 PyGeode also recognizes the format ``16:00 13 May 1982`` if a more precise
 specification is required.
@@ -146,10 +146,10 @@ specification is required.
 .. ipython::
 
   # Select all elements in year 2013
-  In [5]: print t2.Temp(year = 2013).time   
+  In [5]: print(t2.Temp(year = 2013).time)
 
   # Select all elements in any January, February or December
-  In [5]: print t2.Temp(l_month = (1, 2, 12)).time
+  In [5]: print(t2.Temp(l_month = (1, 2, 12)).time)
 
 These last two are particularly useful constructs; you will have noticed that
 axes need not be regularly spaced. Note that ``year`` and ``month`` here are
@@ -239,18 +239,18 @@ A couple of examples will clarify this:
 
 .. ipython::
 
-  In [13]: print (t2.U + t2.Temp).axes   # No broadcasting required
+  In [13]: print((t2.U + t2.Temp).axes)   # No broadcasting required
 
-  In [11]: print (t2.lat + t2.lon).axes  # Broadcast to (lat, lon)
+  In [11]: print((t2.lat + t2.lon).axes)  # Broadcast to (lat, lon)
 
-  In [12]: print (t2.lon + t2.lat).axes  # Broadcast to (lon, lat)
+  In [12]: print((t2.lon + t2.lat).axes)  # Broadcast to (lon, lat)
 
 The one exception to this rule is that if either variable is defined on a subset
 of the other's axes, the order of the latter is maintained:
 
 .. ipython::
 
-  In [12]: print (t2.lon + t2.Temp).axes  # Broadcast to (time, pres, lat, lon)
+  In [12]: print((t2.lon + t2.Temp).axes)  # Broadcast to (time, pres, lat, lon)
 
 You may be wondering how PyGeode decides whether two axes are the same for the
 purposes of this broadcasting. If two axes have the same elements (to within a
@@ -266,7 +266,7 @@ of the two longitude axes, since it is a subset of the longitude axis of
 .. ipython::
 
   # Broadcasting restricts longitude axis to subset 
-  In [12]: print (t2.Temp(lon=(0, 180)) - t2.Temp).lon  
+  In [12]: print((t2.Temp(lon=(0, 180)) - t2.Temp).lon)
 
 However, if pygeode finds two axes that could be compatible, but whose elements can
 not be simply mapped to one another, PyGeode will raise an exception:
@@ -274,8 +274,8 @@ not be simply mapped to one another, PyGeode will raise an exception:
 .. ipython::
 
   # Subsetted longitude axes are not compatible:
-  In [12]: try: print (t2.Temp(lon=(0, 180)) + t2.Temp(lon=(120, 240))).lon
-     ....:except ValueError as e: print e.message
+  In [12]: try: print((t2.Temp(lon=(0, 180)) + t2.Temp(lon=(120, 240))).lon)
+     ....:except ValueError as e: print(e)
 
 
 Reductions (Averages, Standard deviations)
@@ -288,7 +288,7 @@ example,
 
 .. ipython::
 
-  In [4]: print t2.Temp.mean('pres', pyg.Lon)
+  In [4]: print(t2.Temp.mean('pres', pyg.Lon))
   
 This computes an average over the both the pressure and longitude axes. You can
 specify axes in three ways:
@@ -307,7 +307,7 @@ cut in the form of another selection prefix, ``m_``:
 
 .. ipython::
 
-  In [5]: print t2.Temp(m_lat=(70, 90))
+  In [5]: print(t2.Temp(m_lat=(70, 90)))
 
 This selects all latitudes between 70 N and 90 N and performs an average.
 
@@ -318,20 +318,20 @@ surface area near the poles:
 
 .. ipython::
 
-  In [6]: print t2.Temp.lat.weights
+  In [6]: print(t2.Temp.lat.weights)
 
 You can turn this off, if desired, by specifying ``weights=False`` as a keyword argument:
 
 .. ipython::
 
-  In [6]: print t2.Temp.mean('lat', weights=False)
+  In [6]: print(t2.Temp.mean('lat', weights=False))
 
 Alternatively, you can specify your own weights to use, in the form of a PyGeode
 variable with the same axes as those you would like to weight:
 
 .. ipython::
   
-  In [8]: print t2.Temp.mean('lat', weights=pyg.sind(t2.Temp.lat))
+  In [8]: print(t2.Temp.mean('lat', weights=pyg.sind(t2.Temp.lat)))
 
 The weights do not need to be normalized; PyGeode will do that automatically. 
 
@@ -363,7 +363,7 @@ be specified; those that are not will be appended in their present order.
 
   In [8]: t2.Temp.axes
 
-  In [9]: print t2.Temp.transpose('lon', 'lat', 'pres', 'time').axes
+  In [9]: print(t2.Temp.transpose('lon', 'lat', 'pres', 'time').axes)
 
 :func:`Var.replace_axes()` replaces any or all axes of a variable. The new
 axes must have the same length as those they are replacing.
@@ -371,7 +371,7 @@ axes must have the same length as those they are replacing.
 .. ipython::
 
   # The logPAxis method returns a log-pressure axis with a given scale height
-  In [8]: print t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000)).axes
+  In [8]: print(t2.Temp.replace_axes(pres=t2.pres.logPAxis(H=7000)).axes)
 
 :func:`Var.squeeze()` removes degenerate axes (those with one or fewer elements).
 As mentioned above, the default selection behaviour is to always return a
@@ -383,16 +383,16 @@ all degenerate axes. Several other methods of calling are also available:
 .. ipython::
 
   # Squeeze all degenerate axes
-  In [8]: print t2.Temp(time = 4, lon = 20).squeeze()
+  In [8]: print(t2.Temp(time = 4, lon = 20).squeeze())
 
   # Squeeze only the time axis (if it is degenerate)
-  In [8]: print t2.Temp(time = 4, lon = 20).squeeze('time')
+  In [8]: print(t2.Temp(time = 4, lon = 20).squeeze('time'))
 
   # Select a single value then squeeze the time axis
-  In [8]: print t2.Temp.squeeze(time = 4)
+  In [8]: print(t2.Temp.squeeze(time = 4))
 
   # Select a single value and sqeeze the time axis using a selection prefix
-  In [8]: print t2.Temp(s_time = 4, lon = (20, 40))
+  In [8]: print(t2.Temp(s_time = 4, lon = (20, 40)))
 
 There are also commands to rename variables and their axes
 (:func:`Var.rename()`, :func:`Var.rename_axes()`), for adding axes to a

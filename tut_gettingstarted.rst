@@ -13,7 +13,7 @@ tutorial module of PyGeode. The first such dataset can be imported as follows:
 
   In [1]: from pygeode.tutorial import t1
 
-  In [2]: print t1
+  In [2]: print(t1)
 
 The dataset ``t1`` contains one pygeode variable object, ``Temp``, which is
 defined on a two dimensional grid of 31 latitudes and 60 longitudes.  The grid
@@ -24,7 +24,7 @@ We can take a closer look at our variable ``Temp``:
 
 .. ipython::
 
-  In [3]: print t1.Temp
+  In [3]: print(t1.Temp)
   
 Again, we see both physical and numerical details of the grid on which this
 variable is defined, as well that the temperatures are defined in degrees
@@ -34,7 +34,7 @@ Finally, we can look as well at one of our axes:
 
 .. ipython::
 
-  In [4]: print t1.lat
+  In [4]: print(t1.lat)
 
 which we could also access as a member of the variable ``Temp``: ``t1.Temp.lat``. 
 
@@ -76,7 +76,7 @@ Now let's take a look at a second dataset:
 
   In [8]: from pygeode.tutorial import t2
 
-  In [9]: print t2
+  In [9]: print(t2)
 
 This is a somewhat more complicated temperature field, now defined on four
 dimensions: time, pressure, latitude and longitude. Note this grid has over 350
@@ -92,13 +92,13 @@ loaded or computed.  We can, nonetheless, manipulate this variable as if it has:
 
   In [11]: Tcz = Tc.mean('lon')        # Compute the zonal mean
 
-  In [12]: print Tcz 
+  In [12]: print(Tcz)
 
   In [13]: Tcp = Tc - Tcz              # Compute anomaly from the zonal mean
 
   In [13]: Tcp = Tcp.rename("T'")      # Rename variable
   
-  In [14]: print Tcp
+  In [14]: print(Tcp)
 
 We've now computed (at least an abstract sense) the climatolgical anomaly from
 the zonal mean. Note that ``Tcz`` is defined on a reduced grid (we've lost the
@@ -149,7 +149,7 @@ and then read back in using:
 
   In [18]: ds = pyg.open('sample_data/file.nc')
  
-  In [19]: print ds
+  In [19]: print(ds)
 
 PyGeode is aware of the metadata in the file and constructs variables and axes
 accordingly, following the CF metadata standard used for climate data. Datasets

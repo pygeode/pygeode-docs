@@ -11,7 +11,7 @@ Dataset is created, containing all variables from that file.
 Here's an example of a Dataset, with a single variable:
 
   >>> from pygeode.tutorial import t1
-  >>> print t1
+  >>> print(t1)
   <Dataset>:
   Vars:
     Temp (lat,lon)  (32,64)
@@ -27,7 +27,7 @@ defined over latitude and longitude.  We can reference a particular
 Dataset:
 
   >>> x = t1.Temp
-  >>> print x
+  >>> print(x)
   <Var 'Temp'>:
     Shape:  (lat,lon)  (32,64)
     Axes:
