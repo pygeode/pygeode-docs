@@ -154,6 +154,7 @@ abstracted in the following ways:
     Var.imag
     Var.angle
     Var.conj
+    Var.clip
 
   :doc:`var.other`
 

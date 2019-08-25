@@ -55,6 +55,7 @@ Horizonal axis objects reference
 .. autosummary:: 
 
   regularlon
+  rotatelon
   regularlat
   gausslat
 
@@ -65,6 +66,8 @@ Horizonal axis objects reference
 .. automethod:: Lon.locator
 
 .. autofunction:: regularlon
+
+.. autofunction:: rotatelon
 
 .. automethod:: Lat.__init__
 

@@ -5,9 +5,10 @@ Reference
 .. currentmodule:: pygeode
 
 The vast majority of the functionality provided by PyGeode is available within
-the top level namespace of the module :mod:`pygeode`. The contents of this
-top level namespace is summarized here. Note that there are also several
-submodules with further functionality referenced in the summary as well. 
+the top level namespace of the module :mod:`pygeode`, along with the
+fundamental classes :class:`Var`, :class:`Axis`, and :class:`Dataset`.  The
+contents of this top level namespace is summarized here. Several submodules
+with further functionality are also included.
 
 .. container:: module
 
@@ -50,10 +51,11 @@ submodules with further functionality referenced in the summary as well.
     Yearless
     NonCoordinateAxis
 
-  .. rubric:: Axis creation helper functions
+  .. rubric:: Axis helper functions
   
   .. autosummary::
     regularlon
+    rotatelon
     regularlat
     gausslat
     standardtimerange
@@ -110,6 +112,7 @@ submodules with further functionality referenced in the summary as well.
     imag
     angle
     conj
+    clip
 
   :doc:`climat`
 

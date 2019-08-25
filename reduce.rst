@@ -8,7 +8,7 @@ wrap similar numpy functions, though they are also capable of performing these
 operations on datasets too large to fit in memory. Most operations have two
 versions, one which computes the reduction including every element without
 checking for the presence of NaNs, and one which ignores any element which is a NaN, adjusting
-the relevant normalization
+the relevant normalization.
 
 .. currentmodule:: pygeode
 

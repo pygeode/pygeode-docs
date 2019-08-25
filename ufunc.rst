@@ -138,3 +138,7 @@ in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 .. autofunction:: conj
 
 .. automethod:: Var.conj
+
+.. autofunction:: clip
+
+.. automethod:: Var.clip
