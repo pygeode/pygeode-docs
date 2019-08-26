@@ -77,13 +77,13 @@ Start with some 2D data:
   >>> from pygeode.tutorial import t1
   >>> print(t1.Temp)
   <Var 'Temp'>:
-    Shape:  (lat,lon)  (32,64)
+    Units: K  Shape:  (lat,lon)  (31,60)
     Axes:
-      lat <Lat>      :  85 S to 85 N (32 values)
-      lon <Lon>      :  0 E to 354 E (64 values)
+      lat <Lat>      :  90 S to 90 N (31 values)
+      lon <Lon>      :  0 E to 354 E (60 values)
     Attributes:
-      {'units': 'K'}
-    Type:  Var (dtype="float64")
+      {}
+    Type:  Add_Var (dtype="float64")
 
 Generate a time axis (say, every 6 hours starting at January 1, 2000)
   >>> import numpy as np
@@ -107,38 +107,35 @@ Generate a time axis (say, every 6 hours starting at January 1, 2000)
 Create a small linear temperature trend along the time axis.  Since our time axis is stored in units of 'hours', let's make a trend of 0.01 degrees per hour.
   >>> t_trend = taxis * 0.01
   >>> print(t_trend)
-  <Var '(time*0.01)'>:
-    Shape:  (time)  (124)
+  <Var 'time'>:
+    Units: hours  Shape:  (time)  (124)
     Axes:
       time <StandardTime>:  Jan 1, 2000 00:00:00 to Jan 31, 2000 18:00:00 (124 values)
     Attributes:
       {}
     Type:  Mul_Var (dtype="float64")
   >>> print(t_trend.get())
-  [ 0.    0.06  0.12  0.18  0.24  0.3   0.36  0.42  0.48  0.54  0.6   0.66
-    0.72  0.78  0.84  0.9   0.96  1.02  1.08  1.14  1.2   1.26  1.32  1.38
-    1.44  1.5   1.56  1.62  1.68  1.74  1.8   1.86  1.92  1.98  2.04  2.1
-    2.16  2.22  2.28  2.34  2.4   2.46  2.52  2.58  2.64  2.7   2.76  2.82
-    2.88  2.94  3.    3.06  3.12  3.18  3.24  3.3   3.36  3.42  3.48  3.54
-    3.6   3.66  3.72  3.78  3.84  3.9   3.96  4.02  4.08  4.14  4.2   4.26
-    4.32  4.38  4.44  4.5   4.56  4.62  4.68  4.74  4.8   4.86  4.92  4.98
-    5.04  5.1   5.16  5.22  5.28  5.34  5.4   5.46  5.52  5.58  5.64  5.7
-    5.76  5.82  5.88  5.94  6.    6.06  6.12  6.18  6.24  6.3   6.36  6.42
-    6.48  6.54  6.6   6.66  6.72  6.78  6.84  6.9   6.96  7.02  7.08  7.14
-    7.2   7.26  7.32  7.38]
-
+  [0.   0.06 0.12 0.18 0.24 0.3  0.36 0.42 0.48 0.54 0.6  0.66 0.72 0.78
+   0.84 0.9  0.96 1.02 1.08 1.14 1.2  1.26 1.32 1.38 1.44 1.5  1.56 1.62
+   1.68 1.74 1.8  1.86 1.92 1.98 2.04 2.1  2.16 2.22 2.28 2.34 2.4  2.46
+   2.52 2.58 2.64 2.7  2.76 2.82 2.88 2.94 3.   3.06 3.12 3.18 3.24 3.3
+   3.36 3.42 3.48 3.54 3.6  3.66 3.72 3.78 3.84 3.9  3.96 4.02 4.08 4.14
+   4.2  4.26 4.32 4.38 4.44 4.5  4.56 4.62 4.68 4.74 4.8  4.86 4.92 4.98
+   5.04 5.1  5.16 5.22 5.28 5.34 5.4  5.46 5.52 5.58 5.64 5.7  5.76 5.82
+   5.88 5.94 6.   6.06 6.12 6.18 6.24 6.3  6.36 6.42 6.48 6.54 6.6  6.66
+   6.72 6.78 6.84 6.9  6.96 7.02 7.08 7.14 7.2  7.26 7.32 7.38]
 
 **2) Operation between two Vars**
 
 Add this to our 2D data, to get a 3D field.  Use the time-dependant data as the left argument of the addition, so that the time axis is our first (leftmost) axis for the output.
   >>> mydata = t_trend + t1.Temp
   >>> print(mydata)
-  <Var '((time*0.01)+Temp)'>:
-    Shape:  (time,lat,lon)  (124,32,64)
+  <Var '(time+Temp)'>:
+    Shape:  (time,lat,lon)  (124,31,60)
     Axes:
       time <StandardTime>:  Jan 1, 2000 00:00:00 to Jan 31, 2000 18:00:00 (124 values)
-      lat <Lat>      :  85 S to 85 N (32 values)
-      lon <Lon>      :  0 E to 354 E (64 values)
+      lat <Lat>      :  90 S to 90 N (31 values)
+      lon <Lon>      :  0 E to 354 E (60 values)
     Attributes:
       {}
     Type:  Add_Var (dtype="float64")
@@ -147,13 +144,12 @@ Give this variable a better name (so it's more easily identifiable if we save it
   >>> mydata = mydata.rename('Temp')
   >>> print(mydata)
   <Var 'Temp'>:
-    Shape:  (time,lat,lon)  (124,32,64)
+    Shape:  (time,lat,lon)  (124,31,60)
     Axes:
       time <StandardTime>:  Jan 1, 2000 00:00:00 to Jan 31, 2000 18:00:00 (124 values)
-      lat <Lat>      :  85 S to 85 N (32 values)
-      lon <Lon>      :  0 E to 354 E (64 values)
+      lat <Lat>      :  90 S to 90 N (31 values)
+      lon <Lon>      :  0 E to 354 E (60 values)
     Attributes:
-      {'units': 'K'}
+      {}
     Type:  RenamedVar (dtype="float64")
-
 
