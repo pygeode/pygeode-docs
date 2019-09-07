@@ -124,8 +124,14 @@ with further functionality are also included.
     yearlymean
     diurnalmean
     climatology
+    dailynanmean
+    dailystdev
+    dailynanstdev
+    dailycount
     climtrend
     from_trend
+
+  ... and other similar routines; see :doc:`climat`
 
   :doc:`timeutils`
 
