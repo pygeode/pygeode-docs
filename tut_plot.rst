@@ -47,11 +47,8 @@ objects (explained in more detail below), and the title is set from the
 variable name as well as the coordinates of any degenerate axes. In the case of
 the contour plots, a colorbar is added automatically.
 
-Showvar
-=======
-
-Line Plots
------------------
+Showvar: Line Plots
+--------------------
 
 If :func:`showvar()` is passed a one dimensional variable, it will produce a
 line plot (ultimately using :func:`matplotlib.plot()`), automatically extracting
@@ -74,7 +71,7 @@ recognized by :func:`matplotlib.plot()` will be passed through.
   In [2]: pyg.showvar(t2.Temp.mean('time', 'lat', 'lon'), transpose = True)
 
 
-Contour Plots
+Showvar: Contour Plots
 -----------------------
 
 The showvar command, if passed a two-dimensional variable, will also produce
@@ -171,13 +168,7 @@ same contour intervals and a common colorbar.
 Finer control
 =============
 
-showlines
-
-showgrid
-
-Notice that these commands all return a :class:`AxesWrapper` object - this
-holds all the data and settings used to contruct your plot, and it can be used
-to make further modifications. 
-
-Some additional change.
+There are also lower-level plotting routines which can be used to construct
+plots with a finer degree of control (see :doc:`plot` for a list). For examples
+of how to use these routines, see the examples given in the :doc:`Gallery <gallery/index>`.
 

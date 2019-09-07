@@ -48,3 +48,5 @@ default.
 .. currentmodule:: pygeode.formats
 
 .. autofunction:: autodetectformat
+
+.. autofunction:: pygeode.formats.multifile.check_multi

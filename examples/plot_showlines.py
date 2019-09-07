@@ -1,8 +1,7 @@
 """
-.. currentmodule: pygeode
-
 Plot lines using showlines
 ==========================
+
 Compute numerical integrals using :func:`Var.integrate` and use :func:`showlines` to make plot 
 """
 import pygeode as pyg, numpy as np

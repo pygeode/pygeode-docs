@@ -13,13 +13,13 @@ over longitude as follows:
 
 .. ipython::
 
-  In [6]: import pylab as pyl; pyl.ion();
+  In [1]: import pylab as pyl; pyl.ion();
 
-  In [1]: import pygeode as pyg
+  In [2]: import pygeode as pyg
 
-  In [2]: from pygeode.tutorial import t1
+  In [3]: from pygeode.tutorial import t1
 
-  In [3]: t_av = t1.Temp.mean('lon') # Fast: no computations carried out
+  In [4]: t_av = t1.Temp.mean('lon') # Fast: no computations carried out
 
 However, while the variable ``t_av`` now represents this average (and one
 can carry out further operations with it), no actual averaging has been done.
@@ -31,7 +31,7 @@ numpy array as below, or when writing the data to disk, or plotting it):
   In [4]: print(t_av[:]) # Slower: data is loaded, and the averaging is carried out
 
 This should be kept in mind for the rest of the tutorial! We'll get a bit lazy:
-what line 3 in the code above really does is return a new PyGeode variable
+what line 4 in the code above really does is return a new PyGeode variable
 that represents the mean over the longitude axis of the source variable, without
 actually calculating the mean, but we'll just say that we've computed the mean.
 All of the operations in this section work this way - in fact, almost all of the

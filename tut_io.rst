@@ -307,8 +307,8 @@ in time. If there are errors or missing data in the interior files, these will
 not be detected when opening the dataset. It is good practice when opening such
 a dataset for the first time to explicitly load in at least some of the data
 from each file in the dataset to confirm that all the files are well-formed.
-
-.. ipython::
+There is a helper function for this purpose,
+:func:`pygeode.formats.multifile.check_multi`.
 
 Saving to files
 ---------------
