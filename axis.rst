@@ -39,10 +39,7 @@ Axis class reference
   might have same value in the corresponding 'month' auxiliary array. These can be used
   to select by keyword. 
 
-  See Also
-  ========
-  auxasvar
-  Var.__call__
+  See also: :meth:`auxasvar`, :meth:`Var.__call__`
 
 .. autoattribute:: Axis.plotatts
   :annotation: dictionary
