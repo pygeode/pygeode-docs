@@ -1,0 +1,346 @@
+Change Log
+=================================
+
+1.3.1 - 2020/06/14
+---------------------------------
+  - Fix bug where pygeode.formats.netcdf4 fails if the libnetcdf shared library
+    is not installed on the system.  It should not be required, since the
+    interface uses the Python netCDF4 package to handle I/O.
+  - Updated the INSTALL file with more up-to-date information.
+  - Removed warning message when libnetcdf unavailable.  This was always
+    displayed, even when libnetcdf was not actually needed.  This could cause
+    confusion if using the newer pygeode.formats.netcdf4 interface, since it
+    doesn't require the shared library at all.
+
+1.3.0 - 2019/10/02
+---------------------------------
+  - Support for Python 3.
+  - Fix ext_xarray.from_xarray() method, which was failing on xarray versions
+    > 0.10.0.
+  - Handle Var objects passed into netcdf.save and netcdf4.save.
+  - Properly detect attributes that are 1-element list of strings when writing
+    to netcdf.
+  - Force attributes from netcdf4 module to be string instead of unicode.
+  - Support for netcdf4 groups.
+  - Fix lazy variable loading for netcdf4 module.
+  - Added new bar() and errorbar() plot wrappers.
+  - Fix colorbar=False option for showvar.
+  - Fix nl=0 option for clfdict.
+  - Updated progress bar to be compatible with progressbar2 package.
+  - New rotatelon() and clip() functions.
+
+1.2.2 - 2018/07/06
+---------------------------------
+  - Handle netCDF time units that are separated by a "T" instead of a space.
+    E.g., "hours since 2010-02-01T03:00:00".
+
+1.2.1 - 2018/05/18
+---------------------------------
+  - Fix bug in plot_v1, where the 'projection' entry was removed from the
+    projection dictionary supplied by the user.  This was causing problems
+    when creating sequential plots, where only the first one had the right
+    projection.
+  - Fix bug in hdf4 interface.  Files that had dimensions with no associated
+    coordinate variable were crashing with a KeyError.
+
+1.2.0 - 2018/03/21
+---------------------------------
+  - Added nan-aware versions of climatological mean operations.
+  - Added standard deviation and nan-aware standard deviation classes for all
+    time subdivisions of climatological operations.
+  - Added count operations in climat module that return number of non-NaN
+    elements.
+  - Climatology operators can now be invoked as methods of Var objects.
+  - Add a "netcdf4" format for interfacing with the netCDF4 python module.
+  - Add support for entry points for pygeode.plugins and pygeode.formats.
+  - Add entry points for custom axes.
+  - Added pcolor operation to AxesWrapper.
+  - Better support for dimensionless Var objects (issue #108).
+  - Fix stack overflow when dealing with large 1D arrays (issue #107).
+  - New module pygeode.ext_xarray for converting to/from xarray objects.
+  - New hasaxis() and getaxis() methods for Dataset objects.
+  - Var.get() now returns a writeable copy the array.
+
+1.1.1 - 2018/01/19
+---------------------------------
+  - Fixed some padding logic in showgrid.
+  - Corrected bug that was happening when the inx coordinate variable was
+    provided with more than one axis but not as many axes as the data.
+  - Disable prefix checks when there's an exact match to an axis name.
+    Fixes bug triggered by axis names that contain underscores.
+
+1.1.0 - 2017/06/17
+---------------------------------
+  - Allow some settings to be read from a configuration file (pygrc).
+  - Added an option to disable lazy array evaluation, for cases where this
+    feature gets in the way.
+  - Option to back variables into "shorts" when saving netCDF files,
+    triggered by passing pack=True to netcdf.save().
+  - Allow specifying an "unlimited" dimension when saving netCDF files.
+  - Added load() method to Dataset objects, to load all the associated
+    variables in memory.
+  - New plot routines: vstreamplot, vhist, and fill_between.
+  - New plot.cm module to help with colormaps.
+  - New plot.cnt_helpers module for setting up contour intervals.
+  - New "yearlymean" and "climstdev" operators in climat module.
+  - Allow weights to be used in variance operator.
+  - Added second-derivative operator (triggered by passing df=2 to "deriv").
+  - New forward difference operator ("diff").
+  - Added conjugation operator ("conj").
+  - Added option to compute covariance matrix of regression coefficients in
+    multiple_regress.
+  - New 's\_' prefix for axis subsetting, to "squeeze" the axis out after
+    selecting a particular value.
+  - New 'n\_' prefix for axis subsetting, to "negate" the selection criteria.
+  - New "station" axis, for data that's sample at predetermined surface stations.
+  - Also, added more general "non-coordinate" axes where the values are not
+    part of a continuum, and need not even be numeric.
+  - New time axis constructor helpers (standardtimerange, standardtimen,
+    modeltime365range, modeltime365n, modeltime360range, modeltime360n,
+    yearlessn).
+  - New "check_multi" routine in formats.multifile, to pre-scan all files and
+    report any problems with the files.
+  - New "formats.data_scanner" module for loading more general (heterogeneous)
+    files together into a dataset.
+  - Added some new and interesting bugs to the code.
+
+1.0.6 - 2017/03/31
+---------------------------------
+ - Fixed missing parentheses in interp.c, which could cause a compilation failure.
+ - Fixed RPM installation configuration.
+ - Switched from distutils to setuptools, in order to make wheel files.
+
+1.0.5 - 2016/07/07
+---------------------------------
+ - Fixed segmentation fault when initializing a time axis with an invalid month.
+   (issue #76).
+ - Allow tools.loopover to handle Axis arguments.  Certain operations such as
+   smooth() were crashing when operating on an Axis object (issue #86).
+ - Preserve variable metadata when doing climatologies (issue #89).
+ - In multifile.openall(), don't require a format if an opener is provided.
+   (issue #90).
+ - Fixed a pointer issue in interpcore, in the case where there aren't enough
+   valid points to do an interpolation.
+
+1.0.4 - 2015/11/04
+---------------------------------
+ - Set attribute Conventions="CF-1.0" in netcdf output files, so other netcdf
+   utilities know how to parse our data.
+ - Added system include paths for non-standard prefix installs (conda), as well
+   as to the libhelper routines for finding libraries
+
+1.0.3 - 2015/06/16
+---------------------------------
+ - Allow other PyGeode formats to be installed in parallel Python paths.
+ - Add LD_LIBRARY_PATH to search path in libhelper.find_library().
+ - Force double-precision in val_as_date, to prevent precision loss when
+   computing dates.
+
+1.0.2 - 2015/03/24
+---------------------------------
+ - Fixed bugs in regress and correlate in axis matching logic.
+ - Allow timeaxes to support unordered values (issue 69).
+ - Fixed issue in removeleapyears.
+
+1.0.1 - 2014/07/09
+---------------------------------
+ - Fixed small colourbar bug.
+ - In multifile, allow for case where files are passed in as a tuple.
+ - Allow showvar() to work without basemap installed.
+
+1.0.0 - 2014/04/14
+---------------------------------
+
+General updates to the code:
+_____________________________________
+  - Converted C shared libraries to Python extension modules, to improve
+    portability of the package.
+  - New top-level "open" and "save" commands, which guess the appropriate file
+    format to use.
+
+Updates to Var class:
+_____________________________________
+  - Change the behaviour of Var.__getitem__, so that degenerate axes are
+    removed.  This brings our array slicing behaviour closer to numpy.
+
+Updates to axis module:
+_____________________________________
+  - For axes, added in a tolerance autodetection for closeness of matches,
+    based on spacing in axis.
+  - New functions "regularlat" & "regularlon" to create regularly spaced
+    latitude and longitude axes.
+
+New modules:
+_____________________________________
+  - New 'spectral' module, which defines a Spectral axis.
+
+Updates to the plot module:
+_____________________________________
+  - Can output to PDF.
+  - Improved support for Basemap.
+  - Support for scatter plots, quiver plots, and significance masks.
+  - Various usability improvements
+
+Updates to the old (v1) plot module:
+_____________________________________
+  - Added hatching option for old significance mask.
+
+Updates to the stats module:
+_____________________________________
+  - Added option to scale effective degrees of freedom in regress().
+  - Regress now takes a comma-separated string to specify outputs, like EOF.
+  - New function "multiple_regress" - code to do multiple linear regression.
+
+Updates to the reduce module:
+_____________________________________
+  - Added argmin() operator.
+
+Updates to the ufunc module:
+_____________________________________
+  - We now keep the original variable name if we're doing an arithmetic scalar
+    operation on the variable.
+
+Updates to the formats.cfmeta module:
+_____________________________________
+  - Better detection and handling of (malformed) time axes.
+
+Bug fixes:
+_____________________________________
+  - Correct portability issue with timeaxiscore module; also improved its error 
+    reporting.
+  - Fixed issue with concatenating along dummy axis.
+  - Fixed issue with "smooth" module (issue 44), and changed the smooth
+    interface a bit to make it easier to use your own kernels.
+
+
+0.7.3 - 2014/01/13
+---------------------------------
+  - Add support for more netcdf data types (issue 54).
+  - Minor bugfix for ufunc (var name was not being set properly).
+
+0.7.2 - 2013/09/16
+---------------------------------
+  - Fix ufunc operators dropping metadata (issue 39).
+
+0.7.1 - 2013/06/05
+---------------------------------
+  - Fix missing header message in progress bars (issue 33).
+  - Fix axis values being overwritten in plotvar (issue 36).
+
+0.7.0 - 2012/08/17
+---------------------------------
+
+Updates to Var and Axis classes:
+_____________________________________
+  - Vars now have a 'units' attribute
+  - Vars and Axes now have a 'plotatts' dictionary, which contains all plotting 
+    parameters.  Some possible keys are:
+
+      plottitle
+         The title to use for plots of this variable (or the axis label, if
+         this is an Axis)
+      plotname    
+         A shorter title, used for axis labels.
+      plotunits   
+         The units of the variable (overrides the 'units' attribute of the
+         variable).
+      plotscale
+         The type of scaling to apply to the values, either 'linear' or 'log'.
+      plotorder
+         The direction to plot the axis coordinates.  1 = away from origin, -1
+         = towards origin.
+      formatstr
+         A special string for formatting the values on axis ticks and plot
+         titles.
+      scalefactor
+         unit conversion, to get values in the plotunits
+      offset
+         unit conversion, to get values in the plotunits
+
+  - Auto-completion of axis & variable members of Var and Dataset objects
+    (works in ipython).  These members are also listed in dir() calls now.
+
+Updates to the plot module:
+_____________________________________
+  - Added 'every' keyword to plotquiver() to thin the vector field, implemented 
+    lblx, lbly kwargs.
+  - In plotsigmask(), added "alpha" kwarg to control alpha value of mask
+  - Keyword arguments "scaleAx", "scaleX", "scaleY" control scaling the values
+    by one of the axis coordinates.  This preserves integrals under a
+    logarithmic axis.
+  - added log10-scaling of 2D field values with new kwarg 'logVal'
+  - apply scalefactor and offset from plotatts, if they're defined.  Only
+    triggers if var.plotatts['plotunits'] is different from var.units.
+  - disable anti-aliasing in 2D plots.  In some versions of matplotlib (e.g.
+    the one shipped with Ubuntu 11.10), antialiasing causes annoying gaps
+    between polygons in various plots (contourf, pcolor, etc.).
+  - Created a more modularized set of plotting routines.  This gives greater
+    control over the construction of the plots, e.g. for publication.  The old
+    'plotvar' routine is still available for cases where the automatic
+    formatting is good enough.
+
+Updates to the stats module:
+_____________________________________
+  - Added some t test code:
+
+      difference(X, Y)
+         Calculates difference between the mean values of X and Y averaged over
+         the dimensions specified by axes.  Returns X - Y, p values, confidence
+         intervals, and degrees of freedom.
+      isnonzero(X)
+         Determines if X is non-zero, assuming X is normally distributed.
+         Returns mean of X along axes, p value, and confidence interval.
+
+  - Updated regress() to work on arbitrary axes
+  - can now specify which axes to correlate()
+  - correlate() now works with NaN values.
+
+Updates to the timeutils module:
+_____________________________________
+  - Lag variable for lagged correlations
+  - Moved _uniquify, modify, reltime, delta, wrapdate, and date_diff from
+    timeaxis module to timeutils module.
+  - New operator removeleapyears() to convert a standard time axis to a 365-day
+    or 360-day axis.
+  - New operator splittimeaxis() to split a time axis into 2 dimensions (e.g.
+    year, day-of-year).
+  - New function conform_values() to make 2 time axes have the same units and
+    start date.
+  - New operator jointimeaxes() to convert a 2D time representation (e.g. year,
+    day-of-year) to a single time axis.
+
+Other updates:
+_____________________________________
+  - Interpolation now is nan-aware and can extrapolate linearly.  By default,
+    no extrapolation is done (gives NaNs outside the data range).
+  - Improved compatibility with newer versions of the progressbar package.
+  - In concat module, allow the concatenation axis to be specified by the user,
+    so it doesn't have to be guessed.
+  - Added argmax() operator (works on one dimension)
+  - In composite operator, events that extend past the edge of the data now are
+    filled with NaNs
+  - Improved handling of endpoints in the 'smooth' operator.
+
+
+0.6.3 - 2012/08/16
+---------------------------------
+  - Fix bug with NaN-friendly reductions (nansum,nanmean,nanmin,nanmax).  They
+    were crashing when doing a full reduction to a scalar.
+    See issue 32 - https://github.com/pygeode/pygeode/issues/32
+
+0.6.2 - 2012/06/15
+---------------------------------
+  - Backported fix for year=0 infinite loop in timeaxis.
+  - Fix issue 28 (https://github.com/pygeode/pygeode/issues/28)
+  - Backported more robust handling of time axis in cfmeta module.
+
+0.6.1 - 2011/11/23
+---------------------------------
+  - Fix issue 23 (https://github.com/pygeode/pygeode/issues/23)
+  - Fix issue 25 (https://github.com/pygeode/pygeode/issues/25)
+  - Don't abort on missing 'A' and 'B' coefficients when loading netcdf files
+    with hybrid vertical coordinates.
+
+0.6.0 - 2011/08/11
+---------------------------------
+  - Initial stable release

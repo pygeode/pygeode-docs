@@ -7,7 +7,7 @@ climate models. It is particularly suited to dealing with large datasets that
 don't fit into memory. It is also intended to simplify plotting this data with
 matplotlib_. For more of an introduction, see the :doc:`tutorial`.
 
-This documentation describes version 1.3.
+This documentation describes version 1.3.2
 
 .. _matplotlib: http://matplotlib.sourceforge.net/
 
@@ -28,6 +28,11 @@ There is also a :doc:`reference` with full details.
 
 A :doc:`Gallery <gallery/index>` with examples of plots made with PyGeode is also in development.
 
+What's New
+----------------------
+
+A :doc:`list of changes <whatsnew>` for each version is available. 
+
 About PyGeode
 -----------------------------------
 PyGeode was originally developed by Mike Neish and Peter Hitchcock in the Department of Physics at
@@ -41,3 +46,4 @@ the University of Toronto, with contributions from Andre Erler and Isla Simpson.
    tutorial
    reference
    gallery/index
+   whatsnew
