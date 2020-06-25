@@ -1,4 +1,4 @@
-PyGeode 1.3
+PyGeode 1.4
 =================================
 
 Welcome! PyGeode is a python package intended to simplify the manipulation,
@@ -7,7 +7,7 @@ climate models. It is particularly suited to dealing with large datasets that
 don't fit into memory. It is also intended to simplify plotting this data with
 matplotlib_. For more of an introduction, see the :doc:`tutorial`.
 
-This documentation describes version 1.3.2
+This documentation describes version 1.4.0
 
 .. _matplotlib: http://matplotlib.sourceforge.net/
 
