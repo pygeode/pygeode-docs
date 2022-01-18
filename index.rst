@@ -9,7 +9,7 @@ matplotlib_. For more of an introduction, see the :doc:`tutorial`.
 
 This documentation describes version 1.4.0
 
-.. _matplotlib: http://matplotlib.sourceforge.net/
+.. _matplotlib: http://matplotlib.org/
 
 Download and Install
 ----------------------

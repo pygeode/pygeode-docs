@@ -1,4 +1,4 @@
 .. _gallery:
 
-Gallery
-=========
+Simple Examples
+===============

@@ -17,9 +17,9 @@ its conventions. Some use is also made of scipy_, and matplotlib_ is used for
 plotting. At present a small number of routines from the GSL are also used for
 interpolation; this may change in the future to remove this dependency.
 
-.. _numpy: http://numpy.scipy.org/
-.. _scipy: http://numpy.scipy.org/
-.. _matplotlib: http://matplotlib.sourceforge.net/
+.. _numpy: http://numpy.org/
+.. _scipy: http://scipy.org/
+.. _matplotlib: http://matplotlib.org/
 
 While there is no strict need to use the ipython_ interpreter, the plotting
 features in combination with matplotlib are quite convenient and this tutorial

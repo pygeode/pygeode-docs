@@ -38,7 +38,7 @@ Time axes objects reference
 
   .. autosummary::
 
-    CalendarTime.parse_pattern
+    CalendarTime.parse_patterns
 
   .. rubric:: New and overridden methods
 

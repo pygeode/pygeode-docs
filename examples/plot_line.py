@@ -3,8 +3,8 @@ Line plot
 =========
 """
 
-import pylab as pyl 
 import pygeode as pyg, numpy as np
+import pylab as pyl 
 
 t = pyg.ModelTime365(values = np.arange(100), units='days', startdate=dict(year=1, month=1))
 y1 = pyg.exp(-t / 30.) * pyg.cos(2*np.pi * t / 20.)

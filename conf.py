@@ -210,9 +210,11 @@ def setup(app):
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None,
-     'http://docs.scipy.org/doc/numpy': None,
-     'http://docs.scipy.org/doc/scipy/reference': None}
+intersphinx_mapping = {
+    'python'  : ('https://docs.python.org/3', None),
+    'numpy'   : ('https://numpy.org/doc/stable/', None),
+    'scipy'   : ('https://docs.scipy.org/doc/scipy/reference', None),
+    'cartopy' : ('https://scitools.org.uk/cartopy/docs/latest', None)}
 
 # -- Options for todo extension ----------------------------------------------
 
@@ -222,7 +224,7 @@ ipython_warning_is_error = False
 
 # -- Options for sphinx-gallery extension ----------------------------------------------
 
-from sphinx_gallery.sorting import FileNameSortKey
+from sphinx_gallery.sorting import FileNameSortKey, ExplicitOrder
 
 sphinx_gallery_conf = {
             'examples_dirs': ['examples',],
@@ -230,4 +232,5 @@ sphinx_gallery_conf = {
             'download_all_examples': False,
             'min_reported_time': 5,
             'within_subsection_order': FileNameSortKey,
+            'subsection_order': ExplicitOrder(['examples/maps', 'examples/advanced'])
 }

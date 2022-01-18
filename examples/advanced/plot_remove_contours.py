@@ -7,12 +7,12 @@ Use :func:`showvar()` to plot the wind as a filled contour plot and the temperat
 """
 
 import pylab as pyl
-pyl.ioff()
 
 import pygeode as pyg
 import numpy as np
 from pygeode.tutorial import t2
 
+pyl.ioff()
 # Load Temperature and zonal wind
 u = t2.U(time='10 May 2002', pres=(1000,500)).mean(pyg.Lon)
 T = t2.Temp(time='10 May 2002', pres=(1000,500)).mean(pyg.Lon)

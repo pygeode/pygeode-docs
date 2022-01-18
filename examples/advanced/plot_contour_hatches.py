@@ -4,7 +4,6 @@ Contour plot with hatches
 =========================
 """
 import pylab as pyl
-pyl.ion()
 
 import pygeode as pyg
 import numpy as np
@@ -20,4 +19,5 @@ pyg.vcontour(t1.Temp, levels=[200,280], linewidth=0, hatches=['..'], alpha=0, ax
 
 ax.setp(title = 'Plot specific contours and hatching')
 
+pyl.ion()
 ax.render(1)
