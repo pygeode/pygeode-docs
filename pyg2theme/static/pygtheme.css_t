@@ -23,6 +23,12 @@ em.property {
   background-color: #F0F0F0;
 }
 
+img.logo {
+  float : left;
+  padding : 3px;
+  padding-right : 10px;
+}
+
 dl.class, dl.method, dl.function, dl.classmethod, dl.attribute, .module { 
   border-radius : 8pt;
   padding : 10pt;

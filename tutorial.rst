@@ -5,8 +5,8 @@ Tutorial
 PyGeode is a Python_ library intended to help with the management, analysis, and
 visualization of geophysical datasets. It was originally developed with the
 intent of dealing with the output of an atmospheric general circulation model
-(specifically the Canadian Middle Atmosphere Model), but the library should be
-general enough to apply to any gridded dataset. 
+(specifically the Canadian Middle Atmosphere Model), but the library has
+been applied to many gridded dataset. 
 
 .. _Python: http://python.org/
 
@@ -23,8 +23,9 @@ interpolation; this may change in the future to remove this dependency.
 
 While there is no strict need to use the ipython_ interpreter, the plotting
 features in combination with matplotlib are quite convenient and this tutorial
-has been written assuming you are working with this combination. All the
-commands given should still work in any other interpreter.
+has been written assuming you are working with this combination. It can also be
+run within a jupyter notebook. All the commands given should still work in any
+other interpreter.
 
 .. _ipython: http://ipython.scipy.org/
 
