@@ -15,6 +15,8 @@ functions. They are augmented to handle PyGeode variables, and, in the case of
 functions that take a single argument, are available in two forms, as functions
 in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 
+.. automethod:: Var.map
+
 .. autofunction:: sign
 
 .. automethod:: Var.sign
@@ -140,5 +142,3 @@ in the top-level PyGeode namespace, or as members of the :class:`Var` class.
 .. automethod:: Var.conj
 
 .. autofunction:: clip
-
-.. automethod:: Var.clip

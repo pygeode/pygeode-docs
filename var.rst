@@ -125,6 +125,7 @@ abstracted in the following ways:
 
   .. autosummary::
 
+    Var.map
     Var.sign
     Var.exp
     Var.log
@@ -154,7 +155,6 @@ abstracted in the following ways:
     Var.imag
     Var.angle
     Var.conj
-    Var.clip
 
   :doc:`var.other`
 

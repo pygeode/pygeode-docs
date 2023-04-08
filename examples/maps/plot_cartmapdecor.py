@@ -92,5 +92,4 @@ ax.render(3)
 # This gallery shows how to modify the appearance of maps by passing in appropriate
 # dictionaries to showvar; another option is to turn off automatic map decorations
 # by passing in ''map_decor = False''. See 
-# :doc:`Add Cartopy Features <map_gallery>` for an example.
-# %%
+# :ref:`sphx_glr_gallery_maps_plot_cartfeatures.py` for an example.

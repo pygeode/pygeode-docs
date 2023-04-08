@@ -39,5 +39,8 @@ include lag correlation
 Integration, Differentiation, Interpolation and Smoothing
 .........................................................
 
+Some examples of numerical integration using :func:`Var.integrate()` can be found in :ref:`sphx_glr_gallery_line_plot_showlines.py`
+
+Numerical integration, differentiation
 Composites
 ..........
