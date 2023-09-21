@@ -5,15 +5,17 @@ Overplot multiple fields
 import pygeode as pyg, numpy as np
 import pylab as pyl
 
-lat = pyg.regularlat(60)
-lon = pyg.regularlon(120)
+ds = pyg.open('../pygeode-data/era5_202001_pl_uvt.nc', dimtypes = dict(level = pyg.Pres))
 
-x = pyg.sin(2*np.pi * lon / 180.) * pyg.exp(-(lat - 30)**2 / (2*10**2))
-y = pyg.sin(2*np.pi * lon / 180.) * pyg.exp(-(lat + 40)**2 / (2*10**2))
+print(ds)
+
+ds = ds(i_time = 0).mean('lon')
+
+ws = pyg.sqrt(ds.u**2 + ds.v**2)
 
 ax = pyg.plot.AxesWrapper()
-pyg.vcontour(y, clevs=np.linspace(-1, 1, 21), clines=None, cmap='cool', axes=ax)
-pyg.vcontour(x, clevs=None, clines=np.linspace(-1, 1, 21), linewidths = 1., colors='k', axes=ax)
+pyg.vcontour(ds.t, axes=ax, cmap = pyl.cm.RdBu)
+pyg.vcontour(ws, clines = np.linspace(0, 50, 5), axes=ax)
 
 ax.setp(title = 'Filled contours and contour lines')
 

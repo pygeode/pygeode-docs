@@ -1,6 +1,13 @@
 Change Log
 =================================
 
+1.4.2 - 2023/09/25
+---------------------------------
+  - Moved to github actions; working towards automated testing and publishing tools/workflows
+  - Fixes to work with python versions up to 3.11
+  - New colormap tools (see pygeode.plot.cm)
+  - Various minor bug fixes
+
 1.4.1 - 2022/01/25
 ---------------------------------
   - Added new regex for recognizing ISO8601 format time and date strings when

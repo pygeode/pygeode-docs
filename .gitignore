@@ -4,6 +4,7 @@
 to_document.txt
 build/
 gallery/
+examples/pygeode-data
 _build/
 _static/
 */.ipynb_checkpoints/*
