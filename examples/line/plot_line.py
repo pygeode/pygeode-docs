@@ -1,6 +1,6 @@
 """
-Create a line plot
-=====================
+Plot a line using showvar()
+===========================
 
 .. currentmodule:: pygeode
 
@@ -25,12 +25,13 @@ for i in range(1, N):
   ar1[i] = p * ar1[i-1] + eps[i]
 
 # Create an N-element time axis with no calendar
+# The default time step is 1 day
 t = pyg.yearlessn(N)
 
 # Create a pygeode variable from the numpy array
 AR1 = pyg.Var((t,), values = ar1, name = 'AR1')
 
-# Plot AR1 
+# Plot generated time series
 ax = pyg.showvar(AR1)
 
 pyl.ion()
@@ -41,11 +42,13 @@ ax.render()
 # command to further customize the plot
 
 pyl.ioff()
+
 ax = pyg.showvar(AR1, color = 'g', marker = 'o', linewidth = 1, linestyle = '--', markersize = 4)
 
-# We can also customize the axis labels and locators
+# Set y axis limits and remove label
 ax.setp(ylim = (-3.5, 3.5), ylabel = '')
-#ax.setp_xaxis(major_locator = pyg.timeticker.DayLocator(t, [15]))
+# Add ticks every 15 days
+ax.setp_xaxis(major_locator = pyg.timeticker.DayLocator(t, 15))
 
 pyl.ion()
 ax.render()

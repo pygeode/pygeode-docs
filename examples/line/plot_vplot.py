@@ -1,10 +1,11 @@
 """
-Overplot lines with vplot
-==========================
+Overplot lines with vplot()
+============================
 
 .. currentmodule:: pygeode
 
-Overplots two lines using lower level plotting routine :func:`vplot()`
+Overplots two lines using lower level plotting routine :func:`vplot()`. Also provides
+some illustrations of how to customize the format and location of ticks for time axes.
 """
 
 import pygeode as pyg, numpy as np
@@ -22,15 +23,16 @@ y2 = y2.rename('y2')
 pyl.ioff()
 
 # Create an axis wrapper object to hold the plot
-ax = pyg.plot.AxesWrapper()
+ax = pyg.plot.AxesWrapper(size = (6, 4))
 
 # Add the two lines
 pyg.vplot(y1, label='y1', c='r', lw=2, axes=ax)
 pyg.vplot(y2, label='y2', c='b', lw=2, axes=ax)
 
+# Set the title and y label
 ax.setp(title = 'Two lines', ylabel='')
 
-
+# Add a legend
 ax.legend(loc='lower right', frameon=False)
 
 pyl.ion()
@@ -43,6 +45,7 @@ ax.render()
 
 pyl.ioff()
 ax.setp(xlim = (0, 20))
+ax.pad = [0.1, 0.5, 0.1, 0.4]
 
 pyl.ion()
 ax.render()
@@ -50,9 +53,9 @@ ax.render()
 # %%
 # You can chose the tick spacing and format explicitly; in this case with major
 # ticks every month and minor ticks every 5 days.
-pyl.ioff()
+# See :meth:`timeaxis.CalendarTime.formatvalue` for details on how to choose the format of times/dates
 
-# For 
+pyl.ioff()
 ax.setp(xlim = (0, 100))
 ax.setp_xaxis(major_formatter=pyg.timeticker.TimeFormatter(t, '$b'), \
               major_locator = pyg.timeticker.MonthLocator(t, 1), \
