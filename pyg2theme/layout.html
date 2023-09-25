@@ -33,28 +33,20 @@
 
 {% block content %}
       <div class="header" role="banner">
-        {%- if logo -%}
-          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" width=79px alt="Logo"/>
-        {%- endif -%}
         {%- block haikuheader %}
-        {%- if theme_full_logo != "false" %}
-        <a href="{{ pathto('index') }}">
-          <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
-        </a>
-        {%- else %}
+        <img class="logo" width="79px" src="{{ logo_url|e }}" alt="Logo"/>
         <h1 class="heading"><a href="{{ pathto('index') }}">
           <span>{{ shorttitle|e }}</span></a></h1>
         <h2 class="heading"><span>{{ title|striptags|e }}</span></h2>
-        {%- endif %}
         {%- endblock %}
       </div>
       <div class="topnav" role="navigation" aria-label="top navigation">
       {{ nav() }}
       </div>
-      <div class="content">
+      <div class="content" role="main">
         {#{%- if display_toc %}
         <div id="toc">
-          <h3>{{ _('Table Of Contents') }}</h3>
+          <h3>{{ _('Table of Contents') }}</h3>
           {{ toc }}
         </div>
         {%- endif %}#}

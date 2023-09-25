@@ -1,7 +1,7 @@
 
 """
-Basics of contour plots
-=================================
+Use custom contour levels and colour maps
+=========================================
 
 .. currentmodule:: pygeode
 
